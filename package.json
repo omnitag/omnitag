@@ -1,0 +1,27 @@
+{
+  "description": "omnitsg",
+  "keywords": [
+    "i13n"
+  ],
+  "author": "Hill <hill@kimo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "css-query-selector": "*",
+    "exec-script": "*",
+    "i13n": "*",
+    "object-nested": "*",
+    "parse-ini-string": "*",
+    "seturl": "^0.0.7"
+  },
+  "devDependencies": {
+    "babel-cli": "*",
+    "reshow-app": "*"
+  },
+  "scripts": {
+    "clean": "find ./build ./assets -name '*.*' | xargs rm -rf",
+    "build:cjs": "BABEL_ENV=build babel src -d build/cjs/src",
+    "build:es": "BABEL_ENV=es babel src -d build/es/src",
+    "build": "npm run clean && npm run build:cjs && npm run build:es",
+    "prepublishOnly": "npm run build"
+  }
+}
