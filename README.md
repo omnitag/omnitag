@@ -1,4 +1,2 @@
 # Usergram
-
-http://www.bebit.co.jp/usergram/
-
+[About Me](http://www.bebit.co.jp/usergram/)
