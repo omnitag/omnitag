@@ -11,11 +11,12 @@
     "i13n": "*",
     "object-nested": "*",
     "parse-ini-string": "*",
-    "seturl": "^0.0.7"
+    "seturl": "*"
   },
   "devDependencies": {
     "babel-cli": "*",
-    "reshow-app": "*"
+    "reshow-app": "*",
+    "btoa-atob": "0.1.2"
   },
   "scripts": {
     "clean": "find ./build ./assets -name '*.*' | xargs rm -rf",

@@ -2,7 +2,7 @@ import {client} from 'i13n-client';
 import query from 'css-query-selector';
 import {getUrl} from 'seturl'
 
-const tags = query.all('script[src*="js?id"]');
+const tags = query.all('script[src*="usergram.omniscientai.com/tag.js?id"]');
 
 let thisId;
 tags.some(tag => {
@@ -19,6 +19,6 @@ tags.some(tag => {
   }
 })
 
-//client(`/${thisId}.ini`)
-client(`http://localhost:8000/rubys.ini`)
-
+client(`https://usergram.omniscientai.com/u/${thisId}.ini`,
+  t => atob(t)
+)
