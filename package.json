@@ -9,14 +9,15 @@
     "css-query-selector": "*",
     "exec-script": "*",
     "i13n": "*",
+    "i13n-client": "*",
     "object-nested": "*",
     "parse-ini-string": "*",
     "seturl": "*"
   },
   "devDependencies": {
     "babel-cli": "*",
-    "reshow-app": "*",
-    "btoa-atob": "0.1.2"
+    "btoa-atob": "0.1.2",
+    "reshow-app": "*"
   },
   "scripts": {
     "clean": "find ./build ./assets -name '*.*' | xargs rm -rf",
