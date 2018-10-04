@@ -1,4 +1,3 @@
-(function(){
 var Base64 = {};
 
 Base64.code =
@@ -101,7 +100,7 @@ Base64.decode = function(str, utf8decode) {
 
   return utf8decode ? Utf8.decode(plain) : plain;
 };
+
 if (!window.atob) {
   window.atob = Base64.decode
 }
-}());
