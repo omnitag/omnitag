@@ -2062,8 +2062,8 @@ enzyme-adapter-react-16@*:
     react-test-renderer "^16.0.0-0"
 
 enzyme-adapter-utils@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/enzyme-adapter-utils/-/enzyme-adapter-utils-1.8.0.tgz#ee9f07250663a985f1f2caaf297720787da559f1"
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/enzyme-adapter-utils/-/enzyme-adapter-utils-1.8.1.tgz#a927d840ce2c14b42892a533aec836809d4e022b"
   dependencies:
     function.prototype.name "^1.1.0"
     object.assign "^4.1.0"
@@ -2832,8 +2832,8 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
 i13n-client@*:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.6.tgz#c3732a60e0510d3d4b13121cc317474d7fce40ef"
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.7.tgz#343b9cbb94fa3c54379de99cbd7742ffb3f184dc"
   dependencies:
     css-query-selector "*"
     exec-script "*"
