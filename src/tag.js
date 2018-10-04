@@ -9,7 +9,7 @@ const win = () => window;
 const doc = () => document;
 
 let iniId;
-let iniPath = '//'+ host + '/u';
+let iniPath = '//' + host + '/u';
 const getAttribute = t => v => t.getAttribute(v);
 tags.some(tag => {
   const getAttr = getAttribute(tag);
@@ -34,6 +34,6 @@ client(`${iniPath}/${iniId}.ini`, (t, cb) => {
   if (win().atob) {
     return cb(atob(t));
   } else {
-    js(doc().body)(() => cb(atob(t)))('/decode.js');
+    js(doc().body)(() => cb(atob(t)))('//usergram.omniscientai.com/decode.js');
   }
 });
