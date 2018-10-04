@@ -245,6 +245,10 @@ array.prototype.flat@^1.2.1:
     es-abstract "^1.10.0"
     function-bind "^1.1.1"
 
+asap@~2.0.3:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
+
 asn1.js@^4.0.0:
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/asn1.js/-/asn1.js-4.10.1.tgz#b9c2bf5805f1e64aadeed6df3a2bfafb5a73f5a0"
@@ -1110,7 +1114,7 @@ binary-extensions@^1.0.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.12.0.tgz#c2d780f53d45bba8317a8902d4ceeaf3a6385b14"
 
-bluebird@^3.5.1:
+bluebird@^3.3, bluebird@^3.5.1:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.2.tgz#1be0908e054a751754549c270489c1505d4ab15a"
 
@@ -1567,9 +1571,9 @@ commander@^2.11.0, commander@^2.18.0:
   version "2.18.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.18.0.tgz#2bf063ddee7c7891176981a2cc798e5754bc6970"
 
-commander@~2.14.1:
-  version "2.14.1"
-  resolved "http://registry.npmjs.org/commander/-/commander-2.14.1.tgz#2235123e37af8ca3c65df45b026dbd357b01b9aa"
+commander@~2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.13.0.tgz#6964bca67685df7c1f1430c584f07d7597885b9c"
 
 common-log-format@~0.1.3:
   version "0.1.3"
@@ -1684,8 +1688,8 @@ create-ecdh@^4.0.0:
     elliptic "^6.0.0"
 
 create-el@*:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/create-el/-/create-el-0.0.6.tgz#0d34f9e550f5f0cffd9281a31268ab2ca8823e27"
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/create-el/-/create-el-0.0.7.tgz#4b8503c58d411646c14eb0f3a07bca548507c8a8"
   dependencies:
     reshow-runtime "*"
 
@@ -2562,6 +2566,14 @@ get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
 
+get-content@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/get-content/-/get-content-1.0.2.tgz#4e23b4a99fc40228cb95d6ef29d3d7d17635e65e"
+  dependencies:
+    is-url "^1.2.0"
+    promise "^7.1.1"
+    request-promise "^3.0.0"
+
 get-func-name@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/get-func-name/-/get-func-name-2.0.0.tgz#ead774abee72e20409433a066366023dd6887a41"
@@ -2630,7 +2642,7 @@ glob@7.1.2:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.5, glob@^7.1.2:
+glob@7.1.3, glob@^7.0.5, glob@^7.1.2:
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
   dependencies:
@@ -3142,6 +3154,10 @@ is-typedarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
 
+is-url@^1.2.0:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/is-url/-/is-url-1.2.4.tgz#04a4df46d28c4cff3d73d01ff06abeb318a1aa52"
+
 is-windows@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
@@ -3547,7 +3563,7 @@ lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
 
-lodash@^4.13.1, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.4:
+lodash@^4.13.1, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.4, lodash@^4.6.1:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
@@ -4497,6 +4513,12 @@ promise-inflight@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
 
+promise@^7.1.1:
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/promise/-/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
+  dependencies:
+    asap "~2.0.3"
+
 prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
@@ -4795,7 +4817,15 @@ request-promise-native@^1.0.5:
     stealthy-require "^1.1.0"
     tough-cookie ">=2.3.3"
 
-request@^2.88.0:
+request-promise@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/request-promise/-/request-promise-3.0.0.tgz#be1edb26f41c49cd1d5656c6753d6842a1249f46"
+  dependencies:
+    bluebird "^3.3"
+    lodash "^4.6.1"
+    request "^2.34"
+
+request@^2.34, request@^2.88.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   dependencies:
@@ -5574,10 +5604,10 @@ typical@^3.0.0:
   resolved "https://registry.yarnpkg.com/typical/-/typical-3.0.0.tgz#90ff7c207fabf8b63258b76efdade39cfc9ff36f"
 
 uglify-es@^3.3.4:
-  version "3.3.10"
-  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.3.10.tgz#8b0b7992cebe20edc26de1bf325cef797b8f3fa5"
+  version "3.3.9"
+  resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.3.9.tgz#0c1c4f0700bed8dbc124cdb304d2592ca203e677"
   dependencies:
-    commander "~2.14.1"
+    commander "~2.13.0"
     source-map "~0.6.1"
 
 uglify-js@^2.8.29:
