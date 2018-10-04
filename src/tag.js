@@ -1,9 +1,11 @@
 import {client} from 'i13n-client';
 import query from 'css-query-selector';
 import {getUrl} from 'seturl'
+import {js} from 'create-el'
 
 const tags = query.all('script[src*="/tag.js?id"]');
 const host = 'usergram.omniscientai.com'
+const win = () => window
 
 let iniId;
 let iniPath = host+'/u';
@@ -28,5 +30,13 @@ tags.some(tag => {
 })
 
 client(`//${iniPath}/${iniId}.ini`,
-  t => atob(t)
+  (t, cb) => {
+    if (win().atob) {    
+      return cb(atob(t));
+    } else {
+      js()(()=>cb(atob(t)))(
+        '/decode.js'
+      );      
+    }
+  }
 )
