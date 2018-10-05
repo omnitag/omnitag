@@ -2054,15 +2054,15 @@ entities@^1.1.1, entities@~1.1.1:
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
 enzyme-adapter-react-16@*:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.5.0.tgz#50af8d76a45fe0915de932bd95d34cdca75c0be3"
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.6.0.tgz#3fca28d3c32f3ff427495380fe2dd51494689073"
   dependencies:
     enzyme-adapter-utils "^1.8.0"
     function.prototype.name "^1.1.0"
     object.assign "^4.1.0"
     object.values "^1.0.4"
     prop-types "^15.6.2"
-    react-is "^16.4.2"
+    react-is "^16.5.2"
     react-test-renderer "^16.0.0-0"
 
 enzyme-adapter-utils@^1.8.0:
@@ -2074,8 +2074,8 @@ enzyme-adapter-utils@^1.8.0:
     prop-types "^15.6.2"
 
 enzyme@*:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.6.0.tgz#d213f280a258f61e901bc663d4cc2d6fd9a9dec8"
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.7.0.tgz#9b499e8ca155df44fef64d9f1558961ba1385a46"
   dependencies:
     array.prototype.flat "^1.2.1"
     cheerio "^1.0.0-rc.2"
@@ -2844,8 +2844,8 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
 i13n-client@*:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.7.tgz#343b9cbb94fa3c54379de99cbd7742ffb3f184dc"
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.8.tgz#8cb6c05364fb7a3689926b9528a4f678added8f8"
   dependencies:
     css-query-selector "*"
     exec-script "*"
@@ -2862,8 +2862,8 @@ i13n-store@*:
     i13n "*"
 
 i13n@*:
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/i13n/-/i13n-0.0.28.tgz#345806ba0cd943f7e54b5c375c112eb05bfe3010"
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/i13n/-/i13n-0.0.30.tgz#1daf5db05a3bb8cd2e2ae84fa4e898b170f493f2"
   dependencies:
     get-object-value "*"
     get-storage "*"
@@ -4668,7 +4668,7 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-is@^16.4.2, react-is@^16.5.2:
+react-is@^16.5.2:
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.2.tgz#e2a7b7c3f5d48062eb769fcb123505eb928722e3"
 
@@ -5068,8 +5068,8 @@ set-blocking@^2.0.0, set-blocking@~2.0.0:
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
 
 set-object-value@*:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/set-object-value/-/set-object-value-0.0.3.tgz#e7a9092544119403051938bd34e2eab0df0ffa7d"
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/set-object-value/-/set-object-value-0.0.4.tgz#0c32309268e9280492ea891a331dd66a354025f6"
 
 set-value@^0.4.3:
   version "0.4.3"
@@ -5213,8 +5213,8 @@ source-map@^0.6.1, source-map@~0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
 spdx-correct@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-3.0.1.tgz#434434ff9d1726b4d9f4219d1004813d80639e30"
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-3.0.2.tgz#19bb409e91b47b1ad54159243f7312a858db3c2e"
   dependencies:
     spdx-expression-parse "^3.0.0"
     spdx-license-ids "^3.0.0"
