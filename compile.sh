@@ -5,7 +5,7 @@ conf='{"resetVendor":[]}'
 
 production(){
     echo "Production Mode";
-    npm run build
+    npm run test 
     CONFIG=$conf NODE_ENV=production webpack -p --optimize-minimize
     cp assets/tag.bundle.js ./tag.js
     mkdir -p u

@@ -2844,8 +2844,8 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
 i13n-client@*:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.8.tgz#8cb6c05364fb7a3689926b9528a4f678added8f8"
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.9.tgz#14612d1af9c11fba474fc2b09ef22359e0ed2d81"
   dependencies:
     css-query-selector "*"
     exec-script "*"
@@ -5927,8 +5927,8 @@ ws@^5.2.1:
     async-limiter "~1.0.0"
 
 ws@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-6.0.0.tgz#eaa494aded00ac4289d455bac8d84c7c651cef35"
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-6.1.0.tgz#119a9dbf92c54e190ec18d10e871d55c95cf9373"
   dependencies:
     async-limiter "~1.0.0"
 
