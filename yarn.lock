@@ -2844,8 +2844,8 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
 i13n-client@*:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.11.tgz#92eb38875b2fb2971844dc302b1022ec8efc5188"
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.12.tgz#4f0d8a2bc3547cc0c11ce3d0a37cd6b8c78a91b5"
   dependencies:
     css-query-selector "*"
     exec-script "*"
