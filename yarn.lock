@@ -2844,8 +2844,8 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
 i13n-client@*:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.10.tgz#d69b55e61239df8618e594f004f350cd185a2a5f"
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.11.tgz#92eb38875b2fb2971844dc302b1022ec8efc5188"
   dependencies:
     css-query-selector "*"
     exec-script "*"
@@ -2862,8 +2862,8 @@ i13n-store@*:
     i13n "*"
 
 i13n@*:
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/i13n/-/i13n-0.0.35.tgz#bc78eb5971378e857c11b1721da1198f3081c545"
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/i13n/-/i13n-0.0.36.tgz#065a2ede8a843b55d6dc6e0f8511d58d7d9acde8"
   dependencies:
     get-object-value "*"
     get-storage "*"
