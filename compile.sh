@@ -26,7 +26,7 @@ develop(){
 
 startServer(){
     echo "Start server";
-    node_modules/.bin/ws
+    node_modules/.bin/ws -p 7000 
 }
 
 
