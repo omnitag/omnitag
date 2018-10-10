@@ -1,3 +1,4 @@
+import utf8Decode from './utf8Decode'
 import {client} from 'i13n-client';
 import query from 'css-query-selector';
 import {getUrl} from 'seturl';
@@ -32,7 +33,7 @@ tags.some(tag => {
 
 client(`${iniPath}/${iniId}.ini`, (t, cb) => {
   if (win().atob) {
-    return cb(atob(t));
+    return cb(utf8Decode(atob(t)));
   } else {
     js(doc().body)(() => cb(atob(t)))('//usergram.omniscientai.com/decode.js');
   }

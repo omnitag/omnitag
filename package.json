@@ -23,7 +23,7 @@
   },
   "scripts": {
     "clean": "find ./build ./assets -name '*.*' | xargs rm -rf",
-    "build:cjs": "BABEL_ENV=build babel src -d build/cjs/src",
+    "build:cjs": "BABEL_ENV=test babel src -d build/cjs/src",
     "build:es": "BABEL_ENV=es babel src -d build/es/src",
     "build:test": "BABEL_ENV=test babel tests -d build/tests",
     "build": "npm run clean && npm run build:cjs && npm run build:es",
