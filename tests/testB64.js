@@ -8,7 +8,7 @@ describe('Test base64', () => {
     const code = b64.encode(s);
     expect(code).to.equal('57WQ5biz5ZWG5ZOB');
   });
-  it('encode chinese', () => {
+  it('decode chinese', () => {
     const code = '57WQ5biz5ZWG5ZOB';
     const s = b64.decode(code);
     expect(s).to.equal('結帳商品');
