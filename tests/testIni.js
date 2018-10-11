@@ -30,6 +30,8 @@ describe('Test ini file', () => {
           .then(text => {
             const conf = nest(ini(text), '_');
             const scripts = get(conf, ['script']);
+            const pages = get(conf, ['page']);
+            const secs = get(conf, ['sec']);
             if (!scripts) {
               throw new Error(['Can not find script', f]);
             }
@@ -42,6 +44,21 @@ describe('Test ini file', () => {
               const script = scripts[key];
               exec(script, null, null, errCb);
             });
+            const checkJson = arr => {
+              keys(arr).forEach(key => {
+                const item = arr[key];
+                const params = get(item, ['params'], []);
+                params.forEach(p => {
+                  try {
+                    JSON.parse(p);
+                  } catch (e) {
+                    throw new Error(['Json parse error', p, key, JSON.stringify(arr[key])]);
+                  }
+                });
+              });
+            };
+            checkJson(pages);
+            checkJson(secs);
           })
           .done(() => {
             checkDone(f);
