@@ -1,17 +1,23 @@
 import {client} from 'i13n-client';
-client('http://localhost:7000/src/user/rubys.ini', (t, cb)=>{
-  cb(t, [
-    {
-      path: ['tag', 'debug', 'enabled'],
-      value: true
-    },
-    {
-      path: ['tag', 'gtag', 'gaId'],
-      value: 'UA-124534784-1' 
-    },
-    {
-      path: ['tag', 'usergram', 'enabled'],
-      value: false 
-    },
-  ]);
-})
+
+const reload = () => {
+  client('http://localhost:7000/src/user/suntory.ini', (t, cb) => {
+    cb(t, [
+      {
+        path: ['tag', 'debug', 'enabled'],
+        value: true,
+      },
+      {
+        path: ['tag', 'gtag', 'gaId'],
+        value: 'UA-124534784-1',
+      },
+      {
+        path: ['tag', 'usergram', 'enabled'],
+        value: false,
+      },
+    ]);
+  });
+};
+
+reload();
+window.i13nReload = reload; 
