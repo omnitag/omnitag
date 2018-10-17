@@ -14,6 +14,7 @@ describe('Test ini file', () => {
   let jsdom;
   before(() => {
     jsdom = gJsdom('', {runScripts: 'outside-only'});
+    window.alert = console.log
   });
   it('test syntax', done => {
     glob('**/*.ini', {cwd: './src/user/', realpath: true}, (err, files) => {

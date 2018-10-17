@@ -1,7 +1,7 @@
 import {client} from 'i13n-client';
 
 const reload = () => {
-  client('http://localhost:7000/src/user/rubys.ini', (t, cb) => {
+  client('http://localhost:7000/src/user/bebit.ini', (t, cb) => {
     cb(t, [
       {
         path: ['tag', 'debug', 'enabled'],
@@ -13,7 +13,7 @@ const reload = () => {
       },
       {
         path: ['tag', 'usergram', 'enabled'],
-        value: false,
+        value: true,
       },
     ]);
   });
