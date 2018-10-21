@@ -2825,8 +2825,8 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
 i13n-client@*:
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.25.tgz#ab5836efe65aafe977cfd73240b99ca1996b27d8"
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.26.tgz#320e1dcfc7db857526d91ae1406acee003670bdf"
   dependencies:
     css-query-selector "*"
     exec-script "*"
@@ -3732,7 +3732,7 @@ md5.js@^1.3.4:
 
 media-typer@0.3.0:
   version "0.3.0"
-  resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
+  resolved "http://registry.npmjs.org/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
 
 mem@^1.1.0:
   version "1.1.0"
