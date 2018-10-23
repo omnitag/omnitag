@@ -1335,8 +1335,8 @@ camelcase@^4.1.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
 caniuse-lite@^1.0.30000844:
-  version "1.0.30000893"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000893.tgz#284b20932bd41b93e21626975f2050cb01561986"
+  version "1.0.30000898"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000898.tgz#651306e690ca83caca5814da5afa3eb4de0f86c2"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -3398,8 +3398,8 @@ koa-static@^4.0.2:
     koa-send "^4.1.3"
 
 koa@^2.5.2:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/koa/-/koa-2.5.3.tgz#0b0c37eee3aac807a0a6ad36bc0b8660f12d83f1"
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/koa/-/koa-2.6.0.tgz#282a9db2daa13f0635e2919acfd70cc2686f56b7"
   dependencies:
     accepts "^1.3.5"
     cache-content-type "^1.0.0"
