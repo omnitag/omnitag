@@ -2568,6 +2568,12 @@ get-content@1.0.2:
     promise "^7.1.1"
     request-promise "^3.0.0"
 
+get-cookie@*:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/get-cookie/-/get-cookie-0.0.3.tgz#28fa08ac49a59e630c749e2bbefc0a4f51a969a2"
+  dependencies:
+    get-safe-reg "*"
+
 get-func-name@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/get-func-name/-/get-func-name-2.0.0.tgz#ead774abee72e20409433a066366023dd6887a41"
@@ -2829,11 +2835,12 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
 i13n-client@*:
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.27.tgz#cb5c1167af61414da77b25f9e08df0ecf1387f2f"
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.0.28.tgz#e2a84f995915420a14142dff43cc4588070e4456"
   dependencies:
     css-query-selector "*"
     exec-script "*"
+    get-cookie "*"
     i13n "*"
     i13n-store "*"
     object-nested "*"
@@ -3398,8 +3405,8 @@ koa-static@^4.0.2:
     koa-send "^4.1.3"
 
 koa@^2.5.2:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/koa/-/koa-2.6.0.tgz#282a9db2daa13f0635e2919acfd70cc2686f56b7"
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/koa/-/koa-2.6.1.tgz#88cabb18cd297e0577a37e40f400c4b6f1699fef"
   dependencies:
     accepts "^1.3.5"
     cache-content-type "^1.0.0"
