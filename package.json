@@ -6,6 +6,7 @@
   "author": "Hill <hill@kimo.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/runtime": "*",
     "css-query-selector": "*",
     "exec-script": "*",
     "i13n": "*",
@@ -15,7 +16,6 @@
     "seturl": "*"
   },
   "devDependencies": {
-    "babel-cli": "*",
     "btoa-atob": "0.1.2",
     "get-content": "1.0.2",
     "glob": "7.1.3",
