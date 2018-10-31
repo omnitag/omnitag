@@ -1,14 +1,15 @@
 language: node_js
 node_js:
-  - 8
+- 8
 env:
-  - TEST_DIR=./
+- TEST_DIR=./
 script: cd $TEST_DIR && yarn install && npm test
 deploy:
   provider: s3
   access_key_id: AKIAJXZLIYOY2NQ6EEDA
   secret_access_key:
-    secure: B25HxEiaWpleZdqt9Qhjub7Sn3SqSGfupZg9GXMcaHk3bwC1yNhyks1l3Gk6cxqH29kOeNaOSqGkw5YiwOENQ45cbBYP8Rao/EFsss6RrQbiDVTojxPgQLKLTIsfs02z6eEf76Wf341Wm8/TkhmNSmGMAlwoYlfEKVkOmk74wUxi/iTSsoF++6vz0RfPZ7Nrih8jjjieorNZLPqCOHrPlEyzb2qBkcWy6IiJZARSSjDJ63jI1my5iZbpvv6cxliwJXmKh9DK/B/gJj2R3U82bF8ePTgsUeuGQ9cah5ebxOr26I20qPRmAWee9hyVy/fQ2byVvCO+FPB5OWyeZwJ+wlpXw3JPQfhNcEETFJ/ABKX6kpZ1zjicbnSJ36EJEBhLyiB7Sb9Rxevki2GLJklahCekP62DKf4PoXwOT1jlJZSFabrceZCrgLXsxY+GEnZhQtZtVV4WPkvEOh5TqyJeJYwGHh5W35ELncntoKrYrqUvuYbC27zu7qyTHsIVNtj6dL9Gu3+6slgz668clXPZ+WVK60DQ38X7XAfEm/2C1Nl19iMBVovD90tteQaSd/AA1W1eTJfouMwL/kLy1tcq7VxSRijXtiFGBa151EShGcC8zHYfwY2Q/Ufk+8NiE2S2WOm+89qphvVPgCtJ81/WHtEc/k1DomPjMCenPeh4+U4=
+    secure: TC+zMQs+P4GAAcjRGtdoPkZORcSVFPmSUbZO+DEZ1OzOhh6RuXVDVoPxJoVuAJyd996OkREQJkZ1DyfDvR0LKWLnxuIgg+wRkWzUVjZTbhBKWbimkobYbdjiE9+vZnK5q53YazMoGEOGgeGB6q27lQjOZizSc9duGet0QHv0/DxWHJcBnetqU82H5zyaxh6fp9vr30b5k7ZRzYAlzHMeowrFBhxl/0KZQ93IDQevvXe8DIR3BF+Wagcs+DdzizKPCLqFpd0CoyZ6vu6FOHh2YlKExsT4QCPGiUUGEZoFf+vuNjLeAGHVZnVYr4V7jAmqzCDqVaVnjcehledUNt42aYdrudTLPtBfxtGUdvp1+Gr7BWKjVIvF5/FrAQIh8M6yFJaC8vOgMpM8p1K2XyvXMpD0EL22VFvdnJ02hSW5eqXdL1BZIsMVVOSAmJXYleQHfFRyAUR8ADh29zEQVhXjQ0V6AQlTXJvaY2/JN9pLL0DiVRN2tOsu1CBBJ4BAQ3MDr19YxD2uiTd+4I3fTcXRBNYl34tp4shCTw5Y4HcgydtA+1lEbPqtPJNsGlIW3fmdqpd5fc33VcQBIQN4hvyX82Mgz5dBrBpNgDJQ3aCytdhNaP7w8I0XIdfSTlvF9bO5PdvdrQkOFcR3wF2ZwI7gjE//Ue6ckE+FIa0dXMQw2wo=
   bucket: usergram-cdn.omniscientai.com
+  acl: ''
   on:
     repo: omnitag/omnitag
