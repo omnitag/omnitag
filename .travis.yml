@@ -1,0 +1,9 @@
+deploy:
+  provider: s3
+  access_key_id: AKIAJXZLIYOY2NQ6EEDA
+  secret_access_key:
+    secure: B25HxEiaWpleZdqt9Qhjub7Sn3SqSGfupZg9GXMcaHk3bwC1yNhyks1l3Gk6cxqH29kOeNaOSqGkw5YiwOENQ45cbBYP8Rao/EFsss6RrQbiDVTojxPgQLKLTIsfs02z6eEf76Wf341Wm8/TkhmNSmGMAlwoYlfEKVkOmk74wUxi/iTSsoF++6vz0RfPZ7Nrih8jjjieorNZLPqCOHrPlEyzb2qBkcWy6IiJZARSSjDJ63jI1my5iZbpvv6cxliwJXmKh9DK/B/gJj2R3U82bF8ePTgsUeuGQ9cah5ebxOr26I20qPRmAWee9hyVy/fQ2byVvCO+FPB5OWyeZwJ+wlpXw3JPQfhNcEETFJ/ABKX6kpZ1zjicbnSJ36EJEBhLyiB7Sb9Rxevki2GLJklahCekP62DKf4PoXwOT1jlJZSFabrceZCrgLXsxY+GEnZhQtZtVV4WPkvEOh5TqyJeJYwGHh5W35ELncntoKrYrqUvuYbC27zu7qyTHsIVNtj6dL9Gu3+6slgz668clXPZ+WVK60DQ38X7XAfEm/2C1Nl19iMBVovD90tteQaSd/AA1W1eTJfouMwL/kLy1tcq7VxSRijXtiFGBa151EShGcC8zHYfwY2Q/Ufk+8NiE2S2WOm+89qphvVPgCtJ81/WHtEc/k1DomPjMCenPeh4+U4=
+  bucket: usergram-cdn
+  acl: public_read
+  on:
+    repo: omnitag/omnitag
