@@ -46,6 +46,9 @@ describe('Test ini file', () => {
               exec(script, null, null, errCb);
             });
             const checkJson = arr => {
+              if (!arr) {
+                return;
+              }
               keys(arr).forEach(key => {
                 const item = arr[key];
                 const params = get(item, ['params'], []);
