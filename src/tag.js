@@ -2,22 +2,24 @@ import utf8Decode from './utf8Decode';
 import {client} from 'i13n-client';
 import query from 'css-query-selector';
 import {getUrl} from 'seturl';
-import {js} from 'create-el';
+import {js, create} from 'create-el';
 
 const tags = query.all('script[src*="/tag.js?id"]');
-const host = 'usergram.omniscientai.com';
+const domain = 'omniscientai.com';
 const win = () => window;
 const doc = () => document;
 
 let iniId;
-let iniPath = '//' + host + '/u';
+let iniPath;
 const getAttribute = t => v => t.getAttribute(v);
 tags.some(tag => {
   const getAttr = getAttribute(tag);
   const _src = getAttr('_src');
   const tagSrc = getAttr('src');
   const src = _src ? _src : tagSrc;
-  if (src && src.length && -1 !== src.indexOf(host)) {
+  if (src && src.length && -1 !== src.indexOf(domain)) {
+    const link = create('a')()({href: src});
+    iniPath = '//' + link.host + '/u';
     iniId = getUrl('id', tagSrc);
     const _iniPath = getAttr('_iniPath');
     if (_iniPath) {
