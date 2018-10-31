@@ -35,7 +35,7 @@ client(`${iniPath}/${iniId}.ini`, (t, cb) => {
   if (win().atob) {
     return cb(utf8Decode(atob(t)));
   } else {
-    js(doc().body)(() => setTimeout(() => cb(atob(t)), 100))(
+    js(doc().body)(() => setTimeout(() => cb(atob(t)), 300))(
       '//usergram.omniscientai.com/decode.js',
     );
   }
