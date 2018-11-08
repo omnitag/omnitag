@@ -12,5 +12,6 @@ deploy:
   bucket: usergram-cdn.omniscientai.com
   region: ap-northeast-1
   acl: public_read
+  cache_control: "max-age=600"
   on:
     repo: omnitag/omnitag
