@@ -2,7 +2,7 @@ import {client} from 'i13n-client';
 
 // suntory
 
-const reload = () => {
+const load = reload => {
   client('http://localhost:7000/src/user/qiaohu.ini', (t, cb) => {
     cb(t, [
       {
@@ -15,11 +15,11 @@ const reload = () => {
       },
       {
         path: ['tag', 'usergram', 'enabled'],
-        value: true,
+        value: false,
       },
     ]);
-  });
+  }, reload);
 };
 
-reload();
-window.i13nReload = reload; 
+load();
+window.i13nReload = () => load(true); 
