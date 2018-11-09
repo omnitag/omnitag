@@ -2,7 +2,7 @@ import {client} from 'i13n-client';
 
 // suntory
 
-const load = reload => {
+const load = () => {
   client('http://localhost:7000/src/user/qiaohu.ini', (t, cb) => {
     cb(t, [
       {
@@ -18,8 +18,8 @@ const load = reload => {
         value: false,
       },
     ]);
-  }, reload);
+  });
 };
 
 load();
-window.i13nReload = () => load(true); 
+window.i13nReload = () => load(); 

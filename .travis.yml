@@ -1,8 +1,16 @@
+sudo: required
+dist: trusty
 language: node_js
 node_js:
-- 8
+  - 8
+python:
+  - 3.5
+cache:
+  - pip
+install:
+  - pip install --user awscli
 env:
-- TEST_DIR=./
+  - TEST_DIR=./
 script: cd $TEST_DIR && yarn install && npm test
 deploy:
   provider: s3
@@ -15,3 +23,6 @@ deploy:
   cache_control: "max-age=600"
   on:
     repo: omnitag/omnitag
+after_deploy:
+  - aws configure set preview.cloudfront true
+  - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
