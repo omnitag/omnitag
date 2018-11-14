@@ -11,6 +11,7 @@ const doc = () => document;
 
 let iniId;
 let iniPath;
+let hostName;
 const getAttribute = t => v => t.getAttribute(v);
 tags.some(tag => {
   const getAttr = getAttribute(tag);
@@ -19,7 +20,8 @@ tags.some(tag => {
   const src = _src ? _src : tagSrc;
   if (src && src.length && -1 !== src.indexOf(domain)) {
     const link = create('a')()({href: src});
-    iniPath = '//' + link.host + '/u';
+    hostName = link.host;
+    iniPath = '//' + hostName + '/u';
     iniId = getUrl('id', tagSrc);
     const _iniPath = getAttr('_iniPath');
     if (_iniPath) {
@@ -38,7 +40,7 @@ client(`${iniPath}/${iniId}.ini`, (t, cb) => {
     return cb(utf8Decode(atob(t)));
   } else {
     js(doc().body)(() => setTimeout(() => cb(atob(t)), 300))(
-      '//usergram.omniscientai.com/decode.js',
+      '//'+ hostName+ '/decode.js',
     );
   }
 });
