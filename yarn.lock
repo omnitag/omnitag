@@ -3002,9 +3002,9 @@ https-browserify@^1.0.0:
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
 i13n-client@*:
-  version "0.1.25"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.1.25.tgz#1cf2fde2bf9fc9d933b273d71a07aeb875f601f7"
-  integrity sha512-FQDMsdyri45EL0Rr7WUeZdvbOpCuvC4Ke+0OJ+5VAXG6vBvVVKxqgd9S7Gl+7tVdseXxYQOXTTsfpyOt6HRKWw==
+  version "0.1.27"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.1.27.tgz#6678e526aa85a1711764be13035a3bb16d0f0750"
+  integrity sha512-b8KekJEkKejYHIrGp9Lq1o9m74zcdoVYHR4aloyGaDAvqV25RRy5lqvln0Pz7Z27bVqLWgmTKYJfwiDQTmfEsg==
   dependencies:
     css-query-selector "*"
     exec-script "*"
@@ -3024,9 +3024,9 @@ i13n-store@*:
     i13n "*"
 
 i13n@*:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/i13n/-/i13n-0.2.4.tgz#8824e5986bb95966b3a62c3d34f1344ce672de71"
-  integrity sha512-geeiKgsvwqk2rEQgdl0wEL9UB1lWV//HUdGn9uCVHlbKBJK5sTmRiIXBiiROaGxQTgqWUKj3IAHvLew+WfPTOQ==
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/i13n/-/i13n-0.2.5.tgz#f1511585616cf1226882e8aad8099b5310911fa3"
+  integrity sha512-2ZbmfMU1KOcoEq3oMwr2iJcU1G7sJ7t2XpzYhB4If1h/AiytN/stu1ehUo7SC81COd4YDGKWQHXyYXBqBpyOnA==
   dependencies:
     get-object-value "*"
     get-storage "*"
