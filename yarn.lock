@@ -3013,9 +3013,9 @@ https-browserify@^1.0.0:
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
 i13n-client@*:
-  version "0.1.28"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.1.28.tgz#c3ed4c22c08c4c1f356f081e3a2b20911d123a59"
-  integrity sha512-nwh+QMt4VFGsBvPnVjEN/lFUA8PENGchl+apmhkma09aMwZlX08yqT0NdHGagajMHV9i5GRT8fqLPJP7pw3olg==
+  version "0.1.29"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.1.29.tgz#9f6829a0f633abc18655e75e07deb66ca3d3d583"
+  integrity sha512-1qKCcpVoZU38TCQJbckLn9k8DyTvTuayopdVqQ1pYtpxU0tgzPle1huhKdFtLjY7OLJz9PylbiQDcugOxbuaHQ==
   dependencies:
     css-query-selector "*"
     exec-script "*"
@@ -3035,9 +3035,9 @@ i13n-store@*:
     i13n "*"
 
 i13n@*:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/i13n/-/i13n-0.2.7.tgz#975ca0b71b37ca81bbad7bd17f288d68a4ec66eb"
-  integrity sha512-gl8xUFOqEJvQ6ZqGYpuy0jbDWDfoC7FF3UcQ6M88vKgHoJOoS9XiX1NJDJgAt7qFV2WjZt5mb25qW85Oan0PEw==
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/i13n/-/i13n-0.2.8.tgz#41d08881e48686c033e8b77f58a680a5aeb3160d"
+  integrity sha512-wF+99wmtt99/cUPQcIypvPpE8/N8OQSjaXiDqkvMN6EUcQcNIDllp+G2VqPVIdaIRODQKeZbLb3AFdZ0RUF6ZQ==
   dependencies:
     get-object-value "*"
     get-storage "*"
@@ -3723,9 +3723,9 @@ loader-runner@^2.3.0:
   integrity sha512-By6ZFY7ETWOc9RFaAIb23IjJVcM4dvJC/N57nmdz9RSkMXvAXGI7SyVlAw3v8vjtDRlqThgVDVmTnr9fqMlxkw==
 
 loader-utils@^1.0.0, loader-utils@^1.0.2, loader-utils@^1.1.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.2.0.tgz#8194a9bfabc3612e52e556139f67acbf01b267b7"
-  integrity sha512-KkQxP+pVgJC6ypy8ePypyhsV/hZeyVlkqiqrxe4pDgCwClbzmr3dGy8LbeSVhmfzYmCpOovdrVs/9chsQXCrLQ==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.2.1.tgz#64bbbac69aa5840d03754ba676a963dec568e844"
+  integrity sha512-3Zhx4qDqBQ9U8udWB3RMJ29nLu5a3ObNOSzk87woPvge01pi0wABowgv7F79Z4mL0DGtHRi/oOndT34EVhInoQ==
   dependencies:
     big.js "^5.2.2"
     emojis-list "^2.0.0"
