@@ -3023,9 +3023,9 @@ https-browserify@^1.0.0:
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
 i13n-client@*:
-  version "0.1.30"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.1.30.tgz#039aeb23144edde35bcc8944a94f41a47b4c690b"
-  integrity sha512-X3mM2clipNcZV7lcObAH3jN+4JJyW/YIqrkarWtQ6nnwW+HFNfRvsakA8X+ClolTZn2D2/vaUk/nny+QwXg1Wg==
+  version "0.1.31"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.1.31.tgz#c61cba9f585f3e00eb8f8543ac3a8d20717a8fc0"
+  integrity sha512-WHPMn68RuHoIpaUKumuQ1XXhw8mTG+ZgbV/3By+0wWNxSSpJ7qRiphhpFhVlwsvztAxuyw/84CDZewI1F2x+zA==
   dependencies:
     css-query-selector "*"
     exec-script "*"
