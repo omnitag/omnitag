@@ -27,7 +27,7 @@ develop(){
 
 startServer(){
     echo "Start server";
-    node_modules/.bin/ws -p 7000 
+    node_modules/.bin/ws -p 7000 --http2 --https -v 
 }
 
 

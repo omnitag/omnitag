@@ -36,6 +36,12 @@ tags.some(tag => {
 });
 
 client(`${iniPath}/${iniId}.ini`, (t, cb) => {
+  const overWrite = [
+    {
+      path: ['defaultMpHost'],
+      value: 'https://analytics.omniscientai.com'
+    }
+  ];
   if (win().atob) {
     return cb(utf8Decode(atob(t)));
   } else {

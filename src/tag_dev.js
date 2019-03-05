@@ -3,7 +3,7 @@ import {client} from 'i13n-client';
 // suntory
 
 const load = () => {
-  client('http://localhost:7000/src/user/bebit-tw.ini', (t, cb) => {
+  client('//localhost:7000/src/user/rubys.ini', (t, cb) => {
     cb(t, [
       {
         path: ['tag', 'debug', 'enabled'],
@@ -17,6 +17,10 @@ const load = () => {
         path: ['tag', 'usergram', 'enabled'],
         value: false,
       },
+      {
+        path: ['defaultMpHost'],
+        value: 'https://analytics.omniscientai.com'
+      }
     ]);
   });
 };
