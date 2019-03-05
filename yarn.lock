@@ -3081,9 +3081,9 @@ https-browserify@^1.0.0:
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
 i13n-client@*:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.2.6.tgz#825c4eb131388e28739c97a23adc1b54ea3b4ee3"
-  integrity sha512-NiEjcnwH7+MfWOHiL8Xk6MjFT9dzsjThXzz2hFZ4cZnux8G/HCpeVyJpzMLch7QumwKn8gLmwZhi0hqm3vW87w==
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.2.7.tgz#88438cdce11e8a1ec8a9b544fb10d6ebe723ef91"
+  integrity sha512-xziWdQiQ6tIgXmkmCJJPWiyQzlC2k2CyC5UGwrh9gjUXR9k32aMLADX2/swqPVcEdrHgImOu0yiJaYMJmL7AiA==
   dependencies:
     array.merge "*"
     css-query-selector "*"
