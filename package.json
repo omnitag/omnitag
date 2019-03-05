@@ -12,7 +12,8 @@
     "i13n-client": "*",
     "object-nested": "*",
     "parse-ini-string": "*",
-    "seturl": "*"
+    "seturl": "*",
+    "win-doc": "*"
   },
   "devDependencies": {
     "btoa-atob": "0.1.2",

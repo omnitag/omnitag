@@ -3,11 +3,10 @@ import {client} from 'i13n-client';
 import query from 'css-query-selector';
 import {getUrl} from 'seturl';
 import {js, create} from 'create-el';
+import {win, doc} from 'win-doc';
 
 const tags = query.all('script[src*="/tag.js?id"]');
 const domain = 'omniscientai.com';
-const win = () => window;
-const doc = () => document;
 
 let iniId;
 let iniPath;
@@ -35,18 +34,30 @@ tags.some(tag => {
   }
 });
 
-client(`${iniPath}/${iniId}.ini`, (t, cb) => {
-  const overWrite = [
-    {
-      path: ['defaultMpHost'],
-      value: 'https://analytics.omniscientai.com'
+
+const run = force => {
+  client(`${iniPath}/${iniId}.ini`, (t, cb) => {
+    const overWrite = [
+      {
+        path: ['defaultMpHost'],
+        value: 'https://analytics.omniscientai.com',
+      },
+    ];
+    if (win().atob && !force) {
+      return cb(utf8Decode(atob(t)), overWrite);
+    } else {
+      js(doc().body)(() => setTimeout(() => {
+        cb(atob(t), overWrite);
+        if ('function' === typeof force) {
+          force();
+        }
+      }, 300))(
+        'https://' + (hostName || 'usergram-cdn.'+domain) + '/decode.js',
+      );
     }
-  ];
-  if (win().atob) {
-    return cb(utf8Decode(atob(t)));
-  } else {
-    js(doc().body)(() => setTimeout(() => cb(atob(t)), 300))(
-      '//'+ hostName+ '/decode.js',
-    );
-  }
-});
+  });
+};
+
+run();
+
+export default run;
