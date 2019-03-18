@@ -6,6 +6,7 @@
   "author": "Hill <hill@kimo.com>",
   "license": "MIT",
   "dependencies": {
+    "call-func": "*",
     "css-query-selector": "*",
     "exec-script": "*",
     "i13n": "*",
@@ -28,6 +29,7 @@
     "build:test": "BABEL_ENV=test babel tests -d build/tests",
     "build": "npm run clean && npm run build:cjs && npm run build:es",
     "test": "npm run build && npm run build:test && mocha 'build/tests/**/*.js' -r jsdom-global/register",
+    "test:some": "npm run build && npm run build:test && mocha build/$some -r jsdom-global/register",
     "prepublishOnly": "npm run build"
   }
 }

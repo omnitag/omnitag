@@ -16,6 +16,9 @@ describe('Test ini file', () => {
     jsdom = gJsdom('', {runScripts: 'outside-only'});
     window.alert = console.log
   });
+  after(() => {
+    jsdom();
+  });
   it('test syntax', done => {
     glob('**/*.ini', {cwd: './src/user/', realpath: true}, (err, files) => {
       const allFiles = {};
@@ -71,7 +74,4 @@ describe('Test ini file', () => {
     });
   });
 
-  after(() => {
-    jsdom();
-  });
 });

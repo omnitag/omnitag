@@ -1,9 +1,11 @@
-import {client} from 'i13n-client';
+import {client, utils} from 'i13n-client';
 
 // suntory
 
+const iniUrl = '//localhost:7000/src/user/rubys.ini';
+
 const load = () => {
-  client('//localhost:7000/src/user/rubys.ini', (t, cb) => {
+  client(iniUrl, (t, cb) => {
     cb(t, [
       {
         path: ['tag', 'debug', 'enabled'],
@@ -19,11 +21,15 @@ const load = () => {
       },
       {
         path: ['defaultMpHost'],
-        value: 'https://analytics.omniscientai.com'
-      }
+        value: 'https://analytics.omniscientai.com',
+      },
     ]);
   });
 };
 
 load();
-window.i13nReload = () => load(); 
+window.i13nReload = () => {
+  const {lazyAttr} = utils();
+  lazyAttr(iniUrl)(null);
+  load();
+};
