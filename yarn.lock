@@ -3093,9 +3093,9 @@ https-browserify@^1.0.0:
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
 i13n-client@*:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.3.5.tgz#02cde752c643d459d7cc4494a6d8bcb259d1762a"
-  integrity sha512-UfiYvh1TPjYl6pvz5wjaxljMKmOqCCh0hEHJEYi+kCOeCqeyysFvwcDbMd3TKnNhoyuGBg0Aqf/4jiL6T1+okg==
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.3.6.tgz#fba42fb7310f38d2180a30bee810a7a43d7347f4"
+  integrity sha512-Phya2uqtbFr1vwyk8AFP386Rj0uhkLds4Sppc/dVlRbzQ158Qd97AIYuhZCgQMnLaa0mxfiE11mBN6ApsrAobg==
   dependencies:
     array.merge "*"
     call-func "*"
