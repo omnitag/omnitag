@@ -4,6 +4,7 @@ const webpack = require('reshow-app/webpack.client');
 
 const entrys = {
 //  base64: './build/es/src/base64.js',
+  app: './build/es/src/app.js',
   tag: './build/es/src/tag.js',
   tagDev: './build/es/src/tag_dev.js'
 }
