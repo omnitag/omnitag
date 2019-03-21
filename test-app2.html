@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<script async src="//localhost:7000/tag-app.js"></script>
+
+<script>
+  window.i13nData = {
+    tag: {
+      gtag: {
+        enabled: true,
+        downstreams: ['mp']
+      },
+    },
+    i13nPage: {
+      p: 'home' 
+    },
+    nextCallback: function() {
+      window.i13n.dispatch(
+        'action',
+        {
+          I13N: {
+            action: 'TestClickMenu',
+            label: {xxx: 'anything with object / string / array'},
+            category: 'TestCategory',
+            value: 123
+          }
+        }
+      );
+    },
+  }
+</script>
