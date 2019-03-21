@@ -7,6 +7,8 @@ import {win, doc} from 'win-doc';
 import {FUNCTION} from 'reshow-constant';
 import callfunc from 'call-func';
 
+import {getOverWrite} from './tagBase';
+
 const domain = 'omniscientai.com';
 
 let iniId;
@@ -38,19 +40,13 @@ const run = runCb => {
     }
   });
   client(`${iniPath}/${iniId}.ini`, (t, cb) => {
-    const overWrite = [
-      {
-        path: ['defaultMpHost'],
-        value: 'https://analytics.omniscientai.com',
-      },
-    ];
     if (win().atob) {
-      cb(utf8Decode(atob(t)), overWrite);
+      cb(utf8Decode(atob(t)), getOverWrite());
       callfunc(runCb, [true]);
     } else {
       js(doc().body)(() =>
         setTimeout(() => {
-          cb(atob(t), overWrite);
+          cb(atob(t), getOverWrite());
           callfunc(runCb, [false]);
         }, 300),
       )('https://' + (hostName || 'usergram-cdn.' + domain) + '/decode.js');

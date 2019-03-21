@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<script async src="//localhost:7000/tag-app.js"></script>
+
+<script>
+  window.i13nData = {
+    tag: {
+      gtag: {
+        enabled: true,
+        downstreams: ['mp']
+      },
+    },
+    i13nPage: {
+      p: 'home' 
+    },
+    nextCallback: function() {
+      alert('next');
+    },
+    location: '/',
+    router: {
+      rules: [
+      '/'
+      ],
+      pages: [
+      'root'
+      ]
+    },
+    page: {
+      root: { 
+        scripts: [
+          'rootAction'
+        ],
+        params: [
+          '[]'
+        ], 
+      }
+    },
+    script: {
+      rootAction: '<script>alert("xxx")<'+'/script>'
+    }
+  }
+</script>
