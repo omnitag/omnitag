@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <script async src="//localhost:7000/tag-app.js"></script>
-
+<button id="my-product">click product</button>
 <script>
   window.i13nData = {
+    tagId: 'test',
     tag: {
       gtag: {
         enabled: true,
-        downstreams: ['mp']
+        downstreams: ['mp'],
       },
     },
-    i13nPage: {
-      p: 'home' 
-    },
     nextCallback: function() {
-      alert('next');
+      var prod = document.getElementById('my-product');
+      prod.addEventListener('click', function() {
+        window.i13n.dispatch('action', {
+          I13N: {
+            action: 'ClickProduct',
+            p: 'Search Results',
+            products: [
+              {
+                name: 'Triblend Android T-Shirt', // Name or ID is required.
+                id: '12345',
+                price: '15.25',
+                brand: 'Google',
+                category: 'Apparel',
+                variant: 'Gray',
+                position: 1,
+              },
+            ],
+          },
+        });
+      });
     },
-    location: '/',
-    router: {
-      rules: [
-      '/'
-      ],
-      pages: [
-      'root'
-      ]
-    },
-    page: {
-      root: { 
-        scripts: [
-          'rootAction'
-        ],
-        params: [
-          '[]'
-        ], 
-      }
-    },
-    script: {
-      rootAction: '<script>alert("xxx")<'+'/script>'
-    }
-  }
+  };
 </script>
