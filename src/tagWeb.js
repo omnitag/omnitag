@@ -12,7 +12,7 @@ import {getOverWrite} from './tagBase';
 const domain = 'omniscientai.com';
 
 let iniId;
-let iniPath;
+let iniRoot;
 let hostName;
 const getAttribute = t => v => t.getAttribute(v);
 
@@ -20,17 +20,17 @@ const run = runCb => {
   const tags = query.all('script[src*="/tag.js?id"]');
   tags.some(tag => {
     const getAttr = getAttribute(tag);
-    const _src = getAttr('_src');
+    const _src = getAttr('data-host');
     const tagSrc = getAttr('src');
     const src = _src ? _src : tagSrc;
     if (src && src.length && -1 !== src.indexOf(domain)) {
       const link = create('a')()({href: src});
       hostName = link.host;
-      iniPath = '//' + hostName + '/u';
+      iniRoot = '//' + hostName + '/u';
       iniId = getUrl('id', tagSrc);
-      const _iniPath = getAttr('_iniPath');
-      if (_iniPath) {
-        iniPath = _iniPath;
+      const _iniRoot = getAttr('data-ini-root');
+      if (_iniRoot) {
+        iniRoot = _iniRoot;
       }
     }
     if (iniId) {
@@ -39,7 +39,7 @@ const run = runCb => {
       return false;
     }
   });
-  client(`${iniPath}/${iniId}.ini`, (t, cb) => {
+  client(`${iniRoot}/${iniId}.ini`, (t, cb) => {
     if (win().atob) {
       cb(utf8Decode(atob(t)), getOverWrite());
       callfunc(runCb, [true]);
