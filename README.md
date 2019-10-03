@@ -1,2 +1,3 @@
 # Usergram
-[About Me](http://www.bebit.co.jp/usergram/)
+[About US](http://omnicha.com)
+[How to add OmniTag with GTM](/docs/gtm)
