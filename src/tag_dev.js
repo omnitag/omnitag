@@ -2,7 +2,7 @@ import {client, utils} from 'i13n-client';
 
 // suntory
 
-const iniUrl = '//localhost:7000/src/user/rubys.ini';
+const iniUrl = '//localhost:7000/src/user/OA-1597cbff.ini';
 
 const load = () => {
   client(iniUrl, (t, cb) => {
@@ -24,7 +24,7 @@ const load = () => {
         value: 'https://analytics.omniscientai.com',
       },
     ]);
-  });
+  }, true);
 };
 
 load();
