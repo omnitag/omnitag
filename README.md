@@ -1,3 +1,3 @@
-# Usergram
-[About US](http://omnicha.com)
-[How to add OmniTag with GTM](/docs/gtm)
+# OmniCha 
+* [About US](http://omnicha.com)
+* [How to add OmniTag with GTM](/docs/gtm)
