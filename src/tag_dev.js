@@ -1,8 +1,10 @@
 import {client, utils} from 'i13n-client';
 
-// suntory
+// fruitpay
+// const iniUrl = '//localhost:7000/src/user/OA-1597cbff.ini';
 
-const iniUrl = '//localhost:7000/src/user/OA-1597cbff.ini';
+// rubys.com.tw
+const iniUrl = '//localhost:7000/src/user/rubys.ini';
 
 const load = () => {
   client(iniUrl, (t, cb) => {
