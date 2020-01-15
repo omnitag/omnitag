@@ -49,7 +49,7 @@ const run = runCb => {
           cb(atob(t), getOverWrite());
           callfunc(runCb, [false]);
         }, 300),
-      )('https://' + (hostName || 'usergram-cdn.' + domain) + '/decode.js');
+      )('https://' + (hostName || 'omnitag.' + domain) + '/decode.js');
     }
   });
 };
