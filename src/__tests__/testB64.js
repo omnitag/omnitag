@@ -1,6 +1,5 @@
 import {expect} from 'chai';
-import sinon from 'sinon';
-import b64 from '../cjs/src/base64' 
+import b64 from '../base64' 
 
 describe('Test base64', () => {
   it('encode chinese', () => {

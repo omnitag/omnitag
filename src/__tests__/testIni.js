@@ -20,7 +20,7 @@ describe('Test ini file', () => {
     jsdom();
   });
   it('test syntax', done => {
-    glob('**/*.ini', {cwd: './src/user/', realpath: true}, (err, files) => {
+    glob('**/*.ini', {cwd: 'src/user/', realpath: true}, (err, files) => {
       const allFiles = {};
       const checkDone = f => {
         delete allFiles[f];

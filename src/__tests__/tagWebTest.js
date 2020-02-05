@@ -14,7 +14,7 @@ class req {
 
 window.XMLHttpRequest = req;
 
-import tag from '../../cjs/src/tagWeb';
+import tag from '../tagWeb';
 
 describe('Test tag', () => {
   it('test mp host', done => {
