@@ -10,6 +10,7 @@ production(){
     npm run test && npm run build 
     CONFIG=$conf NODE_ENV=production ${webpack} -p --optimize-minimize
     cp assets/tag.bundle.js ./tag.js
+    cp assets/tag.bundle.js ./tag-beta.js
     cp assets/app.bundle.js ./tag-app.js
     mkdir -p u
     find ./u -name '*.ini' | xargs rm -rf
