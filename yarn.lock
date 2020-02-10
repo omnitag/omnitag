@@ -1831,9 +1831,9 @@ camelcase@^5.0.0:
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
 caniuse-lite@^1.0.30001023:
-  version "1.0.30001026"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001026.tgz#4a5ca93f8cedbd83a9a9ae93caba4e791c12246d"
-  integrity sha512-M7y+cJgKuDw+WIkRg580LhkjYiXifWjIDlvlDoCAaRM67ULZFHpWzoaF4/MfLDaZIJ3fuAmi/C/HSWZxtP++Xg==
+  version "1.0.30001027"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001027.tgz#283e2ef17d94889cc216a22c6f85303d78ca852d"
+  integrity sha512-7xvKeErvXZFtUItTHgNtLgS9RJpVnwBlWX8jSo/BO8VsF6deszemZSkJJJA1KOKrXuzZH4WALpAJdq5EyfgMLg==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -3815,9 +3815,9 @@ hyphenate-style-name@*:
   integrity sha512-EcuixamT82oplpoJ2XU4pDtKGWQ7b00CD9f1ug9IaQ3p1bkHMiKCZ9ut9QDI6qsa6cpUuB+A/I+zLtdNK4n2DQ==
 
 i13n-client@*:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.5.2.tgz#b9505d0889b7dd9d4b5deb704e01de5794115bbc"
-  integrity sha512-3k2Zc/cgwzmAtReKx3+WYjMdBgNnL5AlmNoDoPeJ0SEisObhPRqmB8+ki9z7Y4wsh3a8Y8ieTPbIMNnmuZ31nA==
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.5.3.tgz#2c4015e9a79e42c405329fb6140bf65d0c66d80e"
+  integrity sha512-snhTr5nycFFVe0eA+xnoGNTefUcsPsfr0Gfm3hoQqr/xOCKrkE+pJdBQvv7K0ZIkNY3eQzv43953hoxFZY6P5w==
   dependencies:
     array.merge "*"
     call-func "*"
