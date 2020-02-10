@@ -24,5 +24,7 @@ deploy:
   on:
     repo: omnitag/omnitag
 after_deploy:
+  - aws configure set aws_access_key_id AKIAJXZLIYOY2NQ6EEDA 
+  - aws configure set aws_secret_access_key $AWS_SECRET_ID
   - aws configure set preview.cloudfront true
   - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
