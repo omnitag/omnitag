@@ -4,11 +4,10 @@ language: node_js
 node_js:
   - 12
 python:
-  - 3.5
+  - 3.6.7
 cache:
   - pip
 install:
-  - sudo apt-get update && sudo apt-get upgrade
   - pip install -U awscli
 env:
   - TEST_DIR=./
