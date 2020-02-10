@@ -2685,9 +2685,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.341:
-  version "1.3.345"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.345.tgz#2569d0d54a64ef0f32a4b7e8c80afa5fe57c5d98"
-  integrity sha512-f8nx53+Z9Y+SPWGg3YdHrbYYfIJAtbUjpFfW4X1RwTZ94iUG7geg9tV8HqzAXX7XTNgyWgAFvce4yce8ZKxKmg==
+  version "1.3.346"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.346.tgz#b08becbfbd64a42061195afd3a4923d0416c5d46"
+  integrity sha512-Yy4jF5hJd57BWmGPt0KjaXc25AmWZeQK75kdr4zIzksWVtiT6DwaNtvTb9dt+LkQKwUpvBfCyyPsXXtbY/5GYw==
 
 elliptic@^6.0.0:
   version "6.5.2"
@@ -6406,9 +6406,9 @@ requires-port@^1.0.0:
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
 reshow-app@^0.13.0-beta:
-  version "0.13.0-beta.25"
-  resolved "https://registry.yarnpkg.com/reshow-app/-/reshow-app-0.13.0-beta.25.tgz#77c012d0df7c79244a98f864b8a0282563ce714a"
-  integrity sha512-v+LSVgoX6xBQtg7q1oQgf2sV2Wu6DxwxssUby3gmM6XMkVbcJl2msRVI7ccCkJ7LY9bC+1IsEkP+peXcuTt/zg==
+  version "0.13.0-beta.26"
+  resolved "https://registry.yarnpkg.com/reshow-app/-/reshow-app-0.13.0-beta.26.tgz#f97eff67a752aee5efb2c157c61f1685c8de671b"
+  integrity sha512-M+n5Hf/xuLKBMNYSdQdgQlgv1MXKPxzAx4LAd4R6Yr++Qij+imdPQfELgEEy/M5XnlRExLCdSWysQAAkb6sRAQ==
   dependencies:
     "@babel/cli" "^7.x"
     "@babel/core" "^7.x"
