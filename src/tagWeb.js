@@ -17,7 +17,7 @@ let hostName;
 const getAttribute = t => v => t.getAttribute(v);
 
 const run = runCb => {
-  const tags = query.all('script[src*="/tag.js?id"]');
+  const tags = query.all('script[src*="/tag.js?id"]').concat(query.all('script[src*="/tag-beta.js?id"]'));
   tags.some(tag => {
     const getAttr = getAttribute(tag);
     const _src = getAttr('data-host');
