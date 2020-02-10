@@ -1,12 +1,14 @@
 sudo: required
 dist: trusty
-language: node_js
+language: python
+python:
+    - "3.6"
 node_js:
   - 12
 cache:
   - pip
 install:
-  - pip install --user --upgrade awscli aws-amicleaner future && aws --version && amicleaner --version 
+  - pip install --user --upgrade awscli && aws --version
 env:
   - TEST_DIR=./
 script: cd $TEST_DIR && yarn --ignore-engines && npm test
