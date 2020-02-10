@@ -26,7 +26,7 @@
     "start": "ws -p 7000 --http2 --https -v",
     "clean": "find ./build ./assets -name '*.*' | xargs rm -rf",
     "build:cjs": "BABEL_ENV=test babel src -d build/cjs/src",
-    "build:es": "BABEL_ENV=es babel src -d build/es/src",
+    "build:es": "BABEL_ENV=es babel src -d build/es/src --ignore /**/__tests__",
     "build": "npm run clean && npm run build:cjs && npm run build:es",
     "mocha": "mocha 'build/cjs/**/__tests__/*.js' -r jsdom-global/register",
     "test": "npm run build:cjs && npm run mocha",

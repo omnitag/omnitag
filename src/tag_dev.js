@@ -7,7 +7,9 @@ import {client, utils} from 'i13n-client';
 // const iniUrl = '//localhost:7000/src/user/rubys.ini';
 
 // cyberbiz https://www.kgcshop.com.tw/ 
-const iniUrl = '//localhost:7000/src/user/cyberbiz.ini';
+// const iniUrl = '//localhost:7000/src/user/cyberbiz.ini';
+
+const iniUrl = '//localhost:7000/src/user/test.ini';
 
 
 const load = () => {
@@ -39,3 +41,4 @@ window.i13nReload = () => {
   lazyAttr(iniUrl)(null);
   load();
 };
+
