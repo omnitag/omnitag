@@ -3,12 +3,11 @@ dist: trusty
 language: python
 python:
     - "3.6"
-node_js:
-  - 12
 cache:
   - pip
 install:
-  - pip install --user --upgrade awscli && aws --version
+  - pip install --upgrade awscli && aws --version
+  - nvm install 12 && node -v && npm -v
 env:
   - TEST_DIR=./
 script: cd $TEST_DIR && yarn --ignore-engines && npm test
