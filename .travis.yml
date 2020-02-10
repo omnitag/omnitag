@@ -8,7 +8,8 @@ python:
 cache:
   - pip
 install:
-  - pip install --user --upgrade awscli 
+  - sudo apt-get update && sudo apt-get upgrade && sudo apt-get -y install python-pip
+  - pip install -U awscli
 env:
   - TEST_DIR=./
 script: cd $TEST_DIR && yarn --ignore-engines && npm test
