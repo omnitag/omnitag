@@ -8,7 +8,7 @@ python:
 cache:
   - pip
 install:
-  - pip install --user awscli urllib3[secure] connection
+  - pip install --user --upgrade awscli 
 env:
   - TEST_DIR=./
 script: cd $TEST_DIR && yarn --ignore-engines && npm test
