@@ -9,7 +9,7 @@ import {client, utils} from 'i13n-client';
 // cyberbiz https://www.kgcshop.com.tw/ 
 // const iniUrl = '//localhost:7000/src/user/cyberbiz.ini';
 
-const iniUrl = '//localhost:7000/src/user/test.ini';
+const iniUrl = '//localhost:7000/src/user/OA-715e0f2a.ini';
 
 
 const load = () => {
