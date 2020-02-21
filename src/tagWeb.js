@@ -17,7 +17,9 @@ let hostName;
 const getAttribute = t => v => t.getAttribute(v);
 
 const run = runCb => {
-  const tags = query.all('script[src*="/tag.js?id"]').concat(query.all('script[src*="/tag-beta.js?id"]'));
+  const tags = query
+    .all('script[src*="/tag.js?id"]')
+    .concat(query.all('script[src*="/tag-beta.js?id"]'));
   tags.some(tag => {
     const getAttr = getAttribute(tag);
     const _src = getAttr('data-host');
@@ -39,6 +41,11 @@ const run = runCb => {
       return false;
     }
   });
+  const gOmnitagId = 'omnitag-' + iniId;
+  if (win()[gOmnitagId]) {
+    return gOmnitagId;
+  }
+  win()[gOmnitagId] = 1;
   client(`${iniRoot}/${iniId}.ini`, (t, cb) => {
     if (win().atob) {
       cb(utf8Decode(atob(t)), getOverWrite());
@@ -52,6 +59,7 @@ const run = runCb => {
       )('https://' + (hostName || 'omnitag.' + domain) + '/decode.js');
     }
   });
+  return gOmnitagId;
 };
 
 export default run;

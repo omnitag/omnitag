@@ -17,8 +17,14 @@ window.XMLHttpRequest = req;
 import tag from '../tagWeb';
 
 describe('Test tag', () => {
+  let tagId;
+
+  afterEach(() => {
+    delete window[tagId];
+  });
+
   it('test mp host', done => {
-    tag(hasAtoB => {
+    tagId = tag(hasAtoB => {
       setTimeout(() => {
         const state = i13nStore.getState();
         expect(state.get('defaultMpHost')).to.equal(
@@ -33,7 +39,7 @@ describe('Test tag', () => {
   it('test mp host when no atob', done => {
     i13nDispatch({defaultMpHost: null});
     window.atob = null;
-    tag(hasAtoB => {
+    tagId = tag(hasAtoB => {
       setTimeout(() => {
         const state = i13nStore.getState();
         expect(state.get('defaultMpHost')).to.equal(
