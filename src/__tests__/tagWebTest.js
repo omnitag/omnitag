@@ -1,8 +1,8 @@
-jsdom(null, {url: 'http://localhost'});
+import jsdom from 'jsdom-global';
 import {expect} from 'chai';
 import {i13nDispatch} from 'i13n';
 import i13nStore from 'i13n-store';
-import jsdom from 'jsdom-global';
+import sinon from 'sinon';
 
 class req {
   open() {}
@@ -12,19 +12,23 @@ class req {
   }
 }
 
-window.XMLHttpRequest = req;
-
 import tag from '../tagWeb';
 
 describe('Test tag', () => {
-  let tagId;
+  const sandbox = sinon.createSandbox();
+  let reset;
+
+  beforeEach(() => {
+    reset = jsdom(null, {url: 'http://localhost'});
+    window.XMLHttpRequest = req;
+  });
 
   afterEach(() => {
-    delete window[tagId];
+    reset();
   });
 
   it('test mp host', done => {
-    tagId = tag(hasAtoB => {
+    tag(hasAtoB => {
       setTimeout(() => {
         const state = i13nStore.getState();
         expect(state.get('defaultMpHost')).to.equal(
@@ -39,7 +43,7 @@ describe('Test tag', () => {
   it('test mp host when no atob', done => {
     i13nDispatch({defaultMpHost: null});
     window.atob = null;
-    tagId = tag(hasAtoB => {
+    tag(hasAtoB => {
       setTimeout(() => {
         const state = i13nStore.getState();
         expect(state.get('defaultMpHost')).to.equal(
@@ -53,5 +57,13 @@ describe('Test tag', () => {
       const dScript = document.body.querySelector('script');
       dScript.onreadystatechange();
     }, 600);
+  });
+
+  it('test duplicate warn', () => {
+    sandbox.spy(console, 'warn');
+    tag();
+    tag();
+    expect(console.warn.getCall(0).args[0]).to.have.string('duplicate');
+    sandbox.restore();
   });
 });

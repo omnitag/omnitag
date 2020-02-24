@@ -17,6 +17,7 @@ let hostName;
 const getAttribute = t => v => t.getAttribute(v);
 
 const run = runCb => {
+  const oWin = win();
   const tags = query
     .all('script[src*="/tag.js?id"]')
     .concat(query.all('script[src*="/tag-beta.js?id"]'));
@@ -42,12 +43,13 @@ const run = runCb => {
     }
   });
   const gOmnitagId = 'omnitag-' + iniId;
-  if (win()[gOmnitagId]) {
+  if (oWin[gOmnitagId]) {
+    console.warn('Found duplicate omnitag: '+iniId);
     return gOmnitagId;
   }
-  win()[gOmnitagId] = 1;
+  oWin[gOmnitagId] = 1;
   client(`${iniRoot}/${iniId}.ini`, (t, cb) => {
-    if (win().atob) {
+    if (oWin.atob) {
       cb(utf8Decode(atob(t)), getOverWrite());
       callfunc(runCb, [true]);
     } else {
