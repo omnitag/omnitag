@@ -31,6 +31,10 @@ const load = () => {
         path: ['defaultMpHost'],
         value: 'https://analytics.omniscientai.com',
       },
+      {
+        path: ['tagId'],
+        value: 'OA-c1af6551',
+      },
     ]);
   }, true);
 };
