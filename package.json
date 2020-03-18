@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "call-func": "*",
+    "create-el": "*",
     "css-query-selector": "*",
     "exec-script": "*",
     "i13n": "*",
@@ -23,7 +24,7 @@
     "reshow-app": "^0.13.0-beta"
   },
   "scripts": {
-    "start": "ws -p 7000 --http2 --https -v",
+    "start": "ws -p 7000 -v",
     "clean": "find ./build ./assets -name '*.*' | xargs rm -rf",
     "build:cjs": "BABEL_ENV=test babel src -d build/cjs/src",
     "build:es": "BABEL_ENV=es babel src -d build/es/src --ignore /**/__tests__",
