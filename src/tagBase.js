@@ -3,7 +3,7 @@ import {win, doc} from 'win-doc';
 import {utils} from 'i13n-client';
 import {create, inject} from 'create-el';
 
-const {req, parseJson, get, router} = utils(); 
+const {req, parseJson, get, router, getClientId} = utils(); 
 
 
 const getOverWrite = () =>
@@ -18,13 +18,35 @@ const getOverWrite = () =>
   }
 ];
 
+const getTagId = () => {
+  const state = i13nStore.getState();
+  // const tid = state.get('tagId');
+  const tid = 'OA-c19eb6';
+  return tid;
+};
+
+const handleWebPopup = ({data, tid, cid}) => {
+      const dIframe = create('iframe')()();
+      inject()(dIframe);
+      console.log({dIframe, data});
+};
+
 const parseRouter = routerData => {
   const oRouter = new router();
   routerData.forEach(rule => {
     oRouter.addRoute(rule.router, ()=>{
-      const dIframe = create('iframe')()();
-      inject()(dIframe);
-      console.log({dIframe});
+      const tid = getTagId();
+      const cid = getClientId();
+      const wid = rule.webpopup_id;
+      const configUrl = `https://lan.cicd.omnicloud.tech:18000/ma_cms/get-web-popup/?tid=${tid}&cid=${cid}&wid=${wid}`;
+      req(configUrl, oReq => e => {
+        handleWebPopup({
+          data: get(parseJson(oReq.responseText), ['PAYLOAD', 'data']),
+          tid,
+          cid,
+          wid
+        });
+      });
     });
   });
   const urlPathName = doc().location.pathname;
@@ -37,11 +59,8 @@ const parseRouter = routerData => {
   }
 }
 
-
 const interactionTask = () => {
-  const state = i13nStore.getState();
-  // const tid = state.get('tagId');
-  const tid = 'OA-c19eb6';
+  const tid = getTagId();
   const routerUrl = `https://lan.cicd.omnicloud.tech:18000/ma_cms/get-all-routers/?tid=${tid}`;
   req(routerUrl, oReq => e => {
     parseRouter(
@@ -56,6 +75,5 @@ const interactionTask = () => {
 const interaction = () => {
   i13nStore.addListener(interactionTask, 'init');
 };
-
 
 export {getOverWrite, interaction};
