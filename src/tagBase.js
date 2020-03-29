@@ -23,18 +23,37 @@ const getTagId = () => {
   return tid;
 };
 
+const postIframeHeight = (win, dIframe) => {
+  const dBody = win.document.body;
+  const h = dBody.offsetHeight; 
+  dBody.style.margin = 0;
+  dBody.style.padding = 0;
+  dIframe.style.height = h+ 'px';
+  dIframe.style.minHeight = h+ 'px';
+};
+
+const initialIframe = win => {
+
+};
+
 const handleWebPopup = ({data, tid, cid}) => {
   const dIframe = create('iframe')()({
     style: 'border: 0; position: fixed; top: 50%; left: 50%;' 
   });
   inject()(dIframe);
-  const doc = dIframe?.contentWindow?.document;
-  if (doc) {
-    doc.open('text/html', 'replace');
-    doc.write(data.html);
-    doc.close();
+  const iframeDoc = dIframe?.contentWindow?.document;
+  const iframeWin = dIframe?.contentWindow?.window;
+  if (iframeDoc) {
+    iframeDoc.open('text/html', 'replace');
+    iframeDoc.write(data.html);
+    iframeDoc.close();
   }
-  console.log({dIframe, data, doc}, dIframe.contentWindow);
+  dIframe.onload = () => {
+    setTimeout(()=>{
+      postIframeHeight(iframeWin, dIframe);
+      initialIframe(iframeWin);
+    });
+  }
 };
 
 const parseRouter = routerData => {
