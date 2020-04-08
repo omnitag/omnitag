@@ -5,7 +5,7 @@ import { create, inject } from "create-el";
 import query from "css-query-selector";
 import formSerialize from "form-serialize-js";
 
-const { req, parseJson, get, router, getClientId, dispatch } = utils();
+const { req, parseJson, get, router, getClientId, dispatch, getUrl } = utils();
 
 const getOverWrite = () => [
   {
@@ -18,11 +18,27 @@ const getOverWrite = () => [
   }
 ];
 
+const getPreview = () => {
+  const urlParam = getUrl('__wpreview');
+  return urlParam ? parseJson(atob(urlParam)) : {};
+}
+
 const getTagId = () => {
-  const state = i13nStore.getState();
-  // const tid = state.get('tagId');
-  const tid = "OA-c19eb6";
+  let {tid} = getPreview();
+  if (!tid) {
+    const state = i13nStore.getState();
+    tid = state.get('tagId');
+  }
   return tid;
+};
+
+const getOsgHost = () => {
+  let {host} = getPreview();
+  if (!host) {
+    const state = i13nStore.getState();
+    host = state.get('defaultMpHost');
+  }
+  return host;
 };
 
 const postIframeHeight = (win, dIframe) => {
@@ -83,7 +99,7 @@ const parseRouter = routerData => {
       const tid = getTagId();
       const cid = getClientId();
       const wid = rule.webpopup_id;
-      const configUrl = `https://lan.cicd.omnicloud.tech:18000/ma_cms/get-web-popup/?tid=${tid}&cid=${cid}&wid=${wid}`;
+      const configUrl = `${getOsgHost()}/ma_cms/get-web-popup/?tid=${tid}&cid=${cid}&wid=${wid}`;
       req(configUrl, oReq => e => {
         handleWebPopup({
           data: get(parseJson(oReq.responseText), ["PAYLOAD", "data"]),
@@ -106,7 +122,7 @@ const parseRouter = routerData => {
 
 const interactionTask = () => {
   const tid = getTagId();
-  const routerUrl = `https://lan.cicd.omnicloud.tech:18000/ma_cms/get-all-routers/?tid=${tid}`;
+  const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}`;
   req(routerUrl, oReq => e => {
     parseRouter(get(parseJson(oReq.responseText), ["PAYLOAD", "data"]));
   });
