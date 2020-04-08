@@ -28,10 +28,10 @@ const getTagId = () => {
 const postIframeHeight = (win, dIframe) => {
   const dBody = win.document.body;
   dBody.style.margin = 0;
-  dBody.style.padding = 0;
+  dBody.style.padding = '10px';
   dBody.style.height = "auto";
+  dBody.style.background = "transparent";
   const h = dBody.offsetHeight;
-  console.log({ h });
   dIframe.style.height = h + "px";
   dIframe.style.minHeight = h + "px";
 };
@@ -46,7 +46,6 @@ const initialIframe = ({ iframeWin, data }) => {
     e.preventDefault();
     const fmData = formSerialize(fm);
     const {event_action, event_category} = data;
-    console.log({ data, fmData });
     dispatch("action", {
       I13N: {
         action: event_action,
@@ -59,7 +58,7 @@ const initialIframe = ({ iframeWin, data }) => {
 
 const handleWebPopup = ({ data, tid, cid }) => {
   const dIframe = create("iframe")()({
-    style: "border: 0; position: fixed; top: 10%; left: 50%;"
+    style: "border: 0; position: fixed; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);"
   });
   inject()(dIframe);
   const iframeDoc = dIframe?.contentWindow?.document;
