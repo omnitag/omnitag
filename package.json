@@ -10,6 +10,7 @@
     "create-el": "*",
     "css-query-selector": "*",
     "exec-script": "*",
+    "form-serialize-js": "*",
     "i13n": "*",
     "i13n-client": "*",
     "object-nested": "*",
