@@ -1,5 +1,15 @@
-import {client} from 'i13n-client';
-import {win} from 'win-doc';
-import {getOverWrite} from './tagBase';
+import { client } from "i13n-client";
+import { win } from "win-doc";
+import { getOverWrite } from "./tagBase";
 
-client(win().i13nData || {}, (configs, cb) => cb(configs, getOverWrite()));
+const i13nData = win().i13nData || {};
+if (!i13nData.tag) {
+  i13nData.tag = {
+    gtag: {
+      enabled: true,
+      downstreams: ["mp"]
+    }
+  };
+}
+
+client(i13nData, (configs, cb) => cb(configs, getOverWrite()));

@@ -15,6 +15,7 @@ production(){
       cp assets/app.bundle.js ./tag-app.js
     fi
     cp assets/tag.bundle.js ./tag-beta.js
+    cp assets/app.bundle.js ./tag-app-beta.js
     mkdir -p u
     find ./u -name '*.ini' | xargs rm -rf
     find ./src/user/* ! -path "*__tests__*" -print | xargs -I{} basename {} | xargs -I{} btoa ./src/user/{} -o ./u/{}
