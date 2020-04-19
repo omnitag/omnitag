@@ -1,7 +1,7 @@
 import i13nStore from "i13n-store";
 import { win, doc } from "win-doc";
 import { utils } from "i13n-client";
-import { create, inject } from "create-el";
+import { create, inject, remove } from "create-el";
 import query from "css-query-selector";
 import formSerialize from "form-serialize-js";
 
@@ -19,24 +19,24 @@ const getOverWrite = () => [
 ];
 
 const getPreview = () => {
-  const urlParam = getUrl('__wpreview');
+  const urlParam = getUrl("__wpreview");
   return urlParam ? parseJson(atob(urlParam)) : {};
-}
+};
 
 const getTagId = () => {
-  let {tid} = getPreview();
+  let { tid } = getPreview();
   if (!tid) {
     const state = i13nStore.getState();
-    tid = state.get('tagId');
+    tid = state.get("tagId");
   }
   return tid;
 };
 
 const getOsgHost = () => {
-  let {host} = getPreview();
+  let { host } = getPreview();
   if (!host) {
     const state = i13nStore.getState();
-    host = state.get('defaultMpHost');
+    host = state.get("defaultMpHost");
   }
   return host;
 };
@@ -44,7 +44,7 @@ const getOsgHost = () => {
 const postIframeHeight = (win, dIframe) => {
   const dBody = win.document.body;
   dBody.style.margin = 0;
-  dBody.style.padding = '10px';
+  dBody.style.padding = "10px";
   dBody.style.height = "auto";
   dBody.style.background = "transparent";
   const h = dBody.offsetHeight;
@@ -52,29 +52,62 @@ const postIframeHeight = (win, dIframe) => {
   dIframe.style.minHeight = h + "px";
 };
 
-const initialIframe = ({ iframeWin, data }) => {
+const onClose = iframe => () => {
+  console.log({ iframe });
+  remove(iframe);
+};
+
+const getCloseIcon = () => {
+  const html = `
+    <div style="position:absolute;left:50%;top:50%;transform: translate(-50%, -50%) rotate(45deg);width: 0.2rem; height: 1rem; background: rgb(51, 51, 51);">
+       <div style="transform: rotate(90deg);width: 0.2rem; height: 1rem; background: rgb(51, 51, 51);"></div>
+    </div>
+  `;
+  const dClose = create("div")()({
+    style:
+      "width: 1rem; height: 1rem; background: transparent; position: absolute; cursor: pointer; top: 5px; right: 5px;",
+    innerHTML: html
+  });
+  return dClose;
+};
+
+const submitDone = `
+<div style="width:300px;margin: 0 auto;text-align:center;background:#fcfff5;border-radius:10px">
+  <svg viewBox="0 0 24 24" width="50%">
+    <path fill="#2c662d" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+  </svg>
+</div>
+`;
+
+const initialIframe = ({ iframeWin, dIframe, data }) => {
   const q = query.from(iframeWin.document);
   const fm = q.one("form");
   if (!fm) {
     return;
   }
+  const dClose = getCloseIcon();
+  dClose.addEventListener("click", onClose(dIframe));
+  inject(fm.firstChild, true)(dClose);
   fm.addEventListener("submit", e => {
     e.preventDefault();
     const fmData = formSerialize(fm);
-    const {event_action, event_category} = data;
+    const { event_action, event_category } = data;
     dispatch("action", {
       I13N: {
         action: event_action,
         category: event_category,
         label: fmData
-      },
+      }
     });
+    iframeWin.document.body.innerHTML = submitDone;
+    setTimeout(()=>remove(dIframe), 1000);
   });
 };
 
 const handleWebPopup = ({ data, tid, cid }) => {
   const dIframe = create("iframe")()({
-    style: "border: 0; position: fixed; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+    style:
+      "border: 0; position: fixed; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);"
   });
   inject()(dIframe);
   const iframeDoc = dIframe?.contentWindow?.document;
@@ -86,7 +119,7 @@ const handleWebPopup = ({ data, tid, cid }) => {
   }
   const execInit = () => {
     postIframeHeight(iframeWin, dIframe);
-    initialIframe({ iframeWin, data });
+    initialIframe({ iframeWin, dIframe, data });
   };
   iframeWin.onload = () => setTimeout(execInit, 500);
   setTimeout(execInit, 1500);
