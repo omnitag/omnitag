@@ -10,6 +10,7 @@ const {
   req,
   parseJson,
   get,
+  getNum,
   router,
   getClientId,
   dispatch,
@@ -107,16 +108,49 @@ const checkNeedLogin = needLogin => {
     return true;
   }
   const state = i13nStore.getState();
-  const uid = state.get('uid');
+  const uid = state.get("uid");
   return uid ? true : false;
 };
 
+const testForPassiveScroll = () => {
+  const oWin = win();
+  let supportsPassiveOption = false;
+  try {
+    const opts = Object.defineProperty({}, "passive", {
+      get: () => (supportsPassiveOption = true)
+    });
+    oWin.addEventListener("test", null, opts);
+    oWin.removeEventListener("test", null, opts);
+  } catch (e) {}
+  return supportsPassiveOption;
+};
+
+const regScrollEvent = cb => {
+  const supportsPassive = testForPassiveScroll();
+  let scrollTimeout;
+  const scrollMonitor = e => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const allH = doc().body.clientHeight;
+      const y = window.scrollY;
+      const p = ((y / allH).toFixed(2)) * 100;
+      e.scrollPercent = p;
+      callfunc(cb, [e]);
+    }, 50);
+  };
+  win()?.addEventListener(
+    "scroll",
+    scrollMonitor,
+    supportsPassive ? { passive: true } : false
+  );
+};
+
 const handleWebPopup = ({ data, tid, cid }) => {
-  const {html, options = {}} = data || {};
-  const {need_login} = options;
-  console.log({options});
+  const { html, options = {} } = data || {};
+  const { need_login, trigger_type, delay, scrollPos } = options;
+  console.log({ options });
   if (!checkNeedLogin(need_login)) {
-    return;
+    return false;
   }
   const dIframe = create("iframe")()({
     style:
@@ -133,14 +167,30 @@ const handleWebPopup = ({ data, tid, cid }) => {
   let bInit;
   const execInit = () => {
     if (!bInit) {
-      dIframe.style.display = 'block';
+      dIframe.style.display = "block";
       postIframeHeight(iframeWin, dIframe);
       initialIframe({ iframeWin, dIframe, data });
       bInit = true;
     }
   };
-  iframeWin.onload = () => setTimeout(execInit, 500);
-  setTimeout(execInit, 5000);
+  let onloadDelay = 500;
+  let timeoutDelay = 3000;
+  if ("delay" === trigger_type) {
+    const delayNum = getNum(delay);
+    onloadDelay += delayNum;
+    timeoutDelay += delayNum;
+  }
+  if ("scrolling" === trigger_type) {
+    regScrollEvent( e => {
+      if (e.scrollPercent >= scrollPos) {
+        setTimeout(execInit, onloadDelay);
+      }
+    });
+  } else {
+    iframeWin.onload = () => setTimeout(execInit, onloadDelay);
+    setTimeout(execInit, timeoutDelay);
+  } 
+  return true;
 };
 
 const getCacheData = (configUrl, wid, cb) => {
@@ -205,7 +255,7 @@ const parseRouter = routerData => {
 };
 
 const interactionTask = () => {
-  getCacheRouter(({data}) => parseRouter(data));
+  getCacheRouter(({ data }) => parseRouter(data));
 };
 
 const interaction = () => {
