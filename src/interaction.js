@@ -18,6 +18,8 @@ const {
   lazyAttr
 } = utils();
 
+let match;
+
 const getPreview = () => {
   const urlParam = getUrl("__wpreview");
   return urlParam ? parseJson(atob(urlParam)) : {};
@@ -150,6 +152,10 @@ const handleWebPopup = ({ data, tid, cid }) => {
   const { need_login, trigger_type, delay, scrollPos } = options;
   console.log({ options });
   if (!checkNeedLogin(need_login)) {
+    match = match.next();
+    if (match) {
+      match.fn();
+    }
     return false;
   }
   const dIframe = create("iframe")()({
@@ -190,7 +196,6 @@ const handleWebPopup = ({ data, tid, cid }) => {
     iframeWin.onload = () => setTimeout(execInit, onloadDelay);
     setTimeout(execInit, timeoutDelay);
   } 
-  return true;
 };
 
 const getCacheData = (configUrl, wid, cb) => {
@@ -214,7 +219,7 @@ const getCacheRouter = cb => {
   const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}`;
   if (!data) {
     req(routerUrl, oReq => e => {
-      data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]);
+      data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]) || [];
       webPopupCacheRouter(data);
       callfunc(cb, [{ data }]);
     });
@@ -239,18 +244,15 @@ const parseRouter = routerData => {
           data,
           tid,
           cid,
-          wid
+          wid,
         });
       });
     });
   });
   const urlPathName = doc().location.pathname;
-  let match = oRouter.match(urlPathName);
+  match = oRouter.match(urlPathName);
   if (match) {
     match.fn();
-    while ((match = match.next())) {
-      match.fn();
-    }
   }
 };
 
