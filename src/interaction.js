@@ -5,6 +5,7 @@ import { create, inject, remove } from "create-el";
 import query from "css-query-selector";
 import formSerialize from "form-serialize-js";
 import callfunc from "call-func";
+import { initMap } from "get-object-value";
 
 const {
   req,
@@ -15,7 +16,8 @@ const {
   getClientId,
   dispatch,
   getUrl,
-  lazyAttr
+  lazyAttr,
+  lStorage
 } = utils();
 
 let match;
@@ -105,13 +107,31 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
   });
 };
 
-const checkNeedLogin = needLogin => {
+const checkHaveToLogin = needLogin => {
   if (!needLogin) {
-    return true;
+    return false;
   }
   const state = i13nStore.getState();
   const uid = state.get("uid");
-  return uid ? true : false;
+  return uid ? false : true;
+};
+
+const checkOverDisplayTimes = (wid, display_times) => {
+  const quota = getNum(display_times) || 1;
+  const store = lStorage("webpopup");
+  const data = store();
+  const wData = initMap(data)(wid, {
+    quota,
+    count: 0
+  });
+  if (wData.quota > wData.count) {
+    wData.count++;
+    data[wid] = wData;
+    store(data);
+    return false;
+  } else {
+    return true;
+  }
 };
 
 const testForPassiveScroll = () => {
@@ -135,7 +155,7 @@ const regScrollEvent = cb => {
     scrollTimeout = setTimeout(() => {
       const allH = doc().body.clientHeight;
       const y = window.scrollY;
-      const p = ((y / allH).toFixed(2)) * 100;
+      const p = (y / allH).toFixed(2) * 100;
       e.scrollPercent = p;
       callfunc(cb, [e]);
     }, 50);
@@ -147,11 +167,13 @@ const regScrollEvent = cb => {
   );
 };
 
-const handleWebPopup = ({ data, tid, cid }) => {
+const handleWebPopup = ({ data, tid, cid, wid }) => {
   const { html, options = {} } = data || {};
-  const { need_login, trigger_type, delay, scrollPos } = options;
-  console.log({ options });
-  if (!checkNeedLogin(need_login)) {
+  const { need_login, trigger_type, display_times, delay, scrollPos } = options;
+  if (
+    checkHaveToLogin(need_login) ||
+    checkOverDisplayTimes(wid, display_times)
+  ) {
     match = match.next();
     if (match) {
       match.fn();
@@ -187,7 +209,7 @@ const handleWebPopup = ({ data, tid, cid }) => {
     timeoutDelay += delayNum;
   }
   if ("scrolling" === trigger_type) {
-    regScrollEvent( e => {
+    regScrollEvent(e => {
       if (e.scrollPercent >= scrollPos) {
         setTimeout(execInit, onloadDelay);
       }
@@ -195,7 +217,7 @@ const handleWebPopup = ({ data, tid, cid }) => {
   } else {
     iframeWin.onload = () => setTimeout(execInit, onloadDelay);
     setTimeout(execInit, timeoutDelay);
-  } 
+  }
 };
 
 const getCacheData = (configUrl, wid, cb) => {
@@ -244,7 +266,7 @@ const parseRouter = routerData => {
           data,
           tid,
           cid,
-          wid,
+          wid
         });
       });
     });
