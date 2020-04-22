@@ -11,6 +11,7 @@ const {
   req,
   parseJson,
   get,
+  getTime,
   getNum,
   router,
   getClientId,
@@ -133,13 +134,19 @@ const checkHaveToLogin = needLogin => {
 };
 
 const checkOverDisplayTimes = (wid, display_times) => {
+  const date = getTime().toArray().slice(0,3).join("/");
   const quota = getNum(display_times) || 1;
   const store = lStorage("omniwebpopup");
   const data = parseJson(store()) || {};
-  const wData = initMap(data)(wid, {
+  const wDataDefault = {
+    date,
     quota,
     count: 0
-  });
+  };
+  let wData = initMap(data)(wid, wDataDefault);
+  if (wData.date !== date) {
+    wData = wDataDefault;
+  }
   if (wData.quota > wData.count) {
     wData.count++;
     data[wid] = wData;
@@ -181,6 +188,7 @@ const regScrollEvent = cb => {
     scrollMonitor,
     supportsPassive ? { passive: true } : false
   );
+  scrollMonitor({});
 };
 
 const handleWebPopup = ({ data, tid, cid, wid }) => {
