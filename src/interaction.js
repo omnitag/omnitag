@@ -107,6 +107,22 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
   });
 };
 
+const getWebPopupData = (wid, display_times, addCount) => {
+  const quota = getNum(display_times) || 1;
+  const store = lStorage("omniwebpopup");
+  const data = parseJson(store()) || {};
+  const wData = initMap(data)(wid, {
+    quota,
+    count: 0
+  });
+  if (addCount) {
+    wData.count++;
+    data[wid] = wData;
+    store(JSON.stringify(data));
+  }
+  return wData;
+};
+
 const checkHaveToLogin = needLogin => {
   if (!needLogin) {
     return false;
@@ -118,8 +134,8 @@ const checkHaveToLogin = needLogin => {
 
 const checkOverDisplayTimes = (wid, display_times) => {
   const quota = getNum(display_times) || 1;
-  const store = lStorage("webpopup");
-  const data = store();
+  const store = lStorage("omniwebpopup");
+  const data = parseJson(store()) || {};
   const wData = initMap(data)(wid, {
     quota,
     count: 0
@@ -127,7 +143,7 @@ const checkOverDisplayTimes = (wid, display_times) => {
   if (wData.quota > wData.count) {
     wData.count++;
     data[wid] = wData;
-    store(data);
+    store(JSON.stringify(data));
     return false;
   } else {
     return true;
@@ -181,6 +197,7 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
     return false;
   }
   const dIframe = create("iframe")()({
+    id: 'omnisegment-iframe',
     style:
       "display: none; border: 0; position: fixed; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);"
   });
@@ -194,9 +211,9 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
   }
   let bInit;
   const execInit = () => {
+    postIframeHeight(iframeWin, dIframe);
     if (!bInit) {
       dIframe.style.display = "block";
-      postIframeHeight(iframeWin, dIframe);
       initialIframe({ iframeWin, dIframe, data });
       bInit = true;
     }
