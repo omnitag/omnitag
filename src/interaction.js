@@ -236,7 +236,7 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
   if ("scrolling" === trigger_type) {
     regScrollEvent(e => {
       if (e.scrollPercent >= scrollPos) {
-        setTimeout(execInit, onloadDelay);
+        setTimeout(()=>execInit(), onloadDelay);
       }
     });
   } else {
