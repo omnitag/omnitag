@@ -27,6 +27,8 @@ describe('Test tag', () => {
     reset();
   });
 
+  after(()=>sandbox.restore());
+
   it('test mp host', done => {
     tag(hasAtoB => {
       setTimeout(() => {
@@ -64,6 +66,5 @@ describe('Test tag', () => {
     tag();
     tag();
     expect(console.warn.getCall(0).args[0]).to.have.string('duplicate');
-    sandbox.restore();
   });
 });

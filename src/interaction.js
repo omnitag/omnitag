@@ -109,18 +109,30 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
 };
 
 const getWebPopupData = (wid, display_times, addCount) => {
-  const quota = getNum(display_times) || 1;
+  const date = getTime()
+    .toArray()
+    .slice(0, 3)
+    .join("/");
   const store = lStorage("omniwebpopup");
   const data = parseJson(store()) || {};
-  const wData = initMap(data)(wid, {
+  const quota = getNum(display_times) || 1;
+  const wDataDefault = {
+    date,
     quota,
     count: 0
-  });
+  };
+  let wData;
   if (addCount) {
+    wData = get(data, [wid], wDataDefault);
     wData.count++;
-    data[wid] = wData;
-    store(JSON.stringify(data));
+  } else {
+    wData = initMap(data)(wid, wDataDefault);
+    if (wData.date !== date) {
+      wData = wDataDefault;
+    }
   }
+  data[wid] = wData;
+  store(JSON.stringify(data));
   return wData;
 };
 
@@ -134,23 +146,8 @@ const checkHaveToLogin = needLogin => {
 };
 
 const checkOverDisplayTimes = (wid, display_times) => {
-  const date = getTime().toArray().slice(0,3).join("/");
-  const quota = getNum(display_times) || 1;
-  const store = lStorage("omniwebpopup");
-  const data = parseJson(store()) || {};
-  const wDataDefault = {
-    date,
-    quota,
-    count: 0
-  };
-  let wData = initMap(data)(wid, wDataDefault);
-  if (wData.date !== date) {
-    wData = wDataDefault;
-  }
+  const wData = getWebPopupData(wid, display_times);
   if (wData.quota > wData.count) {
-    wData.count++;
-    data[wid] = wData;
-    store(JSON.stringify(data));
     return false;
   } else {
     return true;
@@ -205,7 +202,7 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
     return false;
   }
   const dIframe = create("iframe")()({
-    id: 'omnisegment-iframe',
+    id: "omnisegment-iframe",
     style:
       "display: none; border: 0; position: fixed; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);"
   });
@@ -224,6 +221,7 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
       dIframe.style.display = "block";
       initialIframe({ iframeWin, dIframe, data });
       bInit = true;
+      getWebPopupData(wid, display_times, true);
     }
   };
   let onloadDelay = 500;
@@ -236,7 +234,7 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
   if ("scrolling" === trigger_type) {
     regScrollEvent(e => {
       if (e.scrollPercent >= scrollPos) {
-        setTimeout(()=>execInit(), onloadDelay);
+        setTimeout(() => execInit(), onloadDelay);
       }
     });
   } else {
@@ -245,39 +243,40 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
   }
 };
 
-const getCacheData = (configUrl, wid, cb) => {
-  const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`);
-  let data = webPopupCacheData();
-  if (!data) {
-    req(configUrl, oReq => e => {
-      data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]);
-      webPopupCacheData(data);
+const fetch = {
+  getCacheData: (configUrl, wid, cb) => {
+    const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`);
+    let data = webPopupCacheData();
+    if (!data) {
+      req(configUrl, oReq => e => {
+        data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]);
+        webPopupCacheData(data);
+        callfunc(cb, [{ data }]);
+      });
+    } else {
       callfunc(cb, [{ data }]);
-    });
-  } else {
-    callfunc(cb, [{ data }]);
+    }
+  },
+  getCacheRouter: cb => {
+    const webPopupCacheRouter = lazyAttr(`webPopupCacheRouter`);
+    let data = webPopupCacheRouter();
+    const tid = getTagId();
+    const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}`;
+    if (!data) {
+      req(routerUrl, oReq => e => {
+        data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]) || [];
+        webPopupCacheRouter(data);
+        callfunc(cb, [{ data }]);
+      });
+    } else {
+      callfunc(cb, [{ data }]);
+    }
   }
 };
 
-const getCacheRouter = cb => {
-  const webPopupCacheRouter = lazyAttr(`webPopupCacheRouter`);
-  let data = webPopupCacheRouter();
-  const tid = getTagId();
-  const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}`;
-  if (!data) {
-    req(routerUrl, oReq => e => {
-      data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]) || [];
-      webPopupCacheRouter(data);
-      callfunc(cb, [{ data }]);
-    });
-  } else {
-    callfunc(cb, [{ data }]);
-  }
-};
-
-const parseRouter = routerData => {
+const parseRouter = (routerData, url) => {
   const oRouter = new router();
-  routerData.forEach(rule => {
+  (routerData || []).forEach(rule => {
     oRouter.addRoute(rule.router, () => {
       const tid = getTagId();
       const cid = getClientId();
@@ -286,7 +285,7 @@ const parseRouter = routerData => {
       if (getUrl("__wpreview")) {
         configUrl += `&cid=${cid}`;
       }
-      getCacheData(configUrl, wid, ({ data }) => {
+      fetch.getCacheData(configUrl, wid, ({ data }) => {
         handleWebPopup({
           data,
           tid,
@@ -296,15 +295,15 @@ const parseRouter = routerData => {
       });
     });
   });
-  const urlPathName = doc().location.pathname;
-  match = oRouter.match(urlPathName);
+  url = url || doc().location.pathname;
+  match = oRouter.match(url);
   if (match) {
     match.fn();
   }
 };
 
 const interactionTask = () => {
-  getCacheRouter(({ data }) => parseRouter(data));
+  fetch.getCacheRouter(({ data }) => parseRouter(data));
 };
 
 const interaction = () => {
@@ -312,3 +311,5 @@ const interaction = () => {
 };
 
 export default interaction;
+
+export { parseRouter, fetch, handleWebPopup };
