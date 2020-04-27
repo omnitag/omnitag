@@ -23,6 +23,8 @@ const {
 
 let match;
 
+const errorEmptyWid = "webpopup id should not empty";
+
 const getPreview = () => {
   const urlParam = getUrl("__wpreview");
   return urlParam ? parseJson(atob(urlParam)) : {};
@@ -98,7 +100,7 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
     const { event_action, event_category } = data;
     dispatch("action", {
       I13N: {
-        action: event_action,
+        action: event_action || 'empty-action-detected',
         category: event_category,
         label: fmData
       }
@@ -109,6 +111,10 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
 };
 
 const getWebPopupData = (wid, display_times, addCount) => {
+  if (!wid) {
+    console.warn(errorEmptyWid);
+    return false;
+  }
   const date = getTime()
     .toArray()
     .slice(0, 3)
@@ -312,4 +318,4 @@ const interaction = () => {
 
 export default interaction;
 
-export { parseRouter, fetch, handleWebPopup };
+export { parseRouter, fetch, handleWebPopup, getWebPopupData, initialIframe };
