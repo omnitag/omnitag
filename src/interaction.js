@@ -174,7 +174,7 @@ const getWebPopupData = (wid, display_times, addCount) => {
 };
 
 const checkHaveToLogin = needLogin => {
-  if (!needLogin) {
+  if (!needLogin || getPreview()) {
     return false;
   }
   const state = i13nStore.getState();
