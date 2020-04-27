@@ -11,7 +11,7 @@ import { utils } from "i13n-client";
 
 import {
   parseRouter,
-  fetch,
+  fetcher,
   handleWebPopup,
   getWebPopupData,
   initialIframe
@@ -36,8 +36,8 @@ describe("Test Interaction", () => {
   });
 
   it("test parseRouter", () => {
-    fetch.getCacheData = () => {};
-    let spy = sandbox.spy(fetch, "getCacheData");
+    fetcher.getCacheData = () => {};
+    let spy = sandbox.spy(fetcher, "getCacheData");
 
     parseRouter(
       [

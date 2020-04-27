@@ -27,11 +27,11 @@ const errorEmptyWid = "webpopup id should not empty";
 
 const getPreview = () => {
   const urlParam = getUrl("__wpreview");
-  return urlParam ? parseJson(atob(urlParam)) : {};
+  return urlParam ? parseJson(atob(urlParam)) : null;
 };
 
 const getTagId = () => {
-  let { tid } = getPreview();
+  let { tid } = getPreview() || {};
   if (!tid) {
     const state = i13nStore.getState();
     tid = state.get("tagId");
@@ -40,12 +40,43 @@ const getTagId = () => {
 };
 
 const getOsgHost = () => {
-  let { host } = getPreview();
+  let { host } = getPreview() || {};
   if (!host) {
     const state = i13nStore.getState();
     host = state.get("defaultMpHost");
   }
   return host;
+};
+
+const fetcher = {
+  getCacheData: (configUrl, wid, cb) => {
+    const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`);
+    let data = webPopupCacheData();
+    if (!data || getPreview()) {
+      req(configUrl, oReq => e => {
+        data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]);
+        webPopupCacheData(data);
+        callfunc(cb, [{ data }]);
+      });
+    } else {
+      callfunc(cb, [{ data }]);
+    }
+  },
+  getCacheRouter: cb => {
+    const webPopupCacheRouter = lazyAttr(`webPopupCacheRouter`);
+    let data = webPopupCacheRouter();
+    if (!data || getPreview()) {
+      const tid = getTagId();
+      const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}`;
+      req(routerUrl, oReq => e => {
+        data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]) || [];
+        webPopupCacheRouter(data);
+        callfunc(cb, [{ data }]);
+      });
+    } else {
+      callfunc(cb, [{ data }]);
+    }
+  }
 };
 
 const postIframeHeight = (win, dIframe) => {
@@ -100,7 +131,7 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
     const { event_action, event_category } = data;
     dispatch("action", {
       I13N: {
-        action: event_action || 'empty-action-detected',
+        action: event_action || "empty-action-detected",
         category: event_category,
         label: fmData
       }
@@ -153,7 +184,7 @@ const checkHaveToLogin = needLogin => {
 
 const checkOverDisplayTimes = (wid, display_times) => {
   const wData = getWebPopupData(wid, display_times);
-  if (wData.quota > wData.count) {
+  if (wData.quota > wData.count || getPreview()) {
     return false;
   } else {
     return true;
@@ -249,36 +280,6 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
   }
 };
 
-const fetch = {
-  getCacheData: (configUrl, wid, cb) => {
-    const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`);
-    let data = webPopupCacheData();
-    if (!data) {
-      req(configUrl, oReq => e => {
-        data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]);
-        webPopupCacheData(data);
-        callfunc(cb, [{ data }]);
-      });
-    } else {
-      callfunc(cb, [{ data }]);
-    }
-  },
-  getCacheRouter: cb => {
-    const webPopupCacheRouter = lazyAttr(`webPopupCacheRouter`);
-    let data = webPopupCacheRouter();
-    const tid = getTagId();
-    const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}`;
-    if (!data) {
-      req(routerUrl, oReq => e => {
-        data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]) || [];
-        webPopupCacheRouter(data);
-        callfunc(cb, [{ data }]);
-      });
-    } else {
-      callfunc(cb, [{ data }]);
-    }
-  }
-};
 
 const parseRouter = (routerData, url) => {
   const oRouter = new router();
@@ -291,7 +292,7 @@ const parseRouter = (routerData, url) => {
       if (getUrl("__wpreview")) {
         configUrl += `&cid=${cid}`;
       }
-      fetch.getCacheData(configUrl, wid, ({ data }) => {
+      fetcher.getCacheData(configUrl, wid, ({ data }) => {
         handleWebPopup({
           data,
           tid,
@@ -309,7 +310,7 @@ const parseRouter = (routerData, url) => {
 };
 
 const interactionTask = () => {
-  fetch.getCacheRouter(({ data }) => parseRouter(data));
+  fetcher.getCacheRouter(({ data }) => parseRouter(data));
 };
 
 const interaction = () => {
@@ -318,4 +319,4 @@ const interaction = () => {
 
 export default interaction;
 
-export { parseRouter, fetch, handleWebPopup, getWebPopupData, initialIframe };
+export { parseRouter, fetcher, handleWebPopup, getWebPopupData, initialIframe };
