@@ -6,11 +6,11 @@ webpack=${DIR}'/node_modules/.bin/webpack'
 conf='{"maxChunks": 1}'
 
 production(){
-    releaseCheck=$1
+    releaseCheck="$1"
     echo "Production Mode";
     npm run test && npm run build 
     CONFIG=$conf NODE_ENV=production ${webpack} -p --optimize-minimize
-    if [ 'xrelease' == "x$releaseCheck" ]; then
+    if [ "xrelease" = "x$releaseCheck" ]; then
       cp assets/tag.bundle.js ./tag.js
       cp assets/app.bundle.js ./tag-app.js
     fi
