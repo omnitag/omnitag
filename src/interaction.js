@@ -1,11 +1,11 @@
-import i13nStore from "i13n-store";
-import { win, doc } from "win-doc";
-import { utils } from "i13n-client";
-import { create, inject, remove } from "create-el";
-import query from "css-query-selector";
-import formSerialize from "form-serialize-js";
-import callfunc from "call-func";
-import { initMap } from "get-object-value";
+import i13nStore from 'i13n-store';
+import {win, doc} from 'win-doc';
+import {utils} from 'i13n-client';
+import {create, inject, remove} from 'create-el';
+import query from 'css-query-selector';
+import formSerialize from 'form-serialize-js';
+import callfunc from 'call-func';
+import {initMap} from 'get-object-value';
 
 const {
   req,
@@ -18,32 +18,32 @@ const {
   dispatch,
   getUrl,
   lazyAttr,
-  lStorage
+  lStorage,
 } = utils();
 
 let match;
 
-const errorEmptyWid = "webpopup id should not empty";
+const errorEmptyWid = 'webpopup id should not empty';
 
 const getPreview = () => {
-  const urlParam = getUrl("__wpreview", top.location);
+  const urlParam = getUrl('__wpreview', top.location);
   return urlParam ? parseJson(atob(urlParam)) : null;
 };
 
 const getTagId = () => {
-  let { tid } = getPreview() || {};
+  let {tid} = getPreview() || {};
   if (!tid) {
     const state = i13nStore.getState();
-    tid = state.get("tagId");
+    tid = state.get('tagId');
   }
   return tid;
 };
 
 const getOsgHost = () => {
-  let { host } = getPreview() || {};
+  let {host} = getPreview() || {};
   if (!host) {
     const state = i13nStore.getState();
-    host = state.get("defaultMpHost");
+    host = state.get('defaultMpHost');
   }
   return host;
 };
@@ -51,15 +51,22 @@ const getOsgHost = () => {
 const fetcher = {
   getCacheData: (configUrl, wid, cb) => {
     const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`);
+    const isPreview = getPreview();
     let data = webPopupCacheData();
-    if (!data || getPreview()) {
+    if (!data || isPreview) {
       req(configUrl, oReq => e => {
-        data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]);
-        webPopupCacheData(data);
-        callfunc(cb, [{ data }]);
+        data = get(parseJson(oReq.responseText), ['PAYLOAD', 'data']);
+        if ((data && data.is_active) || isPreview) {
+          callfunc(cb, [{data}]);
+        }
+        if (data && data.is_active) {
+          webPopupCacheData(data);
+        } else {
+          webPopupCacheData({});
+        }
       });
     } else {
-      callfunc(cb, [{ data }]);
+      callfunc(cb, [{data}]);
     }
   },
   getCacheRouter: cb => {
@@ -69,25 +76,25 @@ const fetcher = {
       const tid = getTagId();
       const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}`;
       req(routerUrl, oReq => e => {
-        data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]) || [];
+        data = get(parseJson(oReq.responseText), ['PAYLOAD', 'data']) || [];
         webPopupCacheRouter(data);
-        callfunc(cb, [{ data }]);
+        callfunc(cb, [{data}]);
       });
     } else {
-      callfunc(cb, [{ data }]);
+      callfunc(cb, [{data}]);
     }
-  }
+  },
 };
 
 const postIframeHeight = (win, dIframe) => {
   const dBody = win.document.body;
   dBody.style.margin = 0;
-  dBody.style.padding = "10px";
-  dBody.style.height = "auto";
-  dBody.style.background = "transparent";
+  dBody.style.padding = '10px';
+  dBody.style.height = 'auto';
+  dBody.style.background = 'transparent';
   const h = dBody.offsetHeight;
-  dIframe.style.height = h + "px";
-  dIframe.style.minHeight = h + "px";
+  dIframe.style.height = h + 'px';
+  dIframe.style.minHeight = h + 'px';
 };
 
 const onClose = iframe => () => {
@@ -100,10 +107,10 @@ const getCloseIcon = () => {
        <div style="transform: rotate(90deg);width: 0.2rem; height: 1rem; background: rgb(51, 51, 51);"></div>
     </div>
   `;
-  const dClose = create("div")()({
+  const dClose = create('div')()({
     style:
-      "width: 1rem; height: 1rem; background: transparent; position: absolute; cursor: pointer; top: 5px; right: 5px;",
-    innerHTML: html
+      'width: 1rem; height: 1rem; background: transparent; position: absolute; cursor: pointer; top: 5px; right: 5px;',
+    innerHTML: html,
   });
   return dClose;
 };
@@ -116,25 +123,25 @@ const submitDone = `
 </div>
 `;
 
-const initialIframe = ({ iframeWin, dIframe, data }) => {
+const initialIframe = ({iframeWin, dIframe, data}) => {
   const q = query.from(iframeWin.document);
-  const fm = q.one("form");
+  const fm = q.one('form');
   if (!fm) {
     return;
   }
   const dClose = getCloseIcon();
-  dClose.addEventListener("click", onClose(dIframe));
+  dClose.addEventListener('click', onClose(dIframe));
   inject(fm.firstChild, true)(dClose);
-  fm.addEventListener("submit", e => {
+  fm.addEventListener('submit', e => {
     e.preventDefault();
     const fmData = formSerialize(fm);
-    const { event_action, event_category } = data;
-    dispatch("action", {
+    const {event_action, event_category} = data;
+    dispatch('action', {
       I13N: {
-        action: event_action || "empty-action-detected",
+        action: event_action || 'empty-action-detected',
         category: event_category,
-        label: fmData
-      }
+        label: fmData,
+      },
     });
     iframeWin.document.body.innerHTML = submitDone;
     setTimeout(() => remove(dIframe), 1000);
@@ -149,14 +156,14 @@ const getWebPopupData = (wid, display_times, addCount) => {
   const date = getTime()
     .toArray()
     .slice(0, 3)
-    .join("/");
-  const store = lStorage("omniwebpopup");
+    .join('/');
+  const store = lStorage('omniwebpopup');
   const data = parseJson(store()) || {};
   const quota = getNum(display_times) || 1;
   const wDataDefault = {
     date,
     quota,
-    count: 0
+    count: 0,
   };
   let wData;
   if (addCount) {
@@ -178,7 +185,7 @@ const checkHaveToLogin = needLogin => {
     return false;
   }
   const state = i13nStore.getState();
-  const uid = state.get("uid");
+  const uid = state.get('uid');
   return uid ? false : true;
 };
 
@@ -195,11 +202,11 @@ const testForPassiveScroll = () => {
   const oWin = win();
   let supportsPassiveOption = false;
   try {
-    const opts = Object.defineProperty({}, "passive", {
-      get: () => (supportsPassiveOption = true)
+    const opts = Object.defineProperty({}, 'passive', {
+      get: () => (supportsPassiveOption = true),
     });
-    oWin.addEventListener("test", null, opts);
-    oWin.removeEventListener("test", null, opts);
+    oWin.addEventListener('test', null, opts);
+    oWin.removeEventListener('test', null, opts);
   } catch (e) {}
   return supportsPassiveOption;
 };
@@ -218,16 +225,16 @@ const regScrollEvent = cb => {
     }, 50);
   };
   win()?.addEventListener(
-    "scroll",
+    'scroll',
     scrollMonitor,
-    supportsPassive ? { passive: true } : false
+    supportsPassive ? {passive: true} : false,
   );
   scrollMonitor({});
 };
 
-const handleWebPopup = ({ data, tid, cid, wid }) => {
-  const { html, options = {} } = data || {};
-  const { need_login, trigger_type, display_times, delay, scrollPos } = options;
+const handleWebPopup = ({data, tid, cid, wid}) => {
+  const {html, options = {}} = data || {};
+  const {need_login, trigger_type, display_times, delay, scrollPos} = options;
   if (
     checkHaveToLogin(need_login) ||
     checkOverDisplayTimes(wid, display_times)
@@ -238,16 +245,16 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
     }
     return false;
   }
-  const dIframe = create("iframe")()({
-    id: "omnisegment-iframe",
+  const dIframe = create('iframe')()({
+    id: 'omnisegment-iframe',
     style:
-      "display: none; border: 0; position: fixed; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+      'display: none; border: 0; position: fixed; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);',
   });
   inject()(dIframe);
   const iframeDoc = dIframe?.contentWindow?.document;
   const iframeWin = dIframe?.contentWindow?.window;
   if (iframeDoc) {
-    iframeDoc.open("text/html", "replace");
+    iframeDoc.open('text/html', 'replace');
     iframeDoc.write(html);
     iframeDoc.close();
   }
@@ -255,20 +262,20 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
   const execInit = () => {
     postIframeHeight(iframeWin, dIframe);
     if (!bInit) {
-      dIframe.style.display = "block";
-      initialIframe({ iframeWin, dIframe, data });
+      dIframe.style.display = 'block';
+      initialIframe({iframeWin, dIframe, data});
       bInit = true;
       getWebPopupData(wid, display_times, true);
     }
   };
   let onloadDelay = 500;
   let timeoutDelay = 3000;
-  if ("delay" === trigger_type) {
+  if ('delay' === trigger_type) {
     const delayNum = getNum(delay);
     onloadDelay += delayNum;
     timeoutDelay += delayNum;
   }
-  if ("scrolling" === trigger_type) {
+  if ('scrolling' === trigger_type) {
     regScrollEvent(e => {
       if (e.scrollPercent >= scrollPos) {
         setTimeout(() => execInit(), onloadDelay);
@@ -280,7 +287,6 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
   }
 };
 
-
 const parseRouter = (routerData, url) => {
   const oRouter = new router();
   (routerData || []).forEach(rule => {
@@ -289,16 +295,18 @@ const parseRouter = (routerData, url) => {
       const cid = getClientId();
       const wid = rule.webpopup_id;
       let configUrl = `${getOsgHost()}/ma_cms/get-web-popup/?tid=${tid}&wid=${wid}`;
-      if (getUrl("__wpreview")) {
+      if (getUrl('__wpreview')) {
         configUrl += `&cid=${cid}`;
       }
-      fetcher.getCacheData(configUrl, wid, ({ data }) => {
-        handleWebPopup({
-          data,
-          tid,
-          cid,
-          wid
-        });
+      fetcher.getCacheData(configUrl, wid, ({data}) => {
+        if (data) {
+          handleWebPopup({
+            data,
+            tid,
+            cid,
+            wid,
+          });
+        }
       });
     });
   });
@@ -310,13 +318,13 @@ const parseRouter = (routerData, url) => {
 };
 
 const interactionTask = () => {
-  fetcher.getCacheRouter(({ data }) => parseRouter(data));
+  fetcher.getCacheRouter(({data}) => parseRouter(data));
 };
 
 const interaction = () => {
-  i13nStore.addListener(interactionTask, "impression");
+  i13nStore.addListener(interactionTask, 'impression');
 };
 
 export default interaction;
 
-export { parseRouter, fetcher, handleWebPopup, getWebPopupData, initialIframe };
+export {parseRouter, fetcher, handleWebPopup, getWebPopupData, initialIframe};
