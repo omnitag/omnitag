@@ -9,7 +9,7 @@ const getOverWrite = () => {
     },
     {
       path: ["omnitag", "version"],
-      value: "2020-05-04-01"
+      value: "2020-05-08-01"
     }
   ];
 };
