@@ -271,7 +271,7 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
   let onloadDelay = 500;
   let timeoutDelay = 3000;
   if ("delay" === trigger_type) {
-    const delayNum = getNum(delay);
+    const delayNum = getNum(delay) * 1000;
     onloadDelay += delayNum;
     timeoutDelay += delayNum;
   }
