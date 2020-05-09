@@ -8,8 +8,8 @@ const getOverWrite = () => {
       value: "https://analytics.omniscientai.com"
     },
     {
-      path: ["omnitag", "version"],
-      value: "2020-05-04-01"
+      path: ["version"],
+      value: "2020-05-09-01"
     }
   ];
 };
