@@ -50,6 +50,9 @@ const getOsgHost = () => {
 
 const fetcher = {
   getCacheData: (configUrl, wid, cb) => {
+    if (wid == 403) {
+      return;
+    }
     const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`);
     const isPreview = getPreview();
     let data = webPopupCacheData();
