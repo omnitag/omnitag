@@ -9,7 +9,7 @@ const getOverWrite = () => {
     },
     {
       path: ["version"],
-      value: "2020-05-10-01"
+      value: 2
     }
   ];
 };
