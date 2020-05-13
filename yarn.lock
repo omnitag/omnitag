@@ -2734,9 +2734,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.413:
-  version "1.3.434"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.434.tgz#a67dcb268e93768e2169399999ccffa4783f048e"
-  integrity sha512-WjzGrE6appXvMyc2kH9Ide7OxsgTuRzag9sjQ5AcbOnbS9ut7P1HzOeEbJFLhr81IR7n2Hlr6qTTSGTXLIX5Pg==
+  version "1.3.435"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.435.tgz#22a7008e8f5a317a6d2d80802bddacebb19ae025"
+  integrity sha512-BVXnq+NCefidU7GOFPx4CPBfPcccLCRBKZYSbvBJMSn2kwGD7ML+eUA9tqfHAumRqy3oX5zaeTI1Bpt7qVat0Q==
 
 elliptic@^6.0.0, elliptic@^6.5.2:
   version "6.5.2"
@@ -3868,9 +3868,9 @@ hyphenate-style-name@*:
   integrity sha512-EcuixamT82oplpoJ2XU4pDtKGWQ7b00CD9f1ug9IaQ3p1bkHMiKCZ9ut9QDI6qsa6cpUuB+A/I+zLtdNK4n2DQ==
 
 i13n-client@*:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.6.0.tgz#0f628ebe1f0b18b478daa28caaaf7cb21189f8f5"
-  integrity sha512-wz7nNupcZFVGZ6VDp/hlMMx6v97g+dCLeX7TKIPthR1TB1ulloS+8Qy69MHHK4nthFI33scQ4ALKPAaZYfCiDQ==
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.6.2.tgz#97c801ce45208ba5fd45c85cb011c39170b9373b"
+  integrity sha512-A4JNSOBKq8EOBzYYK+8o/f3EmyL+yB/ccb/Nafcq3yZmboaZwPGCxVWCYBy3v6IG42gvSyORR15uxVYR9MXjhQ==
   dependencies:
     array.merge "*"
     call-func "*"

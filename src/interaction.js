@@ -98,10 +98,6 @@ const postIframeHeight = (win, dIframe) => {
   dIframe.style.minHeight = h + "px";
 };
 
-const onClose = iframe => () => {
-  remove(iframe);
-};
-
 const getCloseIcon = () => {
   const html = `
     <div style="position:absolute;left:50%;top:50%;transform: translate(-50%, -50%) rotate(45deg);width: 0.2rem; height: 1rem; background: rgb(51, 51, 51);">
@@ -126,13 +122,14 @@ const submitDone = `
 `;
 
 const initialIframe = ({ iframeWin, dIframe, data }) => {
+  const bd = iframeWin.document.body;
   const q = query.from(iframeWin.document);
   const fm = q.one("form");
   if (!fm) {
     return;
   }
-  delegate(iframeWin.document.body, 'click', '.webpopup-close', e => {
-    onClose(dIframe);
+  delegate(bd, 'click', '.webpopup-close', e => {
+    remove(dIframe);
   });
   const dClose = getCloseIcon();
   inject(fm.firstChild, true)(dClose);
@@ -147,7 +144,7 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
         label: fmData
       }
     });
-    iframeWin.document.body.innerHTML = submitDone;
+    bd.innerHTML = submitDone;
     setTimeout(() => remove(dIframe), 1000);
   });
 };
