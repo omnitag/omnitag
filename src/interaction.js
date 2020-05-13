@@ -8,16 +8,17 @@ import callfunc from "call-func";
 import { initMap } from "get-object-value";
 
 const {
-  req,
+  dispatch,
+  delegate,
+  lazyAttr,
   parseJson,
   get,
   getTime,
   getNum,
+  getUrl,
+  req,
   router,
   getClientId,
-  dispatch,
-  getUrl,
-  lazyAttr,
   lStorage
 } = utils();
 
@@ -50,9 +51,6 @@ const getOsgHost = () => {
 
 const fetcher = {
   getCacheData: (configUrl, wid, cb) => {
-    if (wid == 403) {
-      return;
-    }
     const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`);
     const isPreview = getPreview();
     let data = webPopupCacheData();
@@ -111,6 +109,7 @@ const getCloseIcon = () => {
     </div>
   `;
   const dClose = create("div")()({
+    className: 'webpopup-close',
     style:
       "width: 1rem; height: 1rem; background: transparent; position: absolute; cursor: pointer; top: 5px; right: 5px;",
     innerHTML: html
@@ -132,8 +131,10 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
   if (!fm) {
     return;
   }
+  delegate(iframeWin.document.body, 'click', '.webpopup-close', e => {
+    onClose(dIframe);
+  });
   const dClose = getCloseIcon();
-  dClose.addEventListener("click", onClose(dIframe));
   inject(fm.firstChild, true)(dClose);
   fm.addEventListener("submit", e => {
     e.preventDefault();
