@@ -50,9 +50,15 @@ const getOsgHost = () => {
 };
 
 const fetcher = {
-  getCacheData: (configUrl, wid, cb) => {
-    const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`);
+  getCacheData: ({ tid, wid, cid }, cb) => {
     const isPreview = getPreview();
+    if (isPreview && isPreview.wid) {
+      wid = isPreview.wid;
+    }
+    const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`);
+    const configUrl = `${getOsgHost()}/ma_cms/get-web-popup/?tid=${tid}&wid=${wid}&cid=${cid}${
+      isPreview ? "&preview=true" : ""
+    }`;
     let data = webPopupCacheData();
     if (!data || isPreview) {
       req(configUrl, oReq => e => {
@@ -72,10 +78,13 @@ const fetcher = {
   },
   getCacheRouter: cb => {
     const webPopupCacheRouter = lazyAttr(`webPopupCacheRouter`);
+    const isPreview = getPreview();
     let data = webPopupCacheRouter();
-    if (!data || getPreview()) {
+    if (!data || isPreview) {
       const tid = getTagId();
-      const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}`;
+      const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}${
+        isPreview ? "&preview=true" : ""
+      }`;
       req(routerUrl, oReq => e => {
         data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]) || [];
         webPopupCacheRouter(data);
@@ -105,7 +114,7 @@ const getCloseIcon = () => {
     </div>
   `;
   const dClose = create("div")()({
-    className: 'webpopup-close',
+    className: "webpopup-close",
     style:
       "width: 1rem; height: 1rem; background: transparent; position: absolute; cursor: pointer; top: 5px; right: 5px;",
     innerHTML: html
@@ -128,7 +137,7 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
   if (!fm) {
     return;
   }
-  delegate(bd, 'click', '.webpopup-close', e => {
+  delegate(bd, "click", ".webpopup-close", e => {
     remove(dIframe);
   });
   const dClose = getCloseIcon();
@@ -295,11 +304,7 @@ const parseRouter = (routerData, url) => {
       const tid = getTagId();
       const cid = getClientId();
       const wid = rule.webpopup_id;
-      let configUrl = `${getOsgHost()}/ma_cms/get-web-popup/?tid=${tid}&wid=${wid}`;
-      if (getUrl("__wpreview")) {
-        configUrl += `&cid=${cid}`;
-      }
-      fetcher.getCacheData(configUrl, wid, ({ data }) => {
+      fetcher.getCacheData({tid, cid, wid}, ({ data }) => {
         if (data) {
           handleWebPopup({
             data,
