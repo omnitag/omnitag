@@ -55,7 +55,7 @@ const fetcher = {
     if (isPreview && isPreview.wid) {
       wid = isPreview.wid;
     }
-    const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`);
+    const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`, 86400);
     const configUrl = `${getOsgHost()}/ma_cms/get-web-popup/?tid=${tid}&wid=${wid}&cid=${cid}${
       isPreview ? "&preview=true" : ""
     }`;
@@ -77,7 +77,7 @@ const fetcher = {
     }
   },
   getCacheRouter: cb => {
-    const webPopupCacheRouter = lazyAttr(`webPopupCacheRouter`);
+    const webPopupCacheRouter = lazyAttr(`webPopupCacheRouter`, 86400);
     const isPreview = getPreview();
     let data = webPopupCacheRouter();
     if (!data || isPreview) {
