@@ -190,6 +190,21 @@ const getWebPopupData = (wid, display_times, addCount) => {
   return wData;
 };
 
+/**
+ * @return if exceed display time will return true
+ */
+const checkOverDisplayTimes = (wid, display_times) => {
+  const wData = getWebPopupData(wid, display_times);
+  if (wData.quota > wData.count || getPreview()) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+/**
+ * @return if need login and user not login will return true 
+ */
 const checkHaveToLogin = needLogin => {
   if (!needLogin || getPreview()) {
     return false;
@@ -199,12 +214,22 @@ const checkHaveToLogin = needLogin => {
   return uid ? false : true;
 };
 
-const checkOverDisplayTimes = (wid, display_times) => {
-  const wData = getWebPopupData(wid, display_times);
-  if (wData.quota > wData.count || getPreview()) {
+/**
+ * @return con1: if need have line and user not have line will return true
+ * @return con2: if don't need have line but user have line will return true
+ */
+const checkMustHaveLine = (needHasLine, hasLine) => {
+  if (getPreview()) {
     return false;
+  }
+  const thisNeedHasLine = needHasLine * 1;
+  if (!thisNeedHasLine) {
+    return false;
+  }
+  if (1 === thisNeedHasLine) {
+    return hasLine ? false : true; 
   } else {
-    return true;
+    return hasLine ? true : false; 
   }
 };
 
@@ -243,11 +268,12 @@ const regScrollEvent = cb => {
 };
 
 const handleWebPopup = ({ data, tid, cid, wid }) => {
-  const { html, options = {} } = data || {};
-  const { need_login, trigger_type, display_times, delay, scrollPos } = options;
+  const { html, has_line, options = {} } = data || {};
+  const { need_login, need_has_line, trigger_type, display_times, delay, scrollPos } = options;
   if (
+    checkOverDisplayTimes(wid, display_times) ||
     checkHaveToLogin(need_login) ||
-    checkOverDisplayTimes(wid, display_times)
+    checkMustHaveLine(need_has_line, has_line)
   ) {
     match = match.next();
     if (match) {
@@ -304,7 +330,7 @@ const parseRouter = (routerData, url) => {
       const tid = getTagId();
       const cid = getClientId();
       const wid = rule.webpopup_id;
-      fetcher.getCacheData({tid, cid, wid}, ({ data }) => {
+      fetcher.getCacheData({ tid, cid, wid }, ({ data }) => {
         if (data) {
           handleWebPopup({
             data,
@@ -333,4 +359,4 @@ const interaction = () => {
 
 export default interaction;
 
-export { parseRouter, fetcher, handleWebPopup, getWebPopupData, initialIframe };
+export { parseRouter, fetcher, handleWebPopup, getWebPopupData, initialIframe, checkMustHaveLine, getPreview };
