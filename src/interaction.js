@@ -7,18 +7,21 @@ import formSerialize from "form-serialize-js";
 import callfunc from "call-func";
 import { initMap } from "get-object-value";
 
+const expireSec = 86400;
+
 const {
   dispatch,
   delegate,
   lazyAttr,
   parseJson,
   get,
-  getTime,
+  getTimestamp,
   getNum,
   getUrl,
   req,
   router,
   getClientId,
+  expireCallback,
   lStorage
 } = utils();
 
@@ -55,7 +58,7 @@ const fetcher = {
     if (isPreview && isPreview.wid) {
       wid = isPreview.wid;
     }
-    const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`, 86400);
+    const webPopupCacheData = lazyAttr(`webPopupCacheData-${wid}`, expireSec);
     const configUrl = `${getOsgHost()}/ma_cms/get-web-popup/?tid=${tid}&wid=${wid}&cid=${cid}${
       isPreview ? "&preview=true" : ""
     }`;
@@ -163,27 +166,21 @@ const getWebPopupData = (wid, display_times, addCount) => {
     console.warn(errorEmptyWid);
     return false;
   }
-  const date = getTime()
-    .toArray()
-    .slice(0, 3)
-    .join("/");
+  const cTime = getTimestamp();
   const store = lStorage("omniwebpopup");
   const data = parseJson(store()) || {};
   const quota = getNum(display_times) || 1;
   const wDataDefault = {
-    date,
+    cTime,
     quota,
     count: 0
   };
-  let wData;
+  let wData = get(data, [wid], wDataDefault);
+  expireCallback(wData.cTime, expireSec * 1000, null, () => {
+    wData = wDataDefault;
+  });
   if (addCount) {
-    wData = get(data, [wid], wDataDefault);
     wData.count++;
-  } else {
-    wData = initMap(data)(wid, wDataDefault);
-    if (wData.date !== date) {
-      wData = wDataDefault;
-    }
   }
   data[wid] = wData;
   store(JSON.stringify(data));
@@ -203,7 +200,7 @@ const checkOverDisplayTimes = (wid, display_times) => {
 };
 
 /**
- * @return if need login and user not login will return true 
+ * @return if need login and user not login will return true
  */
 const checkHaveToLogin = needLogin => {
   if (!needLogin || getPreview()) {
@@ -227,9 +224,9 @@ const checkMustHaveLine = (needHasLine, hasLine) => {
     return false;
   }
   if (1 === thisNeedHasLine) {
-    return hasLine ? false : true; 
+    return hasLine ? false : true;
   } else {
-    return hasLine ? true : false; 
+    return hasLine ? true : false;
   }
 };
 
@@ -269,7 +266,14 @@ const regScrollEvent = cb => {
 
 const handleWebPopup = ({ data, tid, cid, wid }) => {
   const { html, has_line, options = {} } = data || {};
-  const { need_login, need_has_line, trigger_type, display_times, delay, scrollPos } = options;
+  const {
+    need_login,
+    need_has_line,
+    trigger_type,
+    display_times,
+    delay,
+    scrollPos
+  } = options;
   if (
     checkOverDisplayTimes(wid, display_times) ||
     checkHaveToLogin(need_login) ||
@@ -359,4 +363,12 @@ const interaction = () => {
 
 export default interaction;
 
-export { parseRouter, fetcher, handleWebPopup, getWebPopupData, initialIframe, checkMustHaveLine, getPreview };
+export {
+  parseRouter,
+  fetcher,
+  handleWebPopup,
+  getWebPopupData,
+  initialIframe,
+  checkMustHaveLine,
+  getPreview
+};

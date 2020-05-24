@@ -33,8 +33,8 @@ describe("Test Interaction", () => {
   });
   afterEach(() => {
     reset();
-    sandbox.restore();
     clock.restore();
+    sandbox.restore();
   });
 
   it("test parseRouter", () => {
@@ -60,11 +60,17 @@ describe("Test Interaction", () => {
 
   it("test getWebPopupData", () => {
     const wData = getWebPopupData(1, 1);
-    const expected = { date: "1970/01/01", quota: 1, count: 0 };
+    const expected = { cTime: 0, quota: 1, count: 0 };
     expect(wData).to.deep.equal(expected);
     const wData2 = getWebPopupData(1, 1, true);
-    const expected2 = { date: "1970/01/01", quota: 1, count: 1 };
+    const expected2 = { cTime: 0, quota: 1, count: 1 };
     expect(wData2).to.deep.equal(expected2);
+    clock.tick(86399999);
+    const wData3 = getWebPopupData(1, 1, true);
+    expect(wData3).to.deep.equal({ cTime: 0, quota: 1, count: 2 });
+    clock.tick(1);
+    const wData4 = getWebPopupData(1, 1, true);
+    expect(wData4).to.deep.equal({ cTime: 86400000, quota: 1, count: 1 } );
   });
 
   it("test initialIframe", () => {
