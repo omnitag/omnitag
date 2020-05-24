@@ -6,10 +6,10 @@ import {interaction} from './tagBase';
 
 // rubys.com.tw
 // const iniUrl = '//localhost:7000/src/user/rubys.ini';
-//const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/rubys.ini';
+const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/rubys-v2.ini';
 
 // June1
-const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-19c95c3b.ini';
+// const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-19c95c3b.ini';
 
 
 const iniCallback = (t, cb) => {
