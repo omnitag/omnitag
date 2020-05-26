@@ -346,7 +346,7 @@ const parseRouter = (routerData, url) => {
       });
     });
   });
-  url = url || doc().location.pathname;
+  url = url || doc().URL;
   match = oRouter.match(url);
   if (match) {
     match.fn();
