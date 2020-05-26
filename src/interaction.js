@@ -125,24 +125,31 @@ const getCloseIcon = () => {
   return dClose;
 };
 
-const submitDone = `
+const initialIframe = ({ iframeWin, dIframe, data }) => {
+  const bd = iframeWin.document.body;
+  const q = query.from(iframeWin.document);
+  q.all("a").forEach(link => {
+    if (!link.target) {
+      link.target = '_top';
+    }
+  });
+  delegate(bd, "click", ".webpopup-close", e => {
+    remove(dIframe);
+  });
+  const fm = q.one("form");
+  if (fm) {
+    initialForm({ fm, bd, dIframe, data });
+  }
+};
+
+const initialForm = ({ fm, bd, dIframe, data }) => {
+  const submitDone = `
 <div style="width:300px;margin: 0 auto;text-align:center;background:#fcfff5;border-radius:10px">
   <svg viewBox="0 0 24 24" width="50%">
     <path fill="#2c662d" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
   </svg>
 </div>
 `;
-
-const initialIframe = ({ iframeWin, dIframe, data }) => {
-  const bd = iframeWin.document.body;
-  const q = query.from(iframeWin.document);
-  const fm = q.one("form");
-  if (!fm) {
-    return;
-  }
-  delegate(bd, "click", ".webpopup-close", e => {
-    remove(dIframe);
-  });
   const dClose = getCloseIcon();
   inject(fm.firstChild, true)(dClose);
   fm.addEventListener("submit", e => {
