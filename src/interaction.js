@@ -130,7 +130,7 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
   const q = query.from(iframeWin.document);
   q.all("a").forEach(link => {
     if (!link.target) {
-      link.target = '_top';
+      link.target = "_top";
     }
   });
   delegate(bd, "click", ".webpopup-close", e => {
@@ -313,14 +313,13 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
       initialIframe({ iframeWin, dIframe, data });
       bInit = true;
       getWebPopupData(wid, display_times, true);
+      postIframeHeight(iframeWin, dIframe);
     }
   };
   let onloadDelay = 500;
-  let timeoutDelay = 3000;
   if ("delay" === trigger_type) {
     const delayNum = getNum(delay) * 1000;
     onloadDelay += delayNum;
-    timeoutDelay += delayNum;
   }
   if ("scrolling" === trigger_type) {
     regScrollEvent(e => {
@@ -329,8 +328,12 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
       }
     });
   } else {
-    iframeWin.onload = () => setTimeout(execInit, onloadDelay);
-    setTimeout(execInit, timeoutDelay);
+    const _timer = setInterval(() => {
+      if (iframeDoc.readyState == "complete") {
+        setTimeout(execInit, onloadDelay);
+        clearInterval(_timer);
+      }
+    }, 300);
   }
 };
 
