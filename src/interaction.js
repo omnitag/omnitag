@@ -117,7 +117,7 @@ const getCloseIcon = () => {
     </div>
   `;
   const dClose = create("div")()({
-    className: "webpopup-close",
+    className: "webpopup-close default-close",
     style:
       "width: 1rem; height: 1rem; background: transparent; position: absolute; cursor: pointer; top: 5px; right: 5px;",
     innerHTML: html
