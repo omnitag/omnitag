@@ -30,7 +30,13 @@ let match;
 const errorEmptyWid = "webpopup id should not empty";
 
 const getPreview = () => {
-  const urlParam = getUrl("__wpreview", top.location);
+  let url;
+  try {
+    url = top.location;
+  } catch (e) {
+    url = doc().URL;
+  }
+  const urlParam = getUrl("__wpreview", url);
   return urlParam ? parseJson(atob(urlParam)) : null;
 };
 
