@@ -32,7 +32,7 @@ const errorEmptyWid = "webpopup id should not empty";
 const getPreview = () => {
   let url;
   try {
-    url = top.location;
+    url = top.location+'';
   } catch (e) {
     url = doc().URL;
   }
