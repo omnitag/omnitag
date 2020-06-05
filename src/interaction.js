@@ -86,11 +86,15 @@ const fetcher = {
     }
   },
   getCacheRouter: cb => {
+    const tid = getTagId();
+    if (!tid) {
+      console.warn('tid not exists, cancel webpopup.');
+      return;
+    }
     const webPopupCacheRouter = lazyAttr(`webPopupCacheRouter`, 86400);
     const isPreview = getPreview();
     let data = webPopupCacheRouter();
     if (!data || isPreview) {
-      const tid = getTagId();
       const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}${
         isPreview ? "&preview=true" : ""
       }`;
