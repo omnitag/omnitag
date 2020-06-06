@@ -30,7 +30,7 @@
     "build:cjs": "BABEL_ENV=test babel src -d build/cjs/src",
     "build:es": "BABEL_ENV=es babel src -d build/es/src --ignore /**/__tests__",
     "build": "npm run clean && npm run build:cjs && npm run build:es",
-    "mocha": "mocha 'build/cjs/**/__tests__/*.js' -r jsdom-global/register",
+    "mocha": "mocha -r jsdom-global/register 'build/cjs/**/__tests__/*.js'",
     "test": "npm run build:cjs && npm run mocha",
     "prepublishOnly": "npm run test && npm run build"
   }

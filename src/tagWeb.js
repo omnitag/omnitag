@@ -14,6 +14,7 @@ const domain = 'omniscientai.com';
 let iniId;
 let iniRoot;
 let hostName;
+const timer = {};
 const getAttribute = t => v => t.getAttribute(v);
 
 const run = runCb => {
@@ -48,7 +49,7 @@ const run = runCb => {
     return gOmnitagId;
   }
   oWin[gOmnitagId] = 1;
-  client(`${iniRoot}/${iniId}.ini`, (t, cb) => {
+  timer[gOmnitagId] = client(`${iniRoot}/${iniId}.ini`, (t, cb) => {
     if (oWin.atob) {
       cb(utf8Decode(atob(t)), getOverWrite());
       callfunc(runCb, [true]);
@@ -64,4 +65,7 @@ const run = runCb => {
   return gOmnitagId;
 };
 
+const closeTag = id => callfunc(timer[id]); 
+
 export default run;
+export {closeTag};
