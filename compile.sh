@@ -11,6 +11,7 @@ production(){
     npm run test && npm run build 
     CONFIG=$conf NODE_ENV=production ${webpack} -p --optimize-minimize
     if [ "xrelease" = "x$releaseCheck" ]; then
+      echo "Release Mode";
       cp assets/tag.bundle.js ./tag.js
       cp assets/app.bundle.js ./tag-app.js
     fi
