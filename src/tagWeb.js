@@ -21,17 +21,17 @@ const run = runCb => {
   const oWin = win();
   const tags = query
     .all('script[src*="/tag.js?id"]')
-    .concat(query.all('script[src*="/tag-beta.js?id"]'));
+    .concat(query.all('script[data-i13n-src]'));
   tags.some(tag => {
     const getAttr = getAttribute(tag);
-    const _src = getAttr('data-host');
+    const _src = getAttr('data-i13n-src');
     const tagSrc = getAttr('src');
     const src = _src ? _src : tagSrc;
     if (src && src.length && -1 !== src.indexOf(domain)) {
       const link = create('a')()({href: src});
       hostName = link.host;
       iniRoot = 'https://' + hostName + '/u';
-      iniId = getUrl('id', tagSrc);
+      iniId = getUrl('id', src);
       const _iniRoot = getAttr('data-ini-root');
       if (_iniRoot) {
         iniRoot = _iniRoot;
