@@ -30,7 +30,7 @@ const run = runCb => {
     if (src && src.length && -1 !== src.indexOf(domain)) {
       const link = create('a')()({href: src});
       hostName = link.host;
-      iniRoot = '//' + hostName + '/u';
+      iniRoot = 'https://' + hostName + '/u';
       iniId = getUrl('id', tagSrc);
       const _iniRoot = getAttr('data-ini-root');
       if (_iniRoot) {
