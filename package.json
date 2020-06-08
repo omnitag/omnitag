@@ -16,7 +16,8 @@
     "object-nested": "*",
     "parse-ini-string": "*",
     "seturl": "*",
-    "win-doc": "*"
+    "win-doc": "*",
+    "window-onload": "*"
   },
   "devDependencies": {
     "btoa-atob": "0.1.2",

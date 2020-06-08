@@ -990,9 +990,9 @@
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
 "@types/node@*":
-  version "14.0.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.11.tgz#61d4886e2424da73b7b25547f59fdcb534c165a3"
-  integrity sha512-lCvvI24L21ZVeIiyIUHZ5Oflv1hhHQ5E1S25IRlKIXaRkVgmXpJMI3wUJkmym2bTbCe+WoIibQnMVAU3FguaOg==
+  version "14.0.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.12.tgz#9c1d8ffb8084e8936603a6122a7649e40e68e04b"
+  integrity sha512-/sjzehvjkkpvLpYtN6/2dv5kg41otMGuHQUt9T2aiAuIfleCQRQHXXzF1eAw/qkZTj5Kcf4JSTf7EIizHocy6Q==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -2816,9 +2816,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.413:
-  version "1.3.464"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.464.tgz#fe13feaa08f6f865d3c89d5d72e54c194f463aa5"
-  integrity sha512-Oo+0+CN9d2z6FToQW6Hwvi9ez09Y/usKwr0tsDsyg43a871zVJCi1nR0v03djLbRNcaCKjtrnVf2XJhTxEpPCg==
+  version "1.3.465"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.465.tgz#d692e5c383317570c2bd82092a24a0308c6ccf29"
+  integrity sha512-K/lUeT3NLAsJ5SHRDhK3/zd0tw7OUllYD8w+fTOXm6ljCPsp2qq+vMzxpLo8u1M27ZjZAjRbsA6rirvne2nAMQ==
 
 elliptic@^6.0.0, elliptic@^6.5.2:
   version "6.5.2"
@@ -3964,9 +3964,9 @@ hyphenate-style-name@*:
   integrity sha512-EcuixamT82oplpoJ2XU4pDtKGWQ7b00CD9f1ug9IaQ3p1bkHMiKCZ9ut9QDI6qsa6cpUuB+A/I+zLtdNK4n2DQ==
 
 i13n-client@*:
-  version "0.8.7"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.8.7.tgz#8e9e9a7c341e31890b9fa26c501d42beab1ca016"
-  integrity sha512-Tr5P3gVZwy6N6kBmqbkO0mrkqrMYqoqrv2nIKRWMn1cpymvRRCL+6JfGD79bWngrg1ls+4nqtHCnJRwOOv/pjw==
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.8.8.tgz#89562e6808c03519388dcc9490d7275e16e6b65c"
+  integrity sha512-aD6xRYoDtzlRrf5Ac0DiKawJfpEpm3ZYlANFpxegy8CZrjENPMmlMf6j1ZZYHN7CHj5qLHGlU+i3sUkC4fh63g==
   dependencies:
     array.merge "*"
     call-func "*"
@@ -3983,6 +3983,7 @@ i13n-client@*:
     to-percent-js "*"
     url-route "*"
     win-doc "*"
+    window-onload "*"
 
 i13n-store@*:
   version "0.0.0"
@@ -8099,6 +8100,13 @@ win-doc@*:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/win-doc/-/win-doc-0.0.6.tgz#482b7a354f004f746460ecee43bd953c4f1bb3d5"
   integrity sha512-06XqgthHvKl70LhB9EdKclMDhAKeAf1XnIzMpAnggvX+FkdrojpW+iUaRGy4aYuzmhXNvfs7VGDQrg0btTWxLQ==
+
+window-onload@*:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/window-onload/-/window-onload-0.0.2.tgz#ff3279b67077ba5663e419b46cabbeec7e34af06"
+  integrity sha512-wP+WygUjZU3nd8TOjH+mi3CLXKutMuVMdIuJExpJB3+lQQXsttyKzbGyvO5u213mwIEAOCWoHZB3JT6x5aEvWw==
+  dependencies:
+    reshow-constant "*"
 
 word-wrap@~1.2.3:
   version "1.2.3"

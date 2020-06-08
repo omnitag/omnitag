@@ -6,6 +6,7 @@ import query from "css-query-selector";
 import formSerialize from "form-serialize-js";
 import callfunc from "call-func";
 import { initMap } from "get-object-value";
+import windowOnLoad from 'window-onload';
 
 const expireSec = 86400;
 
@@ -338,12 +339,9 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
       }
     });
   } else {
-    const _timer = setInterval(() => {
-      if (iframeDoc.readyState == "complete") {
-        setTimeout(execInit, onloadDelay);
-        clearInterval(_timer);
-      }
-    }, 300);
+    windowOnLoad({doc: iframeDoc}).process(()=>{
+      setTimeout(execInit, onloadDelay);
+    });
   }
 };
 
