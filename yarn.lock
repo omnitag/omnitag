@@ -3948,9 +3948,9 @@ hyphenate-style-name@*:
   integrity sha512-EcuixamT82oplpoJ2XU4pDtKGWQ7b00CD9f1ug9IaQ3p1bkHMiKCZ9ut9QDI6qsa6cpUuB+A/I+zLtdNK4n2DQ==
 
 i13n-client@*:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.9.3.tgz#0d168b77be9da50951585af80f5b73ade9bfad09"
-  integrity sha512-7B8/0nlpWXUUmGIjUHyfhY9i7AxfTIvRKo556Qgc9Uc1ec+T0kqc+4NNF3eJ9AHiQcZKQGw6KMNmOJcR2O6R/A==
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.9.4.tgz#8bae15579c0b1c3b25682969c70aa972392a008f"
+  integrity sha512-9vvy9SaS/FpbSRs9tw0VGD5GIpZPeIpQyZRdL5SFIioG76xCwzkYUYzJ5Gz+GBN2obrWvbcqlCM+H2BDVp57SA==
   dependencies:
     array.merge "*"
     call-func "*"
