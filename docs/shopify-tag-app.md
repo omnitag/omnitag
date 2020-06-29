@@ -13,8 +13,7 @@
   var doc = document;
   var el = doc.createElement('script'); el.type = 'text/javascript';
   el.async = true;
-  el.src = (('https:' == doc.location.protocol) ? 'https://' : 'http://') +
-           'omnitag.omniscientai.com/tag-app.js';
+  el.src = 'https://omnitag.omniscientai.com/tag-app.js';
   var s = doc.getElementsByTagName('script')[0]; s.parentNode.insertBefore(el, s);
 })();
 ```
