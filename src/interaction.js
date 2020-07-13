@@ -122,15 +122,17 @@ const postIframeHeight = (win, dIframe) => {
 };
 
 const getCloseIcon = () => {
+  const size = '1.5rem';
+  const weight = '0.3rem';
   const html = `
-    <div style="position:absolute;left:50%;top:50%;transform: translate(-50%, -50%) rotate(45deg);width: 0.2rem; height: 1rem; background: rgb(51, 51, 51);">
-       <div style="transform: rotate(90deg);width: 0.2rem; height: 1rem; background: rgb(51, 51, 51);"></div>
+    <div style="position:absolute;left:50%;top:50%;transform: translate(-50%, -50%) rotate(45deg);width: ${weight}; height: ${size}; background: #fff;">
+       <div style="transform: rotate(90deg);width: ${weight}; height: ${size}; background: #fff;"></div>
     </div>
   `;
   const dClose = create("div")()({
     className: "webpopup-close default-close",
     style:
-      "width: 1rem; height: 1rem; background: transparent; position: absolute; cursor: pointer; top: 5px; right: 5px;",
+      `width: ${size}; height: ${size}; padding: 20px; position: absolute; cursor: pointer; top: 5px; right: 5px; background: rgb(51, 51, 51); border-radius: 50%;`,
     innerHTML: html
   });
   return dClose;
