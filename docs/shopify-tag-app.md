@@ -10,6 +10,7 @@
 ### Copy and paste following code (tag-app.js)
 ```
 (function() {
+  window.i13nData = window.i13nData || {tagId: '[your-tag-id]'};
   var doc = document;
   var el = doc.createElement('script'); el.type = 'text/javascript';
   el.async = true;
