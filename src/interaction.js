@@ -6,7 +6,7 @@ import query from "css-query-selector";
 import formSerialize from "form-serialize-js";
 import callfunc from "call-func";
 import { initMap } from "get-object-value";
-import windowOnLoad from 'window-onload';
+import windowOnLoad from "window-onload";
 
 const expireSec = 86400;
 
@@ -23,7 +23,7 @@ const {
   router,
   getClientId,
   expireCallback,
-  lStorage
+  lStorage,
 } = utils();
 
 let match;
@@ -33,7 +33,7 @@ const errorEmptyWid = "webpopup id should not empty";
 const getPreview = () => {
   let url;
   try {
-    url = top.location+'';
+    url = top.location + "";
   } catch (e) {
     url = doc().URL;
   }
@@ -71,7 +71,7 @@ const fetcher = {
     }`;
     let data = webPopupCacheData();
     if (!data || isPreview) {
-      req(configUrl, oReq => e => {
+      req(configUrl, (oReq) => (e) => {
         data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]);
         if ((data && data.is_active) || isPreview) {
           callfunc(cb, [{ data }]);
@@ -86,10 +86,10 @@ const fetcher = {
       callfunc(cb, [{ data }]);
     }
   },
-  getCacheRouter: cb => {
+  getCacheRouter: (cb) => {
     const tid = getTagId();
     if (!tid) {
-      console.warn('tid not exists, cancel webpopup.');
+      console.warn("tid not exists, cancel webpopup.");
       return;
     }
     const webPopupCacheRouter = lazyAttr(`webPopupCacheRouter`, 86400);
@@ -99,7 +99,7 @@ const fetcher = {
       const routerUrl = `${getOsgHost()}/ma_cms/get-all-routers/?tid=${tid}${
         isPreview ? "&preview=true" : ""
       }`;
-      req(routerUrl, oReq => e => {
+      req(routerUrl, (oReq) => (e) => {
         data = get(parseJson(oReq.responseText), ["PAYLOAD", "data"]) || [];
         webPopupCacheRouter(data);
         callfunc(cb, [{ data }]);
@@ -107,7 +107,7 @@ const fetcher = {
     } else {
       callfunc(cb, [{ data }]);
     }
-  }
+  },
 };
 
 const postIframeHeight = (win, dIframe) => {
@@ -122,8 +122,8 @@ const postIframeHeight = (win, dIframe) => {
 };
 
 const getCloseIcon = () => {
-  const size = '1.5rem';
-  const weight = '0.3rem';
+  const size = "1.5rem";
+  const weight = "0.3rem";
   const html = `
     <div style="position:absolute;left:50%;top:50%;transform: translate(-50%, -50%) rotate(45deg);width: ${weight}; height: ${size}; background: #fff;">
        <div style="transform: rotate(90deg);width: ${weight}; height: ${size}; background: #fff;"></div>
@@ -131,9 +131,8 @@ const getCloseIcon = () => {
   `;
   const dClose = create("div")()({
     className: "webpopup-close default-close",
-    style:
-      `width: ${size}; height: ${size}; padding: 20px; position: absolute; cursor: pointer; top: 5px; right: 5px; background: rgb(51, 51, 51); border-radius: 50%;`,
-    innerHTML: html
+    style: `width: ${size}; height: ${size}; padding: 20px; position: absolute; cursor: pointer; top: 5px; right: 5px; background: rgb(51, 51, 51); border-radius: 50%;`,
+    innerHTML: html,
   });
   return dClose;
 };
@@ -141,12 +140,12 @@ const getCloseIcon = () => {
 const initialIframe = ({ iframeWin, dIframe, data }) => {
   const bd = iframeWin.document.body;
   const q = query.from(iframeWin.document);
-  q.all("a").forEach(link => {
+  q.all("a").forEach((link) => {
     if (!link.target) {
       link.target = "_top";
     }
   });
-  delegate(bd, "click", ".webpopup-close", e => {
+  delegate(bd, "click", ".webpopup-close", (e) => {
     remove(dIframe);
   });
   const fm = q.one("form");
@@ -165,7 +164,7 @@ const initialForm = ({ fm, bd, dIframe, data }) => {
 `;
   const dClose = getCloseIcon();
   inject(fm.firstChild, true)(dClose);
-  fm.addEventListener("submit", e => {
+  fm.addEventListener("submit", (e) => {
     e.preventDefault();
     const fmData = formSerialize(fm);
     const { event_action, event_category } = data;
@@ -173,8 +172,8 @@ const initialForm = ({ fm, bd, dIframe, data }) => {
       I13N: {
         action: event_action || "empty-action-detected",
         category: event_category,
-        label: fmData
-      }
+        label: fmData,
+      },
     });
     bd.innerHTML = submitDone;
     setTimeout(() => remove(dIframe), 1000);
@@ -193,7 +192,7 @@ const getWebPopupData = (wid, display_times, addCount) => {
   const wDataDefault = {
     cTime,
     quota,
-    count: 0
+    count: 0,
   };
   let wData = get(data, [wid], wDataDefault);
   expireCallback(wData.cTime, expireSec * 1000, null, () => {
@@ -222,7 +221,7 @@ const checkOverDisplayTimes = (wid, display_times) => {
 /**
  * @return if need login and user not login will return true
  */
-const checkHaveToLogin = needLogin => {
+const checkHaveToLogin = (needLogin) => {
   if (!needLogin || getPreview()) {
     return false;
   }
@@ -255,7 +254,7 @@ const testForPassiveScroll = () => {
   let supportsPassiveOption = false;
   try {
     const opts = Object.defineProperty({}, "passive", {
-      get: () => (supportsPassiveOption = true)
+      get: () => (supportsPassiveOption = true),
     });
     oWin.addEventListener("test", null, opts);
     oWin.removeEventListener("test", null, opts);
@@ -263,10 +262,10 @@ const testForPassiveScroll = () => {
   return supportsPassiveOption;
 };
 
-const regScrollEvent = cb => {
+const regScrollEvent = (cb) => {
   const supportsPassive = testForPassiveScroll();
   let scrollTimeout;
-  const scrollMonitor = e => {
+  const scrollMonitor = (e) => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
       const allH = doc().body.clientHeight;
@@ -292,7 +291,7 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
     trigger_type,
     display_times,
     delay,
-    scrollPos
+    scrollPos,
   } = options;
   if (
     checkOverDisplayTimes(wid, display_times) ||
@@ -308,7 +307,7 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
   const dIframe = create("iframe")()({
     id: "omnisegment-iframe",
     style:
-      "display: none; border: 0; position: fixed; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);"
+      "display: none; border: 0; position: fixed; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%);",
   });
   inject()(dIframe);
   const iframeDoc = dIframe?.contentWindow?.document;
@@ -335,13 +334,13 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
     onloadDelay += delayNum;
   }
   if ("scrolling" === trigger_type) {
-    regScrollEvent(e => {
+    regScrollEvent((e) => {
       if (e.scrollPercent >= scrollPos) {
         setTimeout(() => execInit(), onloadDelay);
       }
     });
   } else {
-    windowOnLoad({doc: iframeDoc}).process(()=>{
+    windowOnLoad({ doc: iframeDoc }).process(() => {
       setTimeout(execInit, onloadDelay);
     });
   }
@@ -349,7 +348,7 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
 
 const parseRouter = (routerData, url) => {
   const oRouter = new router();
-  (routerData || []).forEach(rule => {
+  (routerData || []).forEach((rule) => {
     oRouter.addRoute(rule.router, () => {
       const tid = getTagId();
       const cid = getClientId();
@@ -360,7 +359,7 @@ const parseRouter = (routerData, url) => {
             data,
             tid,
             cid,
-            wid
+            wid,
           });
         }
       });
@@ -390,5 +389,5 @@ export {
   getWebPopupData,
   initialIframe,
   checkMustHaveLine,
-  getPreview
+  getPreview,
 };

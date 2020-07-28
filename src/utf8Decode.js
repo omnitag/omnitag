@@ -1,12 +1,12 @@
 const fromCharCode = String.fromCharCode;
 
-const utf8Decode = utftext => {
-  let string = '';
+const utf8Decode = (utftext) => {
+  let string = "";
   let i = 0;
   let c = 0;
   let c2 = 0;
   let c3 = 0;
-  const len = utftext.length; 
+  const len = utftext.length;
 
   while (i < len) {
     c = utftext.charCodeAt(i);
@@ -20,9 +20,7 @@ const utf8Decode = utftext => {
     } else {
       c2 = utftext.charCodeAt(i + 1);
       c3 = utftext.charCodeAt(i + 2);
-      string += fromCharCode(
-        ((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63),
-      );
+      string += fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
       i += 3;
     }
   }

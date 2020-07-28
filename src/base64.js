@@ -1,10 +1,10 @@
-import utf8Decode from './utf8Decode';
+import utf8Decode from "./utf8Decode";
 
 const fromCharCode = String.fromCharCode;
-const utf8Encode = string => {
-  string = string.replace(/\r\n/g, '\n');
+const utf8Encode = (string) => {
+  string = string.replace(/\r\n/g, "\n");
 
-  var utftext = '';
+  var utftext = "";
 
   for (var n = 0; n < string.length; n++) {
     var c = string.charCodeAt(n);
@@ -23,13 +23,13 @@ const utf8Encode = string => {
   return utftext;
 };
 
-const b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+const b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 const Base64 = {
   // public method for encoding
 
-  encode: function(input) {
-    var output = '';
+  encode: function (input) {
+    var output = "";
 
     var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
 
@@ -71,8 +71,8 @@ const Base64 = {
 
   // public method for decoding
 
-  decode: function(input) {
-    var output = '';
+  decode: function (input) {
+    var output = "";
 
     var chr1, chr2, chr3;
 
@@ -80,7 +80,7 @@ const Base64 = {
 
     var i = 0;
 
-    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, '');
+    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
 
     while (i < input.length) {
       enc1 = b64.indexOf(input.charAt(i++));
@@ -107,7 +107,7 @@ const Base64 = {
 };
 
 if (!window.atob) {
-    window.atob = Base64.decode
+  window.atob = Base64.decode;
 }
 
 export default Base64;

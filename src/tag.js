@@ -1,2 +1,2 @@
-import tagWeb from './tagWeb';
+import tagWeb from "./tagWeb";
 tagWeb();

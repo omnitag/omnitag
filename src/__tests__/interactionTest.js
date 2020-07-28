@@ -16,7 +16,7 @@ import {
   getWebPopupData,
   getPreview,
   initialIframe,
-  checkMustHaveLine
+  checkMustHaveLine,
 } from "../interaction";
 
 const { query } = utils();
@@ -44,8 +44,8 @@ describe("Test Interaction", () => {
     parseRouter(
       [
         {
-          router: "/xxx"
-        }
+          router: "/xxx",
+        },
       ],
       "/xxx"
     );
@@ -70,7 +70,7 @@ describe("Test Interaction", () => {
     expect(wData3).to.deep.equal({ cTime: 0, quota: 1, count: 2 });
     clock.tick(1);
     const wData4 = getWebPopupData(1, 1, true);
-    expect(wData4).to.deep.equal({ cTime: 86400000, quota: 1, count: 1 } );
+    expect(wData4).to.deep.equal({ cTime: 86400000, quota: 1, count: 1 });
   });
 
   it("test initialIframe", () => {
@@ -87,7 +87,6 @@ describe("Test Interaction", () => {
   });
 });
 
-
 describe("Test checkMustHaveLine", () => {
   let reset;
   beforeEach(() => {
@@ -98,38 +97,40 @@ describe("Test checkMustHaveLine", () => {
     reset();
   });
 
-  it('test preview', ()=>{
+  it("test preview", () => {
     reset();
-    reset = jsdom("", { url: "http://localhost?__wpreview=eyJob3N0IjoiaHR0cHM6Ly9sYW4uY2ljZC5vbW5pY2xvdWQudGVjaDoxODAwMCIsInRpZCI6Ik9BLWMxOWViNiJ9" });
+    reset = jsdom("", {
+      url:
+        "http://localhost?__wpreview=eyJob3N0IjoiaHR0cHM6Ly9sYW4uY2ljZC5vbW5pY2xvdWQudGVjaDoxODAwMCIsInRpZCI6Ik9BLWMxOWViNiJ9",
+    });
     const acture = checkMustHaveLine();
     const isPreview = getPreview();
-    expect(isPreview).to.have.all.keys('host', 'tid');
+    expect(isPreview).to.have.all.keys("host", "tid");
     expect(acture).to.be.false;
   });
 
-  it('test needHasLine=0', ()=>{
+  it("test needHasLine=0", () => {
     const acture = checkMustHaveLine(0);
     expect(acture).to.be.false;
-  }); 
+  });
 
-  it('test needHasLine=1 hasLine=false', ()=>{
+  it("test needHasLine=1 hasLine=false", () => {
     const acture = checkMustHaveLine(1, false);
     expect(acture).to.be.true;
-  }); 
+  });
 
-  it('test needHasLine=1 hasLine=true', ()=>{
+  it("test needHasLine=1 hasLine=true", () => {
     const acture = checkMustHaveLine(1, true);
     expect(acture).to.be.false;
-  }); 
+  });
 
-  it('test needHasLine=2 hasLine=false', ()=>{
+  it("test needHasLine=2 hasLine=false", () => {
     const acture = checkMustHaveLine(2, false);
     expect(acture).to.be.false;
-  }); 
+  });
 
-  it('test needHasLine=2 hasLine=true', ()=>{
+  it("test needHasLine=2 hasLine=true", () => {
     const acture = checkMustHaveLine(2, true);
     expect(acture).to.be.true;
-  }); 
-
+  });
 });

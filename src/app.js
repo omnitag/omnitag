@@ -7,8 +7,8 @@ if (!i13nData.tag) {
   i13nData.tag = {
     gtag: {
       enabled: true,
-      downstreams: ["mp"]
-    }
+      downstreams: ["mp"],
+    },
   };
 }
 

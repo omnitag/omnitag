@@ -12,7 +12,7 @@ class req {
   }
 }
 
-import tag, {closeTag} from "../tagWeb";
+import tag, { closeTag } from "../tagWeb";
 
 describe("Test tag", () => {
   const sandbox = sinon.createSandbox();
@@ -29,8 +29,8 @@ describe("Test tag", () => {
 
   after(() => sandbox.restore());
 
-  it("test mp host", done => {
-    tag(hasAtoB => {
+  it("test mp host", (done) => {
+    tag((hasAtoB) => {
       setTimeout(() => {
         const state = i13nStore.getState();
         expect(state.get("defaultMpHost")).to.equal(
@@ -42,10 +42,10 @@ describe("Test tag", () => {
     });
   });
 
-  it("test mp host when no atob", done => {
+  it("test mp host when no atob", (done) => {
     i13nDispatch({ defaultMpHost: null });
     window.atob = null;
-    tag(hasAtoB => {
+    tag((hasAtoB) => {
       setTimeout(() => {
         const state = i13nStore.getState();
         expect(state.get("defaultMpHost")).to.equal(

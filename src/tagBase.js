@@ -5,16 +5,16 @@ const getOverWrite = () => {
   return [
     {
       path: ["defaultMpHost"],
-      value: "https://analytics.omniscientai.com"
+      value: "https://analytics.omniscientai.com",
     },
     {
       path: ["needCheckTagId"],
-      value: true 
+      value: true,
     },
     {
       path: ["version"],
-      value: '1.3.0'
-    }
+      value: "1.3.0",
+    },
   ];
 };
 
