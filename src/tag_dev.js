@@ -44,9 +44,14 @@ const load = () => {
   client(iniUrl, iniCallback, true);
 };
 
-load();
-window.i13nReload = () => {
-  const { lazyAttr } = utils();
-  lazyAttr(iniUrl)(null);
+if (!window.i13nIsLoad) {
+  window.i13nIsLoad = 1;
   load();
-};
+  window.i13nReload = () => {
+    const { lazyAttr } = utils();
+    lazyAttr(iniUrl)(null);
+    load();
+  };
+} else {
+  console.warn("Trigger multi tags.");
+}
