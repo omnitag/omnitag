@@ -1622,9 +1622,9 @@ array.prototype.flat@^1.2.3:
     es-abstract "^1.17.0-next.1"
 
 array.search.js@*:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/array.search.js/-/array.search.js-0.1.0.tgz#b7b5e9099d4544de442d74708887ce29133654f9"
-  integrity sha512-pqiZKvko1DgdbS9lkLRolWsmt4YIMoTTh+yuX112WfA5BnkiDarP0GZRYhuHBWyxi9WozdBIxh7zmBsdytL/vg==
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/array.search.js/-/array.search.js-0.1.1.tgz#64a87732f6471b6024370ffa475ffe5c5737b103"
+  integrity sha512-aKax/fV1S6hxHG/JmxwUj4E2G9U0MFnXruoyeXdhGt63dTAZRwWF31eURhHS7voP5rreKqKsl2L/O0hLXyXubw==
   dependencies:
     reshow-constant "*"
 
@@ -1716,9 +1716,9 @@ aws-sign2@~0.7.0:
   integrity sha1-tG6JCTSpWR8tL2+G1+ap8bP+dqg=
 
 aws4@^1.8.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.0.tgz#a17b3a8ea811060e74d47d306122400ad4497ae2"
-  integrity sha512-3YDiu347mtVtjpyV3u5kVqQLP242c06zwDOgpeRnybmXlYYsLbtTrUBUm8i8srONt+FWobl5aibnU1030PeeuA==
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.1.tgz#e1e82e4f3e999e2cfd61b161280d16a111f86428"
+  integrity sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
 
 babel-helper-is-react-class@^1.0.0:
   version "1.0.0"
@@ -3175,9 +3175,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.523:
-  version "1.3.530"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.530.tgz#9b1033f5221cece94eeb3ec98db27227177fd196"
-  integrity sha512-jnKBqvkXyxo6Tr245YyghzSMjmrA+uzQn+rwLjd3n+Y3sad0eWPzAXfa2lDwSikQu0I5reYacZjmQjCRH9VQdg==
+  version "1.3.531"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.531.tgz#fe432e23c306f7b3579506de9ca63703ef086b9d"
+  integrity sha512-cRdM9noPSUvZ2TCJByhFL78amPMjNZlGJG27EPuJZK0CwWzBfj3ei7hJh0hNsjvgC0BayRW8Bc06DTCELcMC9Q==
 
 elliptic@^6.5.3:
   version "6.5.3"
@@ -4590,9 +4590,9 @@ hyphenate-style-name@*:
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
 i13n-client@*:
-  version "0.10.13"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.10.13.tgz#8e788e2b25810215a004f25c60f890a5b8fe0bd1"
-  integrity sha512-908Tuov+UWWjKkKimSpYJZ6KMkNb094wQDjaDGizhT3LqIX12h2jBn9tzUuNWKqiHkafJDm7WOZ5KdMgN8MdUw==
+  version "0.10.14"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.10.14.tgz#031c4043a3c482851d7ef6a0b7503fd2931635e0"
+  integrity sha512-xo2E0DMCVUIhb/t6f4IxpnIdI/m8BzE7sV0pPAxCS9NdwnmBBeWoFIWHWq9+xRM077JoI6t3hWIzf3AnNQoM7w==
   dependencies:
     array.merge "*"
     array.search.js "*"
@@ -7943,13 +7943,6 @@ send@0.17.1:
     range-parser "~1.2.1"
     statuses "~1.5.0"
 
-serialize-javascript@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-3.1.0.tgz#8bf3a9170712664ef2561b44b691eafe399214ea"
-  integrity sha512-JIJT1DGiWmIKhzRsG91aS6Ze4sFUrYbltlkg2onR5OrnNM02Kl/hnY/T4FN2omvyeBbQmMJv+K4cPOpGzOTFBg==
-  dependencies:
-    randombytes "^2.1.0"
-
 serialize-javascript@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-4.0.0.tgz#b525e1238489a5ecfc42afacc3fe99e666f4b1aa"
@@ -8601,15 +8594,15 @@ terser-webpack-plugin@*:
     webpack-sources "^1.4.3"
 
 terser-webpack-plugin@^1.4.3:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-1.4.4.tgz#2c63544347324baafa9a56baaddf1634c8abfc2f"
-  integrity sha512-U4mACBHIegmfoEe5fdongHESNJWqsGU+W0S/9+BmYGVQDw1+c2Ow05TpMhxjPK1sRb7cuYq1BPl1e5YHJMTCqA==
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-1.4.5.tgz#a217aefaea330e734ffacb6120ec1fa312d6040b"
+  integrity sha512-04Rfe496lN8EYruwi6oPQkG0vo8C+HT49X687FZnpPF0qMAIHONI6HEXYPKDOE8e5HjXTyKfqRd/agHtH0kOtw==
   dependencies:
     cacache "^12.0.2"
     find-cache-dir "^2.1.0"
     is-wsl "^1.1.0"
     schema-utils "^1.0.0"
-    serialize-javascript "^3.1.0"
+    serialize-javascript "^4.0.0"
     source-map "^0.6.1"
     terser "^4.1.2"
     webpack-sources "^1.4.0"
