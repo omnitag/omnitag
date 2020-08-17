@@ -28,7 +28,9 @@ describe("Test ruby ini", () => {
 
   it("Test purchase script", (done) => {
     window.i13n = utils();
+    const utilsScript = get(scripts, ["utils"]);
     const purchaseScript = get(scripts, ["initPurchaseFinish"]);
+    exec(utilsScript);
     exec(purchaseScript);
     done();
   });
