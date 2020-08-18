@@ -8027,9 +8027,9 @@ setprototypeof@1.2.0:
   integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
 
 seturl@*:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/seturl/-/seturl-0.3.0.tgz#6a286d55616ff3a2202b626a54381ef93eda7e77"
-  integrity sha512-Bj0DVF6BZuwo7ch5Kg27wus8tweUcfQwhQtBMmZgeQ70D1pqJYs+mHBj4s/CGUqUkvzcAQO7kWUP2c23nllJ+A==
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/seturl/-/seturl-0.3.1.tgz#6c546fae0d735b843d378e1a807fcec39706c389"
+  integrity sha512-IoO9OIRFjYV+Ayg1fnd/S+XSXYP1aCTNs55ZSBz3YK3FJfG/ChBicmPjhVE4kbDFG7PKWx9gzOA0X9LgiMnwIQ==
   dependencies:
     get-object-value "*"
     get-safe-reg "*"
