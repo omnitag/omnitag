@@ -13,7 +13,7 @@ const getOverWrite = () => {
     },
     {
       path: ["version"],
-      value: "1.5.1",
+      value: "1.5.2",
     },
   ];
 };

@@ -34,4 +34,13 @@ describe("Test ruby ini", () => {
     exec(purchaseScript);
     done();
   });
+
+  it("Test get json", () => {
+    window.i13n = utils();
+    const utilsScript = get(scripts, ["utils"]);
+    exec(utilsScript);
+    const getJson = window.i13n.getJson;
+    expect(getJson('a')).to.deep.equal(['a']);
+    expect(getJson("'A01','B02','C03'")).to.deep.equal(['A01','B02','C03']);
+  });
 });
