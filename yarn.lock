@@ -3175,9 +3175,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.523:
-  version "1.3.537"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.537.tgz#dfe595f5283d3113df897158810e40f6c2355283"
-  integrity sha512-v1jGX46P9vq1XvCBFJ7T7rHd2kMuSrCHnYvO0TqNoURYt7VoxCnqo5+W84s0jlnq0iQUPk5H2D01RfL4ENe2CA==
+  version "1.3.539"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.539.tgz#9952fb0bf3fb4295282e7df35f6e7a2a8b89d3fd"
+  integrity sha512-rM0LWDIstdqfaRUADZetNrL6+zd/0NBmavbMEhBXgc2u/CC1d1GaDyN5hho29fFvBiOVFwrSWZkzmNcZnCEDog==
 
 elliptic@^6.5.3:
   version "6.5.3"
@@ -4590,9 +4590,9 @@ hyphenate-style-name@*:
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
 i13n-client@*:
-  version "0.10.20"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.10.20.tgz#9fd89ff21c088937787650a949be682a75fff5d5"
-  integrity sha512-oVfcpB2xAx5F1TUCw6xKSEfM/sC6SZQ7+sFM6ncfS+/1ilNgZOf++MFOSkzQKqEaHpPMgN7afeTpTc8THMzVVQ==
+  version "0.10.23"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.10.23.tgz#04e2f279dce852af5b72b7593970d5cfa6410c94"
+  integrity sha512-08pVnYR9UldrfUQZPSQ5Evm869hMWm6T8o8KoF3yibgkUBZ+xq3svISpZCHrk0AjymLzh5GKZbiXwAQ9wiCmow==
   dependencies:
     array.merge "*"
     array.search.js "*"
@@ -6241,9 +6241,9 @@ natural-compare@^1.4.0:
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
 nearley@^2.7.10:
-  version "2.19.5"
-  resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.19.5.tgz#6be78e4942eeb9a043b17c563413111d4ad849b7"
-  integrity sha512-qoh1ZXXl0Kpn40tFhmgvffUAlbpRMcjLUagNVnT1JmliUIsB4tFabmCNhD97+tkf9FZ/SLhhYzNow0V3GitzDg==
+  version "2.19.6"
+  resolved "https://registry.yarnpkg.com/nearley/-/nearley-2.19.6.tgz#22663fd7326eb708b4c18bfdd7e4ce204b7239b0"
+  integrity sha512-OV3Lx+o5iIGWVY38zs+7aiSnBqaHTFAOQiz83VHJje/wOOaSgzE3H0S/xfISxJhFSoPcX611OEDV9sCT8F283g==
   dependencies:
     commander "^2.19.0"
     moo "^0.5.0"
@@ -7619,9 +7619,9 @@ reshow-flux-base@*:
     setimmediate "*"
 
 reshow-flux@*:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/reshow-flux/-/reshow-flux-0.9.1.tgz#4895614e1979f67bfae49bc132ff35d741722ac3"
-  integrity sha512-DJtm/ahy5pcdA0wLkxppUyAAZTTr8dB8m/rFRLrIcrFNWpo0e0TAzwMS1Yyn6oQ073WjQwJVwem3zJkke9TwbA==
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/reshow-flux/-/reshow-flux-0.9.2.tgz#2fd826b561a3b346ccfdc04dd4a0a599abedbe30"
+  integrity sha512-bJHUgZ9ptizIkWz6gZYgiXo2goJEKoGStEtpyVMu9uXQnYDy02qQcDoN6j96/9QDRWlumGZaRsBt/kp7zVAt2w==
   dependencies:
     array.dedup "*"
     get-object-value "*"
@@ -8618,9 +8618,9 @@ terser@^4.1.2:
     source-map-support "~0.5.12"
 
 terser@^5.0.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.2.0.tgz#e547d0b20926b321d3e524bf9e5bc1b10ba2f360"
-  integrity sha512-nZ9TWhBznZdlww3borgJyfQDrxzpgd0RlRNoxR63tMVry01lIH/zKQDTTiaWRMGowydfvSHMgyiGyn6A9PSkCQ==
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.2.1.tgz#40b971b8d28b4fe98c9e8c0d073ab48e7bb96cd8"
+  integrity sha512-/AOtjRtAMNGO0fIF6m8HfcvXTw/2AKpsOzDn36tA5RfhRdeXyb4RvHxJ5Pah7iL6dFkLk+gOnCaNHGwJPl6TrQ==
   dependencies:
     commander "^2.20.0"
     source-map "~0.6.1"
@@ -9319,9 +9319,9 @@ win-doc@*:
   integrity sha512-06XqgthHvKl70LhB9EdKclMDhAKeAf1XnIzMpAnggvX+FkdrojpW+iUaRGy4aYuzmhXNvfs7VGDQrg0btTWxLQ==
 
 window-onload@*:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/window-onload/-/window-onload-0.0.3.tgz#17e385d08a5346f03e88e0208e365c934a58acc8"
-  integrity sha512-EZcoZhgmWUmnJuv6z8t8j6nfOF/ZyObaaG3mQ5Q/QnjfVul5EfYquAN/nfwiiXEjz6RI/DU1PqVOrRnmSrNVFw==
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/window-onload/-/window-onload-0.1.0.tgz#64772800ab166e2002bb5f8655eecddf0e7bee01"
+  integrity sha512-EsghMQWAlmowGBnch+NuWltUpguv5/e7SxMR1R9tFetFGxV7z4cIiJJ2G2lTzqPbXODalaR9k6Mjrx84V0lxjQ==
   dependencies:
     reshow-constant "*"
 
