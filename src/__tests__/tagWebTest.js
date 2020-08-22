@@ -5,6 +5,7 @@ import i13nStore from "i13n-store";
 import sinon from "sinon";
 
 class req {
+  withCredentials = true;
   open() {}
   send() {
     this.responseText = "Zm9vPWJhcgo=";

@@ -8,8 +8,13 @@ conf='{"maxChunks": 1}'
 production(){
     releaseCheck="$1"
     echo "Production Mode";
-    npm run test && npm run build 
-    CONFIG=$conf NODE_ENV=production ${webpack} -p --optimize-minimize
+    GO_EXIT=true
+    npm run test && npm run build && CONFIG=$conf NODE_ENV=production ${webpack} -p --optimize-minimize && GO_EXIT=false
+    if [ "xtrue" = "x$GO_EXIT" ]; then
+      echo "Build failed."
+      exit 1;
+    fi
+
     if [ "xrelease" = "x$releaseCheck" ]; then
       echo "Release Mode";
       cp assets/tag.bundle.js ./tag.js

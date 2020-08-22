@@ -89,7 +89,7 @@ const fetcher = {
   getCacheRouter: (cb) => {
     const tid = getTagId();
     if (!tid) {
-      console.warn("tid not exists, cancel webpopup.");
+      console.warn("tid not assign, cancel webpopup.");
       return;
     }
     const webPopupCacheRouter = lazyAttr(`webPopupCacheRouter`, 86400);

@@ -1356,9 +1356,9 @@ acorn@^7.1.1:
   integrity sha512-+G7P8jJmCHr+S+cLfQxygbWhXy+8YTVGzAkpEbcLo2mLoL7tij/VG41QSHACSf5QgYRhMZYHuNc6drJaO0Da+w==
 
 aggregate-error@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/aggregate-error/-/aggregate-error-3.0.1.tgz#db2fe7246e536f40d9b5442a39e117d7dd6a24e0"
-  integrity sha512-quoaXsZ9/BLNae5yiNoUz+Nhkwz83GhWwtYFglcjEQB2NDHCIpApbqXxIFnm4Pq/Nvhrsq5sYJFyohrrxnTGAA==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/aggregate-error/-/aggregate-error-3.1.0.tgz#92670ff50f5359bdb7a3e0d40d0ec30c5737687a"
+  integrity sha512-4I7Td01quW/RpocfNayFdFVk1qSuoh0E7JrbRJ16nH01HhKFQ88INq9Sd+nd72zqRySlr9BmDA8xlEJ6vJMrYA==
   dependencies:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
@@ -4588,9 +4588,9 @@ hyphenate-style-name@*:
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
 i13n-client@*:
-  version "0.10.23"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.10.23.tgz#04e2f279dce852af5b72b7593970d5cfa6410c94"
-  integrity sha512-08pVnYR9UldrfUQZPSQ5Evm869hMWm6T8o8KoF3yibgkUBZ+xq3svISpZCHrk0AjymLzh5GKZbiXwAQ9wiCmow==
+  version "0.10.24"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.10.24.tgz#2133599e61134a210854e220aad92150a0673194"
+  integrity sha512-HXQmDlqK7n62aM20YL1HkFDS8GJ4YjmbGDcfsFhEUh+cK+YtVbumB0pL8qlb8KVeyFNKm8wS8lvKWGwl8H6sEQ==
   dependencies:
     array.merge "*"
     array.search.js "*"
@@ -9317,9 +9317,9 @@ win-doc@*:
   integrity sha512-06XqgthHvKl70LhB9EdKclMDhAKeAf1XnIzMpAnggvX+FkdrojpW+iUaRGy4aYuzmhXNvfs7VGDQrg0btTWxLQ==
 
 window-onload@*:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/window-onload/-/window-onload-0.1.1.tgz#7003e20207dd3a35e5321b97275f94c8d3b94842"
-  integrity sha512-YXc+3yiUP+M5fjZ15vqNDbwueIIMCjA9t1G1MSdjQ4abZmd+VNYNxDeDFZamyCRdVB2oy7aEFOnYqUidIsyhXw==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/window-onload/-/window-onload-0.1.4.tgz#b98384716a65104e09ca4f66b318cf7abc8aaac5"
+  integrity sha512-oXY74KE8sqQoZ8NDcFNiQ8T6Ur7+RsTCyCC9LgMr5r386j5GN5r1QAs8Mpa6afqUgqOrGLveZd0J17J2ARPP5A==
   dependencies:
     reshow-constant "*"
 
