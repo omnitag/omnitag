@@ -3173,9 +3173,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.523:
-  version "1.3.540"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.540.tgz#4e4c08d8c12bbd32cf090e143c0d546f017f9d43"
-  integrity sha512-IoGiZb8SMqTtkDYJtP8EtCdvv3VMtd1QoTlypO2RUBxRq/Wk0rU5IzhzhMckPaC9XxDqUvWsL0XKOBhTiYVN3w==
+  version "1.3.541"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.541.tgz#bffc28d861b601084962fdbd00112e394d8947d7"
+  integrity sha512-xfne2L0+Jpi+0orn8PK0V9TKgpFHiwhckBONdro2hhgXUJe6bEMtNdQdDNjQIGUxkXESa8TfCraS4X9CMPxVOQ==
 
 elliptic@^6.5.3:
   version "6.5.3"
@@ -3570,9 +3570,9 @@ etag@^1.3.0, etag@~1.8.1:
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
 eventemitter3@^4.0.0:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.4.tgz#b5463ace635a083d018bdc7c917b4c5f10a85384"
-  integrity sha512-rlaVLnVxtxvoyLsQQFBx53YmXHDxRIzzTLbdfxqi4yocpSjAxXwkU0cScM5JgSKMqEhrZpnvQ2D9gjylR0AimQ==
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.5.tgz#51d81e4f1ccc8311a04f0c20121ea824377ea6d9"
+  integrity sha512-QR0rh0YiPuxuDQ6+T9GAO/xWTExXpxIes1Nl9RykNGTnE1HJmkuEfxJH9cubjIOQZ/GH4qNBR4u8VSHaKiWs4g==
 
 events@^3.0.0:
   version "3.2.0"
@@ -4588,9 +4588,9 @@ hyphenate-style-name@*:
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
 i13n-client@*:
-  version "0.10.25"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.10.25.tgz#db7e4cd5ae60027580b3170b2d8b9e0a35d66a81"
-  integrity sha512-QIliq9tZoPgAzKjkCo5VlwNTSfoh8J0AY7jMu+eXNrBOCMqgoC/p6Yudpke9holvf0RoHUcAXlvwN9j5Mm+Qgw==
+  version "0.10.26"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.10.26.tgz#367a33d41d06a1e03834cf7abb8235b5993995a5"
+  integrity sha512-u+R7IgpROEfEvEsgKE6vYCNIQL645IFgNPU6YvAOvX3FAj05Vd44QxuXGVnHNgLgOl/TbdpksRRTXg3zCMfemQ==
   dependencies:
     array.merge "*"
     array.search.js "*"
