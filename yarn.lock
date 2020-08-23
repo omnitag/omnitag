@@ -2698,9 +2698,9 @@ create-ecdh@^4.0.0:
     elliptic "^6.5.3"
 
 create-el@*:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/create-el/-/create-el-0.1.8.tgz#994eb21bfd89ceb11be30786559cd639d64e1fe3"
-  integrity sha512-y+SG5d1aIqwBje1lbDxODDCvtwuFSrrzRcG/B4ML8A6IJLWsIve/2i8ohWN+1sj8/7t2oQwmH09Z4leuzOm+WA==
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/create-el/-/create-el-0.1.9.tgz#5fbf248ab57cad6455f116f65e801883f61d548e"
+  integrity sha512-D/87VUy8PxOXRN8ErKMDyTtUifPA06TTseiHslZoIEmHeEjt4z/XaOvA4i6jfPUFrup0CC0SXIZWglh1F/i6Jg==
   dependencies:
     call-func "*"
     reshow-runtime "*"
@@ -7607,9 +7607,9 @@ reshow-constant@*:
   integrity sha512-PRwvxfln60W897Z8puaZhWhY4wrP6Mb+c8Wu+9n1yBgn+//6GP8AhW/xMdsy+MyM2HcTJ8d1iTmvr/G4Pm2NyA==
 
 reshow-flux-base@*:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/reshow-flux-base/-/reshow-flux-base-0.3.2.tgz#079337d00521c3384c4f9a338853e0315f2c98ef"
-  integrity sha512-dSzZ/34AhmtffHm9MZvr3pCrCmriHPVvGvVT/2RGXwWH2SUckytaSgekPHxSoe3Y3lwxS3duMUlietC47THpBQ==
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/reshow-flux-base/-/reshow-flux-base-0.3.5.tgz#c2c1b64965062af60daf1b56a5badfce74e0af00"
+  integrity sha512-YI6IjuRv4uaIqiUm8UadxMwD+QvE9E1PYY4NR/RhqcGL4ze2ZYAGbM5ac1SbEXrSL0jYVXfn3gRR1OEjee775Q==
   dependencies:
     call-func "*"
     reshow-constant "*"
