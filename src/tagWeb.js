@@ -65,6 +65,7 @@ const run = (runCb) => {
   return gOmnitagId;
 };
 
+// https://github.com/react-atomic/i13n/blob/master/packages/i13n-client/src/client.js#L305
 const closeTag = (id) => callfunc(timer[id]);
 
 export default run;

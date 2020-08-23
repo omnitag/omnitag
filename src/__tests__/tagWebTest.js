@@ -54,7 +54,7 @@ describe("Test tag", () => {
         );
         expect(hasAtoB).to.be.false;
         done();
-      });
+      }, 10);
     });
     setTimeout(() => {
       const dScript = document.body.querySelector("script");
@@ -67,6 +67,6 @@ describe("Test tag", () => {
     const id = tag();
     tag();
     expect(console.warn.getCall(0).args[0]).to.have.string("duplicate");
-    closeTag(id); // wait client setInterval
+    closeTag(id); // clean client setInterval
   });
 });
