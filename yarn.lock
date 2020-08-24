@@ -4588,9 +4588,9 @@ hyphenate-style-name@*:
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
 i13n-client@*:
-  version "0.10.30"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.10.30.tgz#ebc2350d018522832c583a6b45980549fee8e6bc"
-  integrity sha512-8++EsWjVctoCoA8gyyHRXsDxAhDk0O+c6M7sXZcKVJz6llCtCUiWmI10zO/a0hnwtclq2IqWdi5Ivj82Qau9Qg==
+  version "0.10.31"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.10.31.tgz#6551bc91cc3ba7bae3ea6f6e6a5f977eee70bd08"
+  integrity sha512-bJJD+BcObw44rglDzdlMCP1J7cJKd0TBJPmhaRtKQm16OsqhL9AGqzT3zesGx7+xCEvsuARdfBZzIp6E28tpOw==
   dependencies:
     array.merge "*"
     array.search.js "*"
@@ -9316,9 +9316,9 @@ win-doc@*:
   integrity sha512-06XqgthHvKl70LhB9EdKclMDhAKeAf1XnIzMpAnggvX+FkdrojpW+iUaRGy4aYuzmhXNvfs7VGDQrg0btTWxLQ==
 
 window-onload@*:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/window-onload/-/window-onload-0.1.4.tgz#b98384716a65104e09ca4f66b318cf7abc8aaac5"
-  integrity sha512-oXY74KE8sqQoZ8NDcFNiQ8T6Ur7+RsTCyCC9LgMr5r386j5GN5r1QAs8Mpa6afqUgqOrGLveZd0J17J2ARPP5A==
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/window-onload/-/window-onload-0.1.5.tgz#3c3de8385af173c81c24fed5bc1333ff8f2be0e0"
+  integrity sha512-RtkQtGn8S/YI5FC6Sluaw1ljYwXQ5BhBG9QU26YoqEf0ETKEGTP/3LmkRAP4glLTVDIMK47uWFoSuxtXPX8OIQ==
   dependencies:
     reshow-constant "*"
 
