@@ -20,6 +20,9 @@ import { interaction } from "./tagBase";
 // edh
 // const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-f8137c97.ini';
 
+// mybra 
+const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-718a097c.ini';
+
 const iniCallback = (t, cb) => {
   cb(t, [
     {
