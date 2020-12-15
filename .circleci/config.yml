@@ -3,6 +3,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@3.0.0
+  aws-s3: circleci/aws-s3@2.0.0
 
 jobs:
   test:
@@ -16,9 +17,36 @@ jobs:
       - node/install:
           node-version: "13"
           install-yarn: true
+      - restore_cache:  # ensure this step occurs *before* installing dependencies
+          key: npm-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Run YARN tests
           command: "yarn --ignore-engines && cd << parameters.test-dir >> && yarn --ignore-engines && npm test"
+      - save_cache:
+          key: npm-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules 
+  deploy:
+    docker:
+      - image: 'cimg/python:3.6'
+    environment:
+      PIP_CACHE_DIR: /home/circleci/.cache/pip
+    steps:
+      - checkout
+      - run: rm -rf .git docs webpack.config.js yarn.lock .babelrc .gitignore compile.sh CNAME README.md _config.yml .circleci 404.md loaderio-* screen.sh package.json src
+      - run: find . -name "__tests__" | xargs rm -rf
+      - aws-s3/sync:
+          arguments: |
+            --acl public-read \
+            --cache-control "max-age=600"
+          aws-access-key-id: AWS_ACCESS_KEY_ID 
+          aws-region: AWS_REGION 
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          from: /home/circleci/project
+          to: 's3://omnitag.omniscientai.com'
+      - run: aws --version
+      - run: aws configure set preview.cloudfront true 
+      - run: aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
 
 
 workflows:
@@ -29,3 +57,6 @@ workflows:
           name: test-<< matrix.test-dir >>
           parameters:
             test-dir: ["./"]
+    - deploy:
+        requires: 
+        - test
