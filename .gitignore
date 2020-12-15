@@ -7,4 +7,4 @@ build
 .*.sw?
 assets
 mobile.html
-Ruby's*
+webpack.pid
