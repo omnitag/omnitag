@@ -1,7 +1,7 @@
 #!/bin/sh
 DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 
-webpack=${DIR}'/node_modules/.bin/webpack'
+webpack='npm run webpack --'
 
 conf='{"maxChunks": 1}'
 
@@ -9,7 +9,7 @@ production(){
     releaseCheck="$1"
     echo "Production Mode";
     GO_EXIT=true
-    npm run test && npm run build && CONFIG=$conf NODE_ENV=production ${webpack} -p --optimize-minimize && GO_EXIT=false
+    npm run test && npm run build && CONFIG=$conf NODE_ENV=production ${webpack} && GO_EXIT=false
     if [ "xtrue" = "x$GO_EXIT" ]; then
       echo "Build failed."
       exit 1;
