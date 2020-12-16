@@ -33,7 +33,7 @@ jobs:
       PIP_CACHE_DIR: /home/circleci/.cache/pip
     steps:
       - checkout
-      - run: rm -rf .git docs webpack.config.js yarn.lock .babelrc .gitignore compile.sh CNAME README.md _config.yml .circleci 404.md loaderio-* screen.sh package.json src
+      - run: rm -rf .git docs webpack.config.js yarn.lock .babelrc .gitignore compile.sh CNAME README.md _config.yml .circleci 404.md loaderio-* screen.sh package.json src travis.yml
       - run: find . -name "__tests__" | xargs rm -rf
       - aws-s3/sync:
           arguments: |
