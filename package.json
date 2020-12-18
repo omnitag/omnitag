@@ -26,6 +26,7 @@
     "reshow-app": "^0.13.0-beta"
   },
   "scripts": {
+    "webpack": "webpack",
     "start": "ws -p 7000 -v",
     "clean": "find ./build ./assets -name '*.*' | xargs rm -rf",
     "build:cjs": "BABEL_ENV=test babel src -d build/cjs/src",
