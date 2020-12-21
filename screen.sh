@@ -20,7 +20,8 @@ case "$1" in
         ;;
     startall)
         exec "server" "./compile.sh s"
-        exec "hot" "./compile.sh hot"
+        exec "watch" "./compile.sh watch"
+        echo "run 'screen -r $SCREEN_NAME' to enter screen"
         ;;
     *)
         echo $"Usage: $0 {startall|stopall}"
