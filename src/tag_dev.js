@@ -5,7 +5,7 @@ import { interaction } from "./tagBase";
 // const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/kfan-dev.ini';
 
 // fruitpay
-// const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-1597cbff.ini';
+const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-1597cbff.ini';
 
 // rubys.com.tw
 // const iniUrl = '//localhost:7000/src/user/rubys.ini';
@@ -21,7 +21,7 @@ import { interaction } from "./tagBase";
 // const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-f8137c97.ini';
 
 // mybra 
-const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-718a097c.ini';
+// const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-718a097c.ini';
 
 const iniCallback = (t, cb) => {
   cb(t, [
