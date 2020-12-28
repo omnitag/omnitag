@@ -24,7 +24,7 @@ production(){
     cp assets/app.bundle.js ./tag-app-beta.js
     mkdir -p u
     find ./u -name '*.ini' | xargs rm -rf
-    find ./src/user/* ! -path "*__tests__*" -print | xargs -I{} basename {} | xargs -I{} btoa ./src/user/{} -o ./u/{}
+    find ./src/user/* ! -path "*__tests__*" -print | xargs -I{} basename {} | xargs -I{} npm run btoa -- ./src/user/{} -o ./u/{}
 }
 
 analyzer(){

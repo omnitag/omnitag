@@ -26,6 +26,7 @@
     "reshow-app": "^0.13.0-beta"
   },
   "scripts": {
+    "btoa": "btoa",
     "webpack": "webpack",
     "start": "ws -p 7000 -v",
     "clean": "find ./build ./assets -name '*.*' | xargs rm -rf",
@@ -36,5 +37,6 @@
     "test": "npm run build:cjs && npm run mocha",
     "format": "prettier-eslint --write 'src/**/*.js'",
     "prepublishOnly": "npm run test && npm run build"
+    
   }
 }
