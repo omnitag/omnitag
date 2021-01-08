@@ -15,6 +15,9 @@ exec() {
 }
 
 case "$1" in
+    enter)
+        screen -r $SCREEN_NAME 
+        ;;
     stopall)
         screen -X -S ${SCREEN_NAME} quit
         ;;
@@ -24,7 +27,7 @@ case "$1" in
         echo "run 'screen -r $SCREEN_NAME' to enter screen"
         ;;
     *)
-        echo $"Usage: $0 {startall|stopall}"
+        echo $"Usage: $0 {startall|stopall|enter}"
         exit 1
 esac
 

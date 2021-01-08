@@ -4616,9 +4616,9 @@ i13n-store@*:
     i13n "*"
 
 i13n@*:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/i13n/-/i13n-1.5.1.tgz#fd4ad163fe08ce7448ce35d6203202b9194ab64f"
-  integrity sha512-i/x1ZaimNyxE8n/4ahFbESF8dfXlFWCv0znJVjBfVl6S5TLXhlBhLMewEt2zguBBkXN0v/+mCpGxCxO/EEwMxA==
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/i13n/-/i13n-1.5.2.tgz#71fd26aa8fba83337f886513480c0e91769b9a6f"
+  integrity sha512-EtV9gPg1vZS7q+fsOQ7bvk3vKh7ShYDazNNsPwSn8m/QA8uZsZEbvMqMlEiIDUNUefYq9t0cBBpt6oa30m49Ag==
   dependencies:
     get-object-value "*"
     get-random-id "*"
