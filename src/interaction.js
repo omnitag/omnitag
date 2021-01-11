@@ -377,7 +377,7 @@ const interactionTask = () => {
 };
 
 const interaction = () => {
-  i13nStore.addListener(interactionTask, "impression");
+  i13nStore.addListener(interactionTask, "init");
 };
 
 export default interaction;
