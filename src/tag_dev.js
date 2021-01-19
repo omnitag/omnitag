@@ -20,11 +20,11 @@ import { interaction } from "./tagBase";
 // edh
 // const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-f8137c97.ini';
 
-// mybra 
+// mybra
 // const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-718a097c.ini';
 
-// muzuopet 
-const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-fdcc8bdd.ini';
+// muzuopet
+const iniUrl = "http://localhost:7000/src/user/%C2%A0OA-9c006057.ini";
 
 const iniCallback = (t, cb) => {
   cb(t, [
@@ -42,11 +42,11 @@ const iniCallback = (t, cb) => {
     },
     {
       path: ["defaultMpHost"],
-      value: "https://analytics.omniscientai.com",
+      value: "http://localhost:8000",
     },
     {
       path: ["tagId"],
-      value: "OA-c1af6551",
+      value: "OA-9c006057",
     },
   ]);
   interaction();
