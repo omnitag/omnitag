@@ -24,6 +24,9 @@ import { interaction } from "./tagBase";
 // const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-718a097c.ini';
 
 // muzuopet
+// const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-fdcc8bdd.ini';
+
+// all young
 const iniUrl = "http://localhost:7000/src/user/%C2%A0OA-9c006057.ini";
 
 const iniCallback = (t, cb) => {
@@ -42,11 +45,11 @@ const iniCallback = (t, cb) => {
     },
     {
       path: ["defaultMpHost"],
-      value: "http://localhost:8000",
+      value: "https://analytics.omniscientai.com",
     },
     {
       path: ["tagId"],
-      value: "OA-9c006057",
+      value: "OA-c1af6551",
     },
   ]);
   interaction();
