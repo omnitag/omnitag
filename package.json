@@ -37,6 +37,5 @@
     "test": "npm run build:cjs && npm run mocha",
     "format": "prettier-eslint --write 'src/**/*.js'",
     "prepublishOnly": "npm run test && npm run build"
-    
   }
 }
