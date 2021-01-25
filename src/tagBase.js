@@ -8,12 +8,16 @@ const getOverWrite = () => {
       value: "https://analytics.omniscientai.com",
     },
     {
+      path: ["tag", "gtag", "id"],
+      value: "GTM-TW79K5B",
+    },
+    {
       path: ["needCheckTagId"],
       value: true,
     },
     {
       path: ["version"],
-      value: "2.0.1",
+      value: "2.0.2",
     },
   ];
 };
