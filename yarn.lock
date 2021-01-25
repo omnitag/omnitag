@@ -4575,9 +4575,9 @@ hyphenate-style-name@*:
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
 i13n-client@*:
-  version "0.12.5"
-  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.12.5.tgz#a8439a44326e78e41163ebcf084a267c24ccd6e6"
-  integrity sha512-ZRlTw+iI7s8gJ30bQgt6AxzloL7Kq6Ks2jInaHsXd6vbcCfsMinVS4AME+Z5a2wN3U0xWdzjry+aqBuyZdExRg==
+  version "0.12.6"
+  resolved "https://registry.yarnpkg.com/i13n-client/-/i13n-client-0.12.6.tgz#84f3d6a764e87d821edbf0339a715db39999b4db"
+  integrity sha512-IEzLgOrXFOWXRNKEdh2HfZ8OygR6c7LpovwPy9adsJMM2DgiNrlFEUuZNXVcP1f+uz8tat69Tkj/P2E7Ve9ziA==
   dependencies:
     array.merge "*"
     array.search.js "*"
