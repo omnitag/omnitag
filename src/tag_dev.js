@@ -45,7 +45,7 @@ const iniCallback = (t, cb) => {
     },
     {
       path: ["defaultMpHost"],
-      value: "https://analytics.omniscientai.com",
+      value: "https://localhost:8000",
     },
     {
       path: ["tagId"],
