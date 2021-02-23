@@ -167,10 +167,11 @@ const initialForm = ({ fm, bd, dIframe, data }) => {
   fm.addEventListener("submit", (e) => {
     e.preventDefault();
     const fmData = formSerialize(fm);
+    const { event_action, event_category } = data;
     dispatch("action", {
       I13N: {
-        action: "FormFillOut",
-        category: "FormFillOut",
+        action: event_action || "empty-action-detected",
+        category: event_category,
         label: fmData,
       },
     });
