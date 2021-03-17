@@ -24,10 +24,13 @@ import { interaction } from "./tagBase";
 // const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-718a097c.ini';
 
 // muzuopet
-const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-fdcc8bdd.ini';
+// const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/OA-fdcc8bdd.ini';
 
 // all young
 // const iniUrl = "http://localhost:7000/src/user/OA-9c006057.ini";
+
+// JK silver
+const iniUrl = "http://localhost:7000/src/user/OA-305725e.ini";
 
 const iniCallback = (t, cb) => {
   cb(t, [
@@ -45,7 +48,7 @@ const iniCallback = (t, cb) => {
     },
     {
       path: ["defaultMpHost"],
-      value: "https://localhost:8000",
+      value: "http://localhost:8000",
     },
     {
       path: ["tagId"],
