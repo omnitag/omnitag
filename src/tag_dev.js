@@ -32,6 +32,9 @@ import { interaction } from "./tagBase";
 // JK silver
 const iniUrl = "http://localhost:7000/src/user/OA-305725e.ini";
 
+// coverme
+// const iniUrl = "http://localhost:7000/src/user/OA-c892fdcd.ini";
+
 const iniCallback = (t, cb) => {
   cb(t, [
     {
