@@ -8,7 +8,7 @@ import exec from "exec-script";
 import gJsdom from "jsdom-global";
 import { utils } from "i13n-client";
 
-const file = "src/user/rubys.ini";
+const file = "src/user/rubys-matrix.ini";
 
 describe("Test ruby ini", () => {
   let scripts;
