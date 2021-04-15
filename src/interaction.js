@@ -1,12 +1,24 @@
 import i13nStore from "i13n-store";
 import { win, doc } from "win-doc";
 import { utils } from "i13n-client";
-import { create, inject, remove } from "create-el";
+import { create, inject } from "create-el";
 import query from "css-query-selector";
 import formSerialize from "form-serialize-js";
 import callfunc from "call-func";
 import { initMap } from "get-object-value";
 import windowOnLoad from "window-onload";
+
+var remove = function remove(dNode) {
+  console.log({dNode})
+  if (dNode) {
+    try {
+      dNode.parentNode.removeChild(dNode);
+      dNode = null;
+    } catch (e) {
+      console.log({e})
+    }
+  }
+};
 
 const expireSec = 86400;
 
@@ -140,14 +152,20 @@ const getCloseIcon = () => {
 const initialIframe = ({ iframeWin, dIframe, data }) => {
   const bd = iframeWin.document.body;
   const q = query.from(iframeWin.document);
+  console.log('initialIframe')
+  console.log({bd})
   q.all("a").forEach((link) => {
     if (!link.target) {
       link.target = "_top";
     }
   });
+  console.log("before bind")
   delegate(bd, "click", ".webpopup-close", (e) => {
+    console.log('close iframe')
+    console.log({remove})
     remove(dIframe);
   });
+  console.log("after bind")
   const fm = q.one("form");
   if (fm) {
     initialForm({ fm, bd, dIframe, data });
@@ -283,6 +301,7 @@ const regScrollEvent = (cb) => {
 };
 
 const handleWebPopup = ({ data, tid, cid, wid }) => {
+  console.log('handleWebPopup')
   const { html, has_line, options = {} } = data || {};
   const {
     need_login,
@@ -377,6 +396,7 @@ const interactionTask = () => {
 
 const interaction = () => {
   i13nStore.addListener(interactionTask, "init");
+  console.log('interaction')
 };
 
 export default interaction;
