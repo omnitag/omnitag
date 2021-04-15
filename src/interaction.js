@@ -11,9 +11,13 @@ import windowOnLoad from "window-onload";
 var remove = function remove(dNode) {
   console.log({dNode})
   if (dNode) {
+    console.log('node exist')
     try {
+      console.log(1,{dNode})
       dNode.parentNode.removeChild(dNode);
+      console.log(2,{dNode})
       dNode = null;
+      console.log(3,{dNode})
     } catch (e) {
       console.log({e})
     }
@@ -161,6 +165,7 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
   });
   console.log("before bind")
   delegate(bd, "click", ".webpopup-close", (e) => {
+    console.log({e})
     console.log('close iframe')
     console.log({remove})
     remove(dIframe);
