@@ -119,14 +119,14 @@ const postIframeHeight = (win, dIframe) => {
   const h = dBody.offsetHeight;
   dIframe.style.height = h + "px";
   dIframe.style.minHeight = h + "px";
-  updateSamlpeTemplateIframeStyle(win, dIframe);
+  updateSampleTemplateIframeStyle(dIframe);
 };
 
-const updateSamlpeTemplateIframeStyle = (win, dIframe) => {
-  const sampleEle = win?.document?.querySelector("#template-sample");
+const updateSampleTemplateIframeStyle = (dIframe) => {
+  const sampleEle = dIframe?.contentDocument?.querySelector("#template-sample");
   const sampleType = sampleEle?.getAttribute("data-sample-id");
   if (sampleEle && sampleType) {
-    console.log({sampleType})
+    dIframe.setAttribute("data-sample-id", sampleType);
     switch (sampleType) {
       // iframe Position Fixed Top
       case "A":
@@ -419,4 +419,5 @@ export {
   initialIframe,
   checkMustHaveLine,
   getPreview,
+  updateSampleTemplateIframeStyle,
 };

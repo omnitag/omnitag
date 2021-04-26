@@ -17,6 +17,7 @@ import {
   getPreview,
   initialIframe,
   checkMustHaveLine,
+  updateSampleTemplateIframeStyle,
 } from "../interaction";
 
 const { query } = utils();
@@ -84,6 +85,27 @@ describe("Test Interaction", () => {
     dForm.submit();
     const afterIframe = query.one("iframe");
     expect(!!afterIframe).to.be.false;
+  });
+
+  it("test sample template iframe style", () => {
+    handleWebPopup({
+      wid: 1,
+      data: {
+        html: `
+        <body id="wrapper" style="box-sizing: border-box; margin: 0;">
+          <div data-sample-id="A" id="template-sample" style="box-sizing: border-box; margin: 0; display: flex;">
+          </div>
+        </body>
+      `,
+        options: { display_times: 0 },
+      },
+    });
+    const iframe = query.one("iframe");
+    expect(iframe.nodeName).to.equal("IFRAME");
+
+    updateSampleTemplateIframeStyle(iframe);
+    expect(iframe.getAttribute("data-sample-id")).to.equal("A");
+    expect(iframe.style.height).to.equal("100%");
   });
 });
 
