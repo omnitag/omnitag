@@ -114,12 +114,37 @@ const fetcher = {
 const postIframeHeight = (win, dIframe) => {
   const dBody = win.document.body;
   dBody.style.margin = 0;
-  dBody.style.padding = "10px";
   dBody.style.height = "auto";
   dBody.style.background = "transparent";
   const h = dBody.offsetHeight;
   dIframe.style.height = h + "px";
   dIframe.style.minHeight = h + "px";
+  updateSamlpeTemplateIframeStyle(win, dIframe);
+};
+
+const updateSamlpeTemplateIframeStyle = (win, dIframe) => {
+  const sampleEle = win?.document?.querySelector("#template-sample");
+  const sampleType = sampleEle?.getAttribute("data-sample-id");
+  if (sampleEle && sampleType) {
+    console.log({sampleType})
+    switch (sampleType) {
+      // iframe Position Fixed Top
+      case "A":
+        dIframe.style.height = "100%";
+        break;
+
+      // iframe Position Fixed Bottom
+      case "B":
+      case "F":
+      case "G":
+        dIframe.style.top = "unset";
+        dIframe.style.bottom = "0px";
+        dIframe.style.transform = "translate(-50%, 0%)";
+        break;
+      default:
+        break;
+    }
+  }
 };
 
 const getCloseIcon = () => {
