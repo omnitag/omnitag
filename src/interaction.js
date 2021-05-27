@@ -117,8 +117,14 @@ const postIframeHeight = (win, dIframe) => {
   dBody.style.height = "auto";
   dBody.style.background = "transparent";
   const h = dBody.offsetHeight;
-  dIframe.style.height = h + "px";
-  dIframe.style.minHeight = h + "px";
+  if (h !== 0) {
+    dIframe.style.height = h + "px";
+    dIframe.style.minHeight = h + "px";
+  } else {
+    dIframe.style.height = "100%";
+    dIframe.style.minHeight = "100%";
+  }
+
   updateSampleTemplateIframeStyle(dIframe);
 };
 
