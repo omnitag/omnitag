@@ -105,7 +105,6 @@ describe("Test Interaction", () => {
 
     updateSampleTemplateIframeStyle(iframe);
     expect(iframe.getAttribute("data-sample-id")).to.equal("A");
-    expect(iframe.style.height).to.equal("100%");
   });
 });
 

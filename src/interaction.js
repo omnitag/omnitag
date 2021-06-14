@@ -125,21 +125,46 @@ const postIframeHeight = (win, dIframe) => {
 const updateSampleTemplateIframeStyle = (dIframe) => {
   const sampleEle = dIframe?.contentDocument?.querySelector("#template-sample");
   const sampleType = sampleEle?.getAttribute("data-sample-id");
+
   if (sampleEle && sampleType) {
     dIframe.setAttribute("data-sample-id", sampleType);
+
     switch (sampleType) {
       // iframe Position Fixed Top
       case "A":
-        dIframe.style.height = "100%";
+        dIframe.style.top = "0";
+        dIframe.style.transform = "translate(-50%, 0%)";
+        break;
+
+      // iframe Position Fixed Center
+      case "C":
+        dIframe.style.left = "0";
+        dIframe.style.transform = "translate(0%, -50%)";
+        break;
+      case "E":
+        dIframe.style.left = "unset";
+        dIframe.style.right = "0";
+        dIframe.style.transform = "translate(0, -50%)";
         break;
 
       // iframe Position Fixed Bottom
       case "B":
+        dIframe.style.top = "unset";
+        dIframe.style.bottom = "0";
+        dIframe.style.transform = "translate(-50%, 0%)";
+        break;
       case "F":
+        dIframe.style.top = "unset";
+        dIframe.style.left = "0";
+        dIframe.style.bottom = "0";
+        dIframe.style.transform = "translate(0, 0%)";
+        break;
       case "G":
         dIframe.style.top = "unset";
-        dIframe.style.bottom = "0px";
-        dIframe.style.transform = "translate(-50%, 0%)";
+        dIframe.style.left = "unset";
+        dIframe.style.right = "0";
+        dIframe.style.bottom = "0";
+        dIframe.style.transform = "translate(0, 0)";
         break;
       default:
         break;
@@ -151,8 +176,8 @@ const getCloseIcon = () => {
   const size = "1.5rem";
   const weight = "0.3rem";
   const html = `
-    <div style="position:absolute;left:50%;top:50%;transform: translate(-50%, -50%) rotate(45deg);width: ${weight}; height: ${size}; background: #fff;">
-       <div style="transform: rotate(90deg);width: ${weight}; height: ${size}; background: #fff;"></div>
+    <div style="position: absolute; left:50%; top:50%; transform: translate(-50%, -50%) rotate(45deg); width: ${weight}; height: ${size}; background: #fff;">
+       <div style="transform: rotate(90deg); width: ${weight}; height: ${size}; background: #fff;"></div>
     </div>
   `;
   const dClose = create("div")()({
@@ -182,11 +207,11 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
 
 const initialForm = ({ fm, bd, dIframe, data }) => {
   const submitDone = `
-<div style="width:300px;margin: 0 auto;text-align:center;background:#fcfff5;border-radius:10px">
-  <svg viewBox="0 0 24 24" width="50%">
-    <path fill="#2c662d" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-  </svg>
-</div>
+    <div style="width:300px; margin: 0 auto; text-align:center; background:#fcfff5; border-radius:10px">
+      <svg viewBox="0 0 24 24" width="50%">
+        <path fill="#2c662d" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+      </svg>
+    </div>
 `;
   const dClose = getCloseIcon();
   inject(fm.firstChild, true)(dClose);
@@ -332,7 +357,7 @@ const handleWebPopup = ({ data, tid, cid, wid }) => {
   const dIframe = create("iframe")()({
     id: "omnisegment-iframe",
     style:
-      "display: none; border: 0; position: fixed; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999",
+      "display: none; border: 0; position: fixed; width: fit-content; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999",
   });
   inject()(dIframe);
   const iframeDoc = dIframe?.contentWindow?.document;
