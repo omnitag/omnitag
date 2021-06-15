@@ -125,21 +125,24 @@ const postIframeHeight = (win, dIframe) => {
 const updateSampleTemplateIframeStyle = (dIframe) => {
   const sampleEle = dIframe?.contentDocument?.querySelector("#template-sample");
   const sampleType = sampleEle?.getAttribute("data-sample-id");
+  const imgEle = dIframe?.contentDocument?.querySelector("img");
 
-  if (sampleEle && sampleType) {
+  if (sampleEle && sampleType && imgEle) {
     dIframe.setAttribute("data-sample-id", sampleType);
+    dIframe.style.width = imgEle.width + 40 + "px";
+    dIframe.style.height = imgEle.height + 40 + "px";
 
     switch (sampleType) {
       // iframe Position Fixed Top
       case "A":
         dIframe.style.top = "0";
-        dIframe.style.transform = "translate(-50%, 0%)";
+        dIframe.style.transform = "translate(-50%, 0)";
         break;
 
       // iframe Position Fixed Center
       case "C":
         dIframe.style.left = "0";
-        dIframe.style.transform = "translate(0%, -50%)";
+        dIframe.style.transform = "translate(0, -50%)";
         break;
       case "E":
         dIframe.style.left = "unset";
@@ -151,13 +154,13 @@ const updateSampleTemplateIframeStyle = (dIframe) => {
       case "B":
         dIframe.style.top = "unset";
         dIframe.style.bottom = "0";
-        dIframe.style.transform = "translate(-50%, 0%)";
+        dIframe.style.transform = "translate(-50%, 0)";
         break;
       case "F":
         dIframe.style.top = "unset";
         dIframe.style.left = "0";
         dIframe.style.bottom = "0";
-        dIframe.style.transform = "translate(0, 0%)";
+        dIframe.style.transform = "translate(0, 0)";
         break;
       case "G":
         dIframe.style.top = "unset";
@@ -207,7 +210,7 @@ const initialIframe = ({ iframeWin, dIframe, data }) => {
 
 const initialForm = ({ fm, bd, dIframe, data }) => {
   const submitDone = `
-    <div style="width:300px; margin: 0 auto; text-align:center; background:#fcfff5; border-radius:10px">
+    <div style="width: 300px; margin: 0 auto; text-align:center; background:#fcfff5; border-radius:10px">
       <svg viewBox="0 0 24 24" width="50%">
         <path fill="#2c662d" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
       </svg>
