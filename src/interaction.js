@@ -127,11 +127,12 @@ const updateSampleTemplateIframeStyle = (dIframe) => {
   const sampleType = sampleEle?.getAttribute("data-sample-id");
   const imgEle = dIframe?.contentDocument?.querySelector("img");
 
-  if (sampleEle && sampleType && imgEle) {
+  if (sampleEle && sampleType) {
+    if (imgEle) {
+      dIframe.style.width = imgEle.width + 40 + "px";
+      dIframe.style.height = imgEle.height + 40 + "px";
+    }
     dIframe.setAttribute("data-sample-id", sampleType);
-    dIframe.style.width = imgEle.width + 40 + "px";
-    dIframe.style.height = imgEle.height + 40 + "px";
-
     switch (sampleType) {
       // iframe Position Fixed Top
       case "A":
