@@ -122,6 +122,14 @@ const postIframeHeight = (win, dIframe) => {
   updateSampleTemplateIframeStyle(dIframe);
 };
 
+const setIframHeightAsImage = (iframe) => {
+  const imgEle = iframe?.contentDocument?.querySelector("img");
+  if (imgEle) {
+    iframe.style.width = imgEle.width + 40 + "px";
+    iframe.style.height = imgEle.height + 40 + "px";
+  }
+};
+
 const updateSampleTemplateIframeStyle = (dIframe) => {
   const sampleEle = dIframe?.contentDocument?.querySelector("#template-sample");
   const sampleType = sampleEle?.getAttribute("data-sample-id");
@@ -141,6 +149,23 @@ const updateSampleTemplateIframeStyle = (dIframe) => {
         dIframe.style.bottom = "0px";
         dIframe.style.transform = "translate(-50%, 0%)";
         break;
+      case "V2-A":
+        setIframHeightAsImage(dIframe);
+        dIframe.style.top = "unset";
+        dIframe.style.left = "0";
+        dIframe.style.bottom = "0";
+        dIframe.style.transform = "translate(0, 0)";
+        break;
+      case "V2-B":
+        setIframHeightAsImage(dIframe);
+        break;
+      case "V2-C":
+        setIframHeightAsImage(dIframe);
+        dIframe.style.top = "unset";
+        dIframe.style.bottom = "0";
+        dIframe.style.right = "0";
+        dIframe.style.left = "unset";
+        dIframe.style.transform = "unset";
       default:
         break;
     }
