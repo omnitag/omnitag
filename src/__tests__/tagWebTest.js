@@ -3,6 +3,7 @@ import { expect } from "chai";
 import { i13nDispatch } from "i13n";
 import i13nStore from "i13n-store";
 import sinon from "sinon";
+import "../data-layer-helper";
 
 class req {
   withCredentials = true;
@@ -22,6 +23,7 @@ describe("Test tag", () => {
   beforeEach(() => {
     reset = jsdom(null, { url: "http://localhost" });
     window.XMLHttpRequest = req;
+    global.DataLayerHelper = class {};
   });
 
   afterEach(() => {
