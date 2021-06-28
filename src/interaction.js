@@ -214,6 +214,11 @@ const initialForm = ({ fm, bd, dIframe, data }) => {
 </div>
 `;
   const dClose = getCloseIcon();
+  if (dClose) {
+    dClose.addEventListener("click", (e) => {
+      remove(dIframe);
+    });
+  }
   inject(fm.firstChild, true)(dClose);
   fm.addEventListener("submit", (e) => {
     e.preventDefault();
