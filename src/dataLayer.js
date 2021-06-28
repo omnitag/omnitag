@@ -1,9 +1,20 @@
 import get from "get-object-value";
 import "./data-layer-helper";
 
+const acceptActions = [
+  "ClickProduct",
+  "ViewContent",
+  "AddToCart",
+  "RemoveFromCart",
+  "Checkout",
+  "Purchase",
+  "Refund",
+  "Search",
+];
+
 const proccessI13nBeacon = (model, message) => {
   const i13nData = get(message, ["i13n"], {});
-  if (i13nData.action) {
+  if (i13nData.action && acceptActions.indexOf(i13nData.action) !== -1) {
     window.i13n.dispatch("action", {
       I13N: i13nData,
     });
