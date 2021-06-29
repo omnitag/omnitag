@@ -122,11 +122,12 @@ const postIframeHeight = (win, dIframe) => {
   updateSampleTemplateIframeStyle(dIframe);
 };
 
-const setIframHeightAsImage = (iframe) => {
+const setIframHeightAsImage = (iframe, reservedPx = 20) => {
   const imgEle = iframe?.contentDocument?.querySelector("img");
   if (imgEle) {
-    iframe.style.width = imgEle.width + 40 + "px";
-    iframe.style.height = imgEle.height + 40 + "px";
+    iframe.style.width = imgEle.width + reservedPx + "px";
+    iframe.style.height = imgEle.height + reservedPx + "px";
+    iframe.style.minHeight = imgEle.height + reservedPx + "px";
   }
 };
 
@@ -157,7 +158,7 @@ const updateSampleTemplateIframeStyle = (dIframe) => {
         dIframe.style.transform = "translate(0, 0)";
         break;
       case "V2-B":
-        setIframHeightAsImage(dIframe);
+        setIframHeightAsImage(dIframe, 40);
         break;
       case "V2-C":
         setIframHeightAsImage(dIframe);
