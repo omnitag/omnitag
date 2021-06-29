@@ -1,5 +1,5 @@
 import { client, utils } from "i13n-client";
-import { interaction } from "./tagBase";
+import { interaction, dataLayer } from "./tagBase";
 
 // kfan develop
 // const iniUrl = '//lan.cicd.omnicloud.tech:7000/src/user/kfan-dev.ini';
@@ -53,6 +53,7 @@ const iniCallback = (t, cb) => {
     },
   ]);
   interaction();
+  dataLayer()
 };
 
 const load = () => {

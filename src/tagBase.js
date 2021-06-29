@@ -1,7 +1,9 @@
 import interaction from "./interaction";
+import dataLayer from "./dataLayer";
 
 const getOverWrite = () => {
   interaction();
+  dataLayer()
   return [
     {
       path: ["defaultMpHost"],
@@ -22,4 +24,4 @@ const getOverWrite = () => {
   ];
 };
 
-export { getOverWrite, interaction };
+export { getOverWrite, interaction, dataLayer };
