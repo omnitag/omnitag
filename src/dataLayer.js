@@ -14,7 +14,9 @@ const acceptActions = [
 
 const proccessI13nBeacon = (model, message) => {
   const i13nData = get(message, ["i13n"], {});
+  console.log({i13nData})
   if (i13nData.action && acceptActions.indexOf(i13nData.action) !== -1) {
+    console.log('do')
     window.i13n.dispatch("action", {
       I13N: i13nData,
     });
