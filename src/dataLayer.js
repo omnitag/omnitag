@@ -34,7 +34,7 @@ const dataLayer = () => {
     window.dataLayer = window.dataLayer || [];
     const helper = new DataLayerHelper(window.dataLayer, {
       listener: _listener,
-      listenToPast: false,
+      listenToPast: true,
     });
     window.i13n.helper = helper;
   } catch (err) {
