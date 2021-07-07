@@ -10,6 +10,7 @@ const acceptActions = [
   "Purchase",
   "Refund",
   "Search",
+  "CompleteRegistration",
 ];
 
 const proccessI13nBeacon = (model, message) => {
