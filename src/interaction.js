@@ -305,6 +305,20 @@ const checkMustHaveLine = (needHasLine, hasLine) => {
   }
 };
 
+const checkTimeExpired = (start_time, end_time) => {
+  if (!start_time || !end_time) {
+    return false;
+  }
+  const startTime = new Date(start_time).getTime();
+  const endTime = new Date(end_time).getTime();
+  if (startTime !== "Invalid Date" && endTime !== "Invalid Date") {
+    const now = new Date().getTime();
+    return startTime > now || endTime < now;
+  } else {
+    return false;
+  }
+};
+
 const testForPassiveScroll = () => {
   const oWin = win();
   let supportsPassiveOption = false;
@@ -413,6 +427,16 @@ const parseRouter = (routerData, url) => {
       const tid = getTagId();
       const cid = getClientId();
       const wid = rule.webpopup_id;
+      const options = get(rule, ["options"], {});
+      const { start_time, end_time } = options;
+      if (checkTimeExpired(start_time, end_time)) {
+        match = match.next();
+        if (match) {
+          match.fn();
+        }
+        return false;
+      }
+
       fetcher.getCacheData({ tid, cid, wid }, ({ data }) => {
         if (data && !hasInitIframe()) {
           handleWebPopup({
@@ -451,4 +475,5 @@ export {
   checkMustHaveLine,
   getPreview,
   updateSampleTemplateIframeStyle,
+  checkTimeExpired,
 };
