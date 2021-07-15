@@ -18,6 +18,7 @@ import {
   initialIframe,
   checkMustHaveLine,
   updateSampleTemplateIframeStyle,
+  checkTimeExpired,
 } from "../interaction";
 
 const { query } = utils();
@@ -154,5 +155,35 @@ describe("Test checkMustHaveLine", () => {
   it("test needHasLine=2 hasLine=true", () => {
     const acture = checkMustHaveLine(2, true);
     expect(acture).to.be.true;
+  });
+});
+
+describe("Test checkTimeExpired", () => {
+  let reset;
+  let clock;
+  beforeEach(() => {
+    reset = jsdom("", { url: "http://localhost" });
+    clock = sinon.useFakeTimers(new Date("2020-01-01").getTime());
+  });
+
+  afterEach(() => {
+    reset();
+    clock.restore();
+  });
+
+  it("test Webpopup in Time Range", () => {
+    expect(checkTimeExpired("2019-12-25", "2020-01-25")).to.be.false;
+  });
+
+  it("test Webpopup Expired", () => {
+    expect(checkTimeExpired("2019-01-01", "2019-12-25")).to.be.true;
+  });
+
+  it("test Webpopup not Starting", () => {
+    expect(checkTimeExpired("2020-01-25", "2020-12-25")).to.be.true;
+  });
+
+  it("test inValid dateTime won't stop Webpopup", () => {
+    expect(checkTimeExpired("200000-20000-20000", () => {})).to.be.false;
   });
 });
